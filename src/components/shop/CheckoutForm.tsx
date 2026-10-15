@@ -8,7 +8,7 @@ import { useCart, cartSubtotal } from "@/lib/store/cart";
 import { formatPrice, cn } from "@/lib/format";
 import { useToast } from "@/components/ui/Toaster";
 
-export function CheckoutForm({ methods }: { methods: ShippingMethod[] }) {
+export function CheckoutForm({ methods, stripeEnabled = false }: { methods: ShippingMethod[]; stripeEnabled?: boolean }) {
   const { lines, clear, remove } = useCart();
   const [mounted, setMounted] = useState(false);
   const [method, setMethod] = useState(methods[0]?.id ?? "");
@@ -67,6 +67,16 @@ export function CheckoutForm({ methods }: { methods: ShippingMethod[] }) {
       } else push(data.error ?? "Erreur lors de la commande.", "error");
       return;
     }
+    if (stripeEnabled) {
+      const s = await fetch("/api/checkout/stripe", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ orderId: data.order.id }) });
+      const sd = await s.json();
+      if (s.ok && sd.url) {
+        clear();
+        window.location.href = sd.url;
+        return;
+      }
+      push("Paiement indisponible — commande enregistrée, nous vous contactons.", "error");
+    }
     clear();
     router.push(`/checkout/confirmation/${data.order.id}`);
   }
@@ -121,10 +131,17 @@ export function CheckoutForm({ methods }: { methods: ShippingMethod[] }) {
             <textarea id="note" value={f.note} onChange={set("note")} rows={3} className="w-full bg-white/5 border border-white/15 rounded-[3px] px-4 py-3 text-sm outline-none focus:border-white" />
           </div>
         </section>
-        <section className="border border-pink/40 bg-pink/5 rounded-[3px] p-5">
-          <p className="font-semibold">Paiement — non activé (mode démo)</p>
-          <p className="text-sm text-white/65 mt-1">Aucun paiement n'est débité. La commande est enregistrée et visible dans l'espace admin ; le paiement en ligne sera activé avec Shopify (ou Stripe). Voir README.</p>
-        </section>
+        {stripeEnabled ? (
+          <section className="border border-white/15 rounded-[3px] p-5">
+            <p className="font-semibold">Paiement sécurisé par Stripe</p>
+            <p className="text-sm text-white/65 mt-1">Après validation, vous serez redirigé·e vers la page de paiement Stripe (carte bancaire, Apple Pay, Google Pay). Rien n'est débité avant cette étape.</p>
+          </section>
+        ) : (
+          <section className="border border-pink/40 bg-pink/5 rounded-[3px] p-5">
+            <p className="font-semibold">Paiement — non activé (mode démo)</p>
+            <p className="text-sm text-white/65 mt-1">Aucun paiement n'est débité. La commande est enregistrée et visible dans l'espace admin ; le paiement en ligne s'active en ajoutant les clés Stripe (voir README).</p>
+          </section>
+        )}
       </div>
 
       <aside className="lg:sticky lg:top-24 border border-white/10 rounded-[3px] p-5 space-y-4 bg-ink">
@@ -146,7 +163,7 @@ export function CheckoutForm({ methods }: { methods: ShippingMethod[] }) {
           <div className="flex justify-between text-white/70"><span>Livraison</span><span className="tabular-nums">{ship ? (ship.price.amount === 0 ? "Offert" : formatPrice(ship.price)) : "—"}</span></div>
           <div className="flex justify-between font-semibold text-base pt-2 border-t border-white/10"><span>Total</span><span className="tabular-nums">{formatPrice(total)}</span></div>
         </div>
-        <button disabled={loading} className="btn btn-brand w-full !py-4">{loading ? "Enregistrement…" : "Valider la commande"}</button>
+        <button disabled={loading} className="btn btn-brand w-full !py-4">{loading ? "Un instant…" : stripeEnabled ? "Payer avec Stripe" : "Valider la commande"}</button>
         <p className="text-[11px] text-white/40">En validant, vous acceptez les <Link href="/legal/cgv" className="underline">CGV</Link>.</p>
       </aside>
     </form>

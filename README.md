@@ -14,7 +14,7 @@ Admin : http://localhost:3000/admin — mot de passe `ADMIN_PASSWORD` (défaut d
 ## Ce qui est opérationnel
 - Accueil (hero campagne 2026, drops, sélecteur des 9 visuels, pièces du moment, campagne, events, journal, manifeste, newsletter)
 - Shop (filtres catégorie/couleur, tri), collections, recherche, fiches produit avec **configurateur coupe × impression × couleur × taille et prix réels**
-- Panier persistant (localStorage), checkout (sans paiement — mode démo), confirmation
+- Panier persistant (localStorage), checkout → **Stripe Checkout** (dès que la clé est définie ; sinon mode démo sans paiement), confirmation, webhook paiement/remboursement
 - Admin : tableau de bord (CA, commandes, panier moyen, graphique 14 j, meilleures ventes, stock faible), commandes (filtres, détail, statuts, paiement, note, historique), produits (édition, statut, mise en avant, **stock par variante**), stock, clients, newsletter (export CSV), messages, événements, journal, réglages
 - SEO : metadata, Open Graph, JSON-LD (Product, MusicEvent, Article, FAQ), sitemap.xml, robots.txt
 - Pages : events (+ archives), journal, à propos, contact, FAQ, guide des tailles, livraison/retours, mentions légales, CGV, confidentialité, 404
@@ -24,7 +24,13 @@ Admin : http://localhost:3000/admin — mot de passe `ADMIN_PASSWORD` (défaut d
 - Événements : `src/lib/data/events.ts` (Shotgun + Instagram). Journal : `src/lib/data/journal.ts`.
 - Mode local : commandes, stocks, newsletter et messages sont stockés dans `data/runtime/*.json` (ignoré par git). Supprimer le dossier pour repartir de zéro.
 
-## Connecter Shopify (paiement réel)
+## Paiement avec Stripe (recommandé — intégré)
+1. Compte Stripe → Developers → API keys → `STRIPE_SECRET_KEY=sk_test_…` dans `.env.local`.
+2. Webhook : Developers → Webhooks → endpoint `https://<site>/api/webhooks/stripe`, événements `checkout.session.completed` et `charge.refunded` → `STRIPE_WEBHOOK_SECRET=whsec_…`. En local : `stripe listen --forward-to localhost:3000/api/webhooks/stripe`.
+3. Redémarrer. Flux : commande enregistrée (`pending_payment`) → redirection Stripe Checkout (`/api/checkout/stripe`) → webhook → commande `paid`. Annulation → `/checkout/confirmation/<id>?cancelled=1` avec bouton « Réessayer ». Remboursement Stripe → commande `refunded`.
+Carte de test : 4242 4242 4242 4242, date future, CVC quelconque.
+
+## Connecter Shopify (alternative)
 1. Shopify Admin → Settings → Apps and sales channels → Develop apps → créer « Smilin' Dancin' site ».
 2. Storefront API scopes : `unauthenticated_read_product_listings`, `unauthenticated_read_product_inventory`, `unauthenticated_write_checkouts`, `unauthenticated_read_checkouts`.
    Admin API scopes : `read_orders`, `write_orders`, `read_products`, `write_products`, `read_inventory`, `write_inventory`, `read_customers`.

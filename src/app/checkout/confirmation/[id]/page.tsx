@@ -3,17 +3,28 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { commerce } from "@/lib/commerce";
 import { formatPrice, formatDate } from "@/lib/format";
+import { RetryPayment } from "@/components/shop/RetryPayment";
 export const metadata: Metadata = { title: "Commande enregistrée", robots: { index: false } };
 export const dynamic = "force-dynamic";
-export default async function Confirmation({ params }: { params: Promise<{ id: string }> }) {
+export default async function Confirmation({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ paid?: string; cancelled?: string }> }) {
   const { id } = await params;
+  const sp = await searchParams;
   const o = await commerce.getOrder(id);
   if (!o) notFound();
   return (
     <div className="container-x pt-28 md:pt-36 max-w-3xl">
       <p className="t-condensed text-blue-sky text-xl">Commande {o.id}</p>
       <h1 className="t-display text-[clamp(40px,7vw,96px)] leading-[0.85] mt-2">Merci 💙🩷</h1>
-      <p className="mt-6 text-white/75 max-w-xl">Votre commande est enregistrée ({formatDate(o.createdAt)}). <b>Le paiement n'est pas encore activé</b> sur ce site : l'équipe Smilin' Dancin' vous contactera à <b>{o.customer.email}</b> pour finaliser. Rien n'a été débité.</p>
+      {o.paymentStatus === "paid" || sp.paid ? (
+        <p className="mt-6 text-white/75 max-w-xl">Paiement reçu — votre commande est confirmée ({formatDate(o.createdAt)}). Un email de confirmation arrive à <b>{o.customer.email}</b>. {o.shippingMethod.id === "event" ? "Rendez-vous au stand Merch du prochain événement." : "On prépare votre pièce avec amour, puis on l'expédie."}</p>
+      ) : sp.cancelled ? (
+        <div className="mt-6 max-w-xl">
+          <p className="text-white/75">Le paiement a été annulé. Votre commande est conservée : vous pouvez réessayer.</p>
+          <RetryPayment orderId={o.id} />
+        </div>
+      ) : (
+        <p className="mt-6 text-white/75 max-w-xl">Votre commande est enregistrée ({formatDate(o.createdAt)}). <b>Le paiement n'est pas encore activé</b> sur ce site : l'équipe Smilin' Dancin' vous contactera à <b>{o.customer.email}</b> pour finaliser. Rien n'a été débité.</p>
+      )}
       <div className="mt-8 border border-white/10 rounded-[3px] divide-y divide-white/10">
         {o.lines.map((l) => (
           <div key={l.variantId} className="p-4 flex justify-between gap-4 text-sm">
