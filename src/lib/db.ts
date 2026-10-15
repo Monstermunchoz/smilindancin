@@ -5,10 +5,16 @@
  */
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import os from "node:os";
 import type { Order, Product } from "@/lib/commerce/types";
 import { PRODUCTS } from "@/lib/data/products";
 
-const RUNTIME_DIR = path.join(process.cwd(), "data", "runtime");
+/**
+ * En local : data/runtime (persistant). Sur Vercel / serverless (disque en lecture seule) : dossier temporaire
+ * — les données y sont ÉPHÉMÈRES (perdues à chaque redémarrage de fonction). En production, brancher Stripe
+ * (commandes visibles dans le Dashboard Stripe) et/ou une base (Vercel Postgres, Supabase, Upstash…).
+ */
+const RUNTIME_DIR = process.env.SD_DATA_DIR ?? (process.env.VERCEL ? path.join(os.tmpdir(), "sd-runtime") : path.join(process.cwd(), "data", "runtime"));
 
 type Tables = {
   orders: Order[];
