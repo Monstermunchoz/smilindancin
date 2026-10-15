@@ -27,7 +27,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         <div className="absolute inset-0 opacity-30 mix-blend-multiply" style={{ background: `linear-gradient(135deg, ${e.theme.from}, ${e.theme.to})` }} />
         <div className="m-center container-x relative pb-12 pt-32 w-full">
           <p className="t-condensed text-xl md:text-2xl text-blue-sky">{e.dateLabel}{e.hours ? ` · ${e.hours}` : ""} · {e.venue.name}</p>
-          <h1 className="m-center t-display text-[clamp(34px,12vw,180px)] leading-[0.82] mt-2">{e.title}</h1>
+          <h1 className="m-center t-display text-[clamp(30px,9.5vw,168px)] leading-[0.82] mt-2">{e.title}</h1>
           <p className="text-white/80 mt-4 max-w-2xl text-base md:text-lg">{e.concept}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             {e.ticketing ? <Link href={`/billetterie/${e.slug}`} className="btn btn-brand">Prendre mes billets</Link> : <a href={e.ticketUrl} target="_blank" rel="noreferrer" className="btn btn-primary">{e.status === "past" ? "Page Shotgun" : "Billets sur Shotgun"}</a>}

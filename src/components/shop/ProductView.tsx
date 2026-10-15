@@ -10,6 +10,7 @@ import { useToast } from "@/components/ui/Toaster";
 import { formatPrice, cn } from "@/lib/format";
 import { ProductCard } from "./ProductCard";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
+import { GarmentViewer } from "./GarmentViewer";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -19,7 +20,10 @@ export function ProductView({ product, related, sibling }: { product: Product; r
   const soon = product.status === "coming_soon";
   const reduce = useReducedMotion();
 
-  const [img, setImg] = useState(0);
+  const visualTag = product.tags.find((t) => /^visuel-\d$/.test(t));
+  const visual = visualTag ? Number(visualTag.split("-")[1]) : null;
+  const has3d = visual !== null && (isTee || isHoodie);
+  const [img, setImg] = useState(has3d ? -1 : 0);
   const [cut, setCut] = useState<CutId>("classic-h");
   const [print, setPrint] = useState<PrintId>("back");
   const [color, setColor] = useState(product.colors[0]?.name ?? "Noir");
@@ -86,6 +90,12 @@ export function ProductView({ product, related, sibling }: { product: Product; r
         <div className="lg:sticky lg:top-24">
           <div className="grid grid-cols-[64px_1fr] md:grid-cols-[80px_1fr] gap-3">
             <div className="flex flex-col gap-2">
+              {has3d && (
+                <button onClick={() => setImg(-1)} aria-label="Vue 3D devant / dos" className={cn("relative aspect-[4/5] overflow-hidden rounded-[2px] border transition-colors g-brand flex flex-col items-center justify-center gap-0.5", img === -1 ? "border-white" : "border-transparent opacity-70 hover:opacity-100")}>
+                  <span className="t-display text-lg leading-none">3D</span>
+                  <span className="t-label text-[8px] text-white/85">360°</span>
+                </button>
+              )}
               {product.images.map((im, i) => (
                 <button key={im.src + i} onClick={() => setImg(i)} aria-label={`Image ${i + 1}`} className={cn("relative aspect-[4/5] overflow-hidden rounded-[2px] border transition-colors", img === i ? "border-white" : "border-transparent opacity-60 hover:opacity-100")}>
                   <Image src={im.src} alt="" fill sizes="80px" className="object-cover" />
@@ -93,6 +103,10 @@ export function ProductView({ product, related, sibling }: { product: Product; r
               ))}
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[3px] bg-ink-2">
+              {img === -1 && has3d ? (
+                <GarmentViewer visual={visual!} hex={product.colors.find((c) => c.name === color)?.hex ?? "#111114"} kind={isHoodie ? "hoodie" : "tee"} cut={cut} print={print} />
+              ) : (
+              <>
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div key={img} className="absolute inset-0" initial={reduce ? false : { opacity: 0, scale: 1.03 }} animate={{ opacity: 1, scale: 1 }} exit={reduce ? undefined : { opacity: 0 }} transition={{ duration: 0.5, ease }}>
                   <Image src={product.images[img].src} alt={product.images[img].alt} fill priority sizes="(max-width:1024px) 100vw, 55vw" className="object-cover" />
@@ -101,7 +115,10 @@ export function ProductView({ product, related, sibling }: { product: Product; r
               <span className="absolute bottom-3 left-3 t-label text-[10px] bg-black/60 text-white/80 px-2 py-1 rounded">
                 {product.images[img].kind === "worn" ? "Porté · photo @smilin.dancin" : product.images[img].kind === "mockup" ? "Mockup" : "Visuel"}
               </span>
+              </>
+              )}
             </div>
+            {img === -1 && has3d && <p className="col-start-2 text-[11px] text-white/45 text-center md:text-left">Rendu 3D indicatif : visuel officiel sur la coupe et le coloris choisis. Photos portées dans la galerie.</p>}
           </div>
         </div>
 
@@ -109,7 +126,7 @@ export function ProductView({ product, related, sibling }: { product: Product; r
         <div className="pb-24 lg:pb-0">
           <div className="m-center">
           <p className="t-condensed text-blue-sky text-lg">{product.subtitle}</p>
-          <h1 className="t-display text-[clamp(34px,5vw,64px)] leading-[0.9] mt-1">{product.title}</h1>
+          <h1 className="t-display text-[clamp(32px,3.6vw,60px)] leading-[0.9] mt-1">{product.title}</h1>
           <div className="mt-4 flex items-baseline gap-3 justify-center md:justify-start">
             {soon ? (
               <p className="t-condensed text-2xl text-white/70">Tarif à venir</p>

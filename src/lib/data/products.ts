@@ -161,7 +161,6 @@ export const VISUALS: Visual[] = [
     tile: "/merch/visuels/02-feet-on-the-ground.jpg",
     photos: [
       { src: "/merch/photos/feet-on-the-ground-croptop-white.jpg", alt: "Crop top blanc Feet On The Ground, grand visuel dos, lac d'Annecy", kind: "worn", view: "worn" },
-      { src: "/merch/photos/feet-on-the-ground-hoodie-black.jpg", alt: "Sweat noir Feet On The Ground brodé, Caprices Festival", kind: "worn", view: "worn" },
       { src: "/merch/photos/hoodies-duo-feet-music.jpg", alt: "Sweats blanc et gris portés au bord du lac", kind: "worn", view: "worn" },
       { src: "/merch/visuels/02-feet-on-the-ground.jpg", alt: "Visuel n°2 Feet On The Ground", kind: "photo", view: "front" },
     ],
@@ -281,7 +280,6 @@ export const VISUALS: Visual[] = [
     tile: "/merch/visuels/09-mas-musica-por-favor.jpg",
     photos: [
       { src: "/merch/photos/mas-musica-hoodie-white-sleeve.jpg", alt: "Sweat blanc, patch Más Música sur la manche", kind: "worn", view: "detail" },
-      { src: "/merch/photos/mas-musica-tee-black.jpg", alt: "T-shirt noir, patch Más Música", kind: "worn", view: "worn" },
       { src: "/merch/visuels/09-mas-musica-por-favor.jpg", alt: "Visuel n°9 Más Música Por Favor", kind: "photo", view: "front" },
     ],
     tags: ["patch", "español"],
@@ -370,8 +368,8 @@ const DROPS_2026: Product[] = [
     collection: "drops-2026",
     tags: ["tee", "2026", "groovers", "nouveau"],
     images: [
+      { src: "/merch/photos/groovers-campaign-tee-black.jpg", alt: "T-shirt crop noir Groovers, campagne 2026", kind: "worn", view: "front" },
       { src: "/merch/photos/campaign-groovers-realvip-crop.jpg", alt: "Campagne 2026 — Groovers & The Real VIP", kind: "worn", view: "worn" },
-      { src: "/merch/photos/groovers-debardeur-white.jpg", alt: "Débardeur blanc Groovers au festival", kind: "worn", view: "worn" },
     ],
     colors: TEE_COLORS,
     sizes: SIZES,
@@ -396,7 +394,7 @@ const DROPS_2026: Product[] = [
     collection: "drops-2026",
     tags: ["tee", "2026", "vip", "nouveau"],
     images: [
-      { src: "/merch/photos/real-vip-tee-white-back.jpg", alt: "T-shirt blanc The Real VIP, grand visuel dos", kind: "worn", view: "back" },
+      { src: "/merch/photos/real-vip-campaign-back.jpg", alt: "T-shirt blanc The Real VIP, grand visuel dos", kind: "worn", view: "back" },
       { src: "/merch/photos/campaign-groovers-realvip-crop.jpg", alt: "Campagne 2026 — Groovers & The Real VIP", kind: "worn", view: "worn" },
     ],
     colors: TEE_COLORS,

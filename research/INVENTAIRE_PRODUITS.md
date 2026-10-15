@@ -29,3 +29,10 @@ Toutes les images ci-dessous sont des captures (626–892 px) réalisées depuis
 Mapping site : `public/merch/photos/*.jpg` (recadrages, `scripts/crop-merch.py`), `public/merch/visuels/0X-*.jpg` (tuiles des 9 visuels).
 
 Autres images de marque : `public/photos/*` (festival, posts publics sept.–oct. 2026, crédits dans `events.ts`), `public/events/*` (affiches Shotgun), `public/brand/*` (logos du dossier client).
+
+## Photos — nettoyage (15/10/2026)
+
+- Slides du post officiel DPQrKZSiOKL récupérées en pleine résolution (1440×1800) : textes « Official Merch' » et petit logo retirés par recadrage, sortie 1080×1350.
+- Stories du highlight Merch' recadrées : plus aucun pseudo, sticker, compte à rebours, légende ni bandeau noir. Photos impossibles à nettoyer sans couper le produit retirées du site (crop Groovers débardeur, Más Música tee noir, Feet On The Ground sweat noir, Real VIP story).
+- Visuels 1 à 9 : tuiles HD sans numéros + fichiers d'impression détourés (`public/merch/prints/`) utilisés par la vue 3D devant/dos.
+- Photo des fondateurs (post DEz5etPiLzg) : texte « IS BORN » retiré, fond nettoyé, utilisée dans À propos.

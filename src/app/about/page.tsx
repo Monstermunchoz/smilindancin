@@ -18,9 +18,9 @@ export default function AboutPage() {
     <div className="pt-28 md:pt-36">
       <section className="container-x relative overflow-hidden">
         <div className="absolute right-0 -top-24 opacity-60 pointer-events-none hidden md:block"><Globe size={520} id="ab" /></div>
-        <div className="m-center relative max-w-4xl">
+        <div className="m-center relative max-w-6xl">
           <p className="t-condensed text-blue-sky text-xl">Lyon · depuis janvier 2025</p>
-          <h1 className="m-center t-display text-[clamp(34px,9vw,128px)] leading-[0.82] mt-2">De la musique,<br />des sourires,<br /><span className="g-neon-text">des souvenirs.</span></h1>
+          <h1 className="m-center t-display text-[clamp(34px,7.4vw,112px)] leading-[0.82] mt-2">De la musique,<br />des sourires,<br /><span className="g-neon-text">des souvenirs.</span></h1>
         </div>
       </section>
       <section className="container-x mt-16 grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-20 items-start">
@@ -33,6 +33,25 @@ export default function AboutPage() {
             <div className="flex flex-wrap gap-3 pt-2"><Link href="/shop" className="btn btn-primary">Le shop</Link><Link href="/events" className="btn btn-ghost">Les événements</Link></div>
           </div>
         </Reveal>
+      </section>
+      <section className="container-x mt-24 md:mt-32">
+        <div className="grid lg:grid-cols-[1.25fr_1fr] gap-10 lg:gap-16 items-center">
+          <RevealMask>
+            <figure className="relative rounded-[6px] p-[2px] g-brand shadow-[0_40px_120px_-40px_rgba(169,66,107,.7)]">
+              <div className="relative aspect-[1580/1531] overflow-hidden rounded-[5px] bg-[#faf8fa]">
+                <Image src="/about/fondateurs.jpg" alt="Flow et Lucho, fondateurs de Smilin' Dancin', assis sur des enceintes avec les néons SMILIN' et DANCIN' sous une boule à facettes" fill sizes="(max-width:1024px) 100vw, 55vw" className="object-cover" />
+              </div>
+            </figure>
+          </RevealMask>
+          <Reveal delay={0.1}>
+            <div className="m-center">
+              <p className="t-label text-pink">Les fondateurs</p>
+              <h2 className="t-display text-[clamp(40px,7vw,104px)] leading-[0.85] mt-3">Flow<br /><span className="g-brand-text whitespace-nowrap">&amp; Lucho</span></h2>
+              <p className="text-white/75 mt-6 text-base md:text-lg leading-relaxed max-w-md mx-auto lg:mx-0">Deux amis inséparables, un néon chacun : SMILIN' d'un côté, DANCIN' de l'autre. C'est avec cette photo qu'ils ont présenté Smilin' Dancin' au monde, le 14 janvier 2025.</p>
+              <p className="t-dot text-xs text-white/45 mt-6">Photo de lancement · Instagram @smilin.dancin</p>
+            </div>
+          </Reveal>
+        </div>
       </section>
       <section className="container-x mt-24">
         <h2 className="m-center t-display text-[clamp(32px,6vw,88px)] mb-10">Chronologie</h2>

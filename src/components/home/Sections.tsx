@@ -55,19 +55,19 @@ export function Drops({ products }: { products: Product[] }) {
           <Link href={`/shop/${groovers.handle}`} className="group relative block aspect-[4/5] md:aspect-[5/6] overflow-hidden rounded-[3px]">
             <Image src="/merch/photos/campaign-groovers-realvip-crop.jpg" alt={groovers.images[0].alt} fill sizes="(max-width:768px) 100vw, 60vw" className="object-cover object-top transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            <div className="m-center absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8 flex items-end justify-between gap-4">
+            <div className="m-center absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8 flex flex-col sm:flex-row items-center sm:items-end sm:justify-between gap-3 sm:gap-4">
               <div>
                 <p className="t-condensed text-blue-sky text-lg">Never miss the drop</p>
                 <p className="t-display text-4xl md:text-6xl">Groovers</p>
               </div>
-              <span className="btn btn-primary hidden sm:inline-flex">Découvrir</span>
+              <span className="btn btn-primary">Découvrir</span>
             </div>
           </Link>
         </RevealMask>
         <div className="md:col-span-5 flex flex-col gap-4 md:gap-6">
           <RevealMask delay={0.15}>
             <Link href={`/shop/${vip.handle}`} className="group relative block aspect-[4/5] md:aspect-[5/6] overflow-hidden rounded-[3px]">
-              <Image src="/merch/photos/real-vip-tee-white-back.jpg" alt={vip.images[0].alt} fill sizes="(max-width:768px) 100vw, 40vw" className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
+              <Image src="/merch/photos/real-vip-campaign-back.jpg" alt={vip.images[0].alt} fill sizes="(max-width:768px) 100vw, 40vw" className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="m-center absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8">
                 <p className="t-condensed text-pink text-lg">Is on the dancefloor</p>
@@ -98,8 +98,8 @@ export function VisualPicker({ products }: { products: Product[] }) {
       <div className="container-x relative">
         <Reveal>
           <div className="m-center grid lg:grid-cols-2 gap-6 items-end mb-10 md:mb-14">
-            <h2 className="t-display text-[clamp(34px,8vw,120px)] leading-[0.85]">
-              9 visuels<br /><span className="text-white/40">au choix</span>
+            <h2 className="t-display text-[clamp(34px,7vw,104px)] leading-[0.85]">
+              <span className="whitespace-nowrap">9 visuels</span><br /><span className="text-white/40 whitespace-nowrap">au choix</span>
             </h2>
             <p className="max-w-md text-white/70 lg:justify-self-end">La Smilers & Dancers Collection : chaque visuel existe en t-shirt (6 coupes, devant petit ou dos grand) et en sweat à capuche brodé. Noir, blanc, gris. Made in France, du XS au XXL.</p>
           </div>
@@ -235,10 +235,13 @@ export function EventsSection({ events }: { events: SDEvent[] }) {
         <Reveal>
           <div className="m-center flex flex-wrap items-end justify-between gap-6 mb-10">
             <h2 className="t-display text-[clamp(34px,8vw,120px)]">Events</h2>
-            <div className="text-right">
-              <p className="t-label text-white/50">Prochaine date</p>
-              <p className="t-condensed text-2xl md:text-3xl">Info à venir — suivez <a href="https://www.instagram.com/smilin.dancin/" className="g-neon-text" target="_blank" rel="noreferrer">@smilin.dancin</a></p>
-            </div>
+            <Link href="/billetterie" className="group text-right flex items-center gap-4 border border-white/15 rounded-full pl-6 pr-2 py-2 hover:border-white/40 transition-colors bg-black/30 backdrop-blur">
+              <span>
+                <span className="block t-label text-white/50">Prochaine édition · 2027</span>
+                <span className="block t-condensed text-xl md:text-2xl">Early Bird en billetterie</span>
+              </span>
+              <span className="w-11 h-11 rounded-full g-brand flex items-center justify-center text-lg transition-transform group-hover:translate-x-0.5">→</span>
+            </Link>
           </div>
         </Reveal>
         {latest && (
@@ -324,8 +327,8 @@ export function BrandStatement() {
       </div>
       <div className="m-center container-x relative grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
         <Reveal>
-          <h2 className="t-display text-[clamp(34px,7vw,104px)] leading-[0.85]">
-            De la musique,<br />des sourires,<br /><span className="text-pink">des souvenirs.</span>
+          <h2 className="t-display text-[clamp(30px,5.6vw,92px)] leading-[0.88]">
+            <span className="whitespace-nowrap">De la musique,</span><br /><span className="whitespace-nowrap">des sourires,</span><br /><span className="text-pink whitespace-nowrap">des souvenirs.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.15}>

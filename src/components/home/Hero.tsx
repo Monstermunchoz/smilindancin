@@ -32,7 +32,7 @@ export function Hero() {
       {/* Photo campagne 2026 — Groovers / The Real VIP (Instagram @smilin.dancin, highlight Merch') */}
       <motion.div style={{ y: imgY }} className="absolute inset-0">
         <Image
-          src="/merch/photos/campaign-groovers-realvip.jpg"
+          src="/merch/photos/campaign-groovers-realvip-crop.jpg"
           alt="Campagne 2026 : t-shirts Groovers et The Real VIP is on the dancefloor"
           fill
           priority

@@ -221,6 +221,7 @@ img { user-select: none; }
   .m-center:where(.grid), .m-center :where(.grid) { justify-items: center; }
   .m-center :where(.text-right) { text-align: center; }
   .m-center .m-full { width: 100%; justify-self: stretch; }
+  .m-center .flex > :where(p, h1, h2, h3, form, ul, nav) { margin-left: 0; margin-right: 0; }
 }
 
 /* Anti-débordement global : un enfant de grille/flex ne peut jamais imposer une largeur supérieure à l'écran */

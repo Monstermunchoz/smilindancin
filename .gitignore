@@ -43,3 +43,7 @@ data/runtime/
 .env.local
 
 !.env.example
+
+# sources de travail photo (captures HD, originaux)
+/research/hd/
+/research/orig-photos/

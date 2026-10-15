@@ -6,7 +6,7 @@ export default function ContactPage() {
   return (
     <div className="container-x pt-28 md:pt-36 grid lg:grid-cols-[1fr_1.2fr] gap-12">
       <div className="m-center">
-        <h1 className="m-center t-display text-[clamp(34px,8vw,112px)] leading-[0.85]">Contact</h1>
+        <h1 className="m-center t-display text-[clamp(34px,6vw,104px)] leading-[0.85]">Contact</h1>
         <p className="text-white/65 mt-6 max-w-md">Commande merch, partenariat, exposant au Village Market, presse : écrivez-nous. Le plus rapide reste le DM Instagram.</p>
         <ul className="mt-8 space-y-3 text-sm">
           <li><a href={SITE.instagram} target="_blank" rel="noreferrer" className="u-line">Instagram @smilin.dancin</a></li>

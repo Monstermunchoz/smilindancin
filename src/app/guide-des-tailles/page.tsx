@@ -4,7 +4,7 @@ const rows = ["XS", "S", "M", "L", "XL", "XXL"];
 export default function SizeGuide() {
   return (
     <div className="container-x pt-28 md:pt-36 max-w-3xl">
-      <h1 className="m-center t-display text-[clamp(34px,8vw,112px)] leading-[0.85]">Guide des tailles</h1>
+      <h1 className="m-center t-display text-[clamp(34px,6vw,88px)] leading-[0.85]">Guide des tailles</h1>
       <p className="text-white/65 mt-6">Tailles disponibles : XS à XXL sur toute la collection. Les mensurations exactes (tour de poitrine, longueur) doivent être fournies par la marque — le tableau ci-dessous est à compléter.</p>
       <div className="mt-8 overflow-x-auto">
         <table className="w-full text-sm">
