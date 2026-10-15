@@ -62,9 +62,9 @@ export function Hero() {
         >
           Electronic Music Events & Clothing — Lyon
         </motion.p>
-        <h1 className="t-display text-[22vw] sm:text-[17vw] md:text-[13.5vw] leading-[0.82] text-white">
+        <h1 className="t-display text-[18.5vw] sm:text-[16vw] md:text-[13.5vw] leading-[0.82] text-white">
           <span className="block overflow-hidden pb-[0.06em] text-[#5d7fc4]">{word("Smilin’", 0.15)}</span>
-          <span className="block overflow-hidden pb-[0.06em] text-[#c45a84] pl-[0.9em] md:pl-[1.4em]">{word("Dancin’", 0.3)}</span>
+          <span className="block overflow-hidden pb-[0.06em] text-[#c45a84] pl-[0.5em] md:pl-[1.4em]">{word("Dancin’", 0.3)}</span>
         </h1>
         <div className="mt-8 md:mt-10 grid md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-end">
           <motion.p
