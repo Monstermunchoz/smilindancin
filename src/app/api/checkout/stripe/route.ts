@@ -16,7 +16,8 @@ export async function POST(req: Request) {
 
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? SITE.url;
   const stripe = getStripe();
-  const session = await stripe.checkout.sessions.create({
+  try {
+    const session = await stripe.checkout.sessions.create({
     mode: "payment",
     customer_email: order.customer.email,
     locale: "fr",
@@ -39,6 +40,9 @@ export async function POST(req: Request) {
     cancel_url: `${base}/checkout/confirmation/${order.id}?cancelled=1`,
   });
 
-  await commerce.updateOrder(order.id, { note: order.note }, "system");
-  return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: session.url });
+  } catch (e) {
+    console.error("[stripe] checkout session error", e);
+    return NextResponse.json({ error: "Paiement temporairement indisponible. Votre commande est enregistrée, nous vous contactons." }, { status: 502 });
+  }
 }
