@@ -16,7 +16,7 @@ export default async function Confirmation({ params, searchParams }: { params: P
       <p className="m-center t-condensed text-blue-sky text-xl">Commande {o.id}</p>
       <h1 className="m-center t-display text-[clamp(34px,7vw,96px)] leading-[0.85] mt-2">Merci 💙🩷</h1>
       {o.paymentStatus === "paid" || sp.paid ? (
-        <p className="mt-6 text-white/75 max-w-xl">Paiement reçu — votre commande est confirmée ({formatDate(o.createdAt)}). Un email de confirmation arrive à <b>{o.customer.email}</b>. {o.shippingMethod.id === "event" ? "Rendez-vous au stand Merch du prochain événement." : "On prépare votre pièce avec amour, puis on l'expédie."}</p>
+        <p className="mt-6 text-white/75 max-w-xl">Paiement reçu, votre commande est confirmée ({formatDate(o.createdAt)}). Un email de confirmation arrive à <b>{o.customer.email}</b>. {o.shippingMethod.id === "event" ? "Rendez-vous au stand Merch du prochain événement." : "On prépare votre pièce avec amour, puis on l'expédie."}</p>
       ) : sp.cancelled ? (
         <div className="mt-6 max-w-xl">
           <p className="text-white/75">Le paiement a été annulé. Votre commande est conservée : vous pouvez réessayer.</p>
@@ -24,7 +24,7 @@ export default async function Confirmation({ params, searchParams }: { params: P
         </div>
       ) : (
         <div className="mt-6 max-w-xl">
-          <p className="text-white/75">Votre commande est enregistrée ({formatDate(o.createdAt)}) — paiement en attente.</p>
+          <p className="text-white/75">Votre commande est enregistrée ({formatDate(o.createdAt)}), paiement en attente.</p>
           <Link href={`/paiement/commande/${o.id}`} className="btn btn-brand mt-4">Payer maintenant</Link>
         </div>
       )}
@@ -35,7 +35,7 @@ export default async function Confirmation({ params, searchParams }: { params: P
             <span className="tabular-nums">{formatPrice(l.lineTotal)}</span>
           </div>
         ))}
-        <div className="p-4 flex justify-between text-sm text-white/70"><span>Livraison — {o.shippingMethod.label}</span><span className="tabular-nums">{o.shipping.amount ? formatPrice(o.shipping) : "Offert"}</span></div>
+        <div className="p-4 flex justify-between text-sm text-white/70"><span>Livraison ({o.shippingMethod.label})</span><span className="tabular-nums">{o.shipping.amount ? formatPrice(o.shipping) : "Offert"}</span></div>
         <div className="p-4 flex justify-between font-semibold"><span>Total</span><span className="tabular-nums">{formatPrice(o.total)}</span></div>
       </div>
       <div className="mt-8 flex gap-3"><Link href="/shop" className="btn btn-primary">Continuer</Link><Link href="/events" className="btn btn-ghost">Les événements</Link></div>

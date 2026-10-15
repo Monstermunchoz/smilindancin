@@ -50,7 +50,7 @@ export function Footer() {
         <div className="m-center mt-16 pt-8 border-t border-white/8 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <Image src="/brand/wordmark.png" alt="Smilin' Dancin'" width={920} height={240} className="h-10 w-auto mb-3 mx-auto md:mx-0" />
-            <p className="text-xs text-white/50">{SITE.tagline} 💙🩷 — Electronic Music Events & Clothing · Lyon</p>
+            <p className="text-xs text-white/50">{SITE.tagline} 💙🩷 Electronic Music Events & Clothing · Lyon</p>
           </div>
           <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/40">
             <Link href="/legal/mentions-legales" className="hover:text-white">Mentions légales</Link>

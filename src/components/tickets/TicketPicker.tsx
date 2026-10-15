@@ -27,7 +27,7 @@ export function TicketPicker({ slug, tiers, demo }: { slug: string; tiers: TierV
 
   return (
     <div>
-      {demo && <p className="m-center t-label text-pink mb-4">Billetterie de démonstration — tarifs et quotas modifiables dans l'admin</p>}
+      {demo && <p className="m-center t-label text-pink mb-4">Billetterie de démonstration, tarifs et quotas modifiables dans l'admin</p>}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
         {tiers.map((t) => {
           const n = qty[t.id] ?? 0;

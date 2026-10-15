@@ -31,7 +31,7 @@ export async function POST(req: Request) {
         },
       })),
       ...(order.shipping.amount > 0
-        ? [{ quantity: 1, price_data: { currency: "eur", unit_amount: order.shipping.amount, product_data: { name: `Livraison — ${order.shippingMethod.label}` } } }]
+        ? [{ quantity: 1, price_data: { currency: "eur", unit_amount: order.shipping.amount, product_data: { name: `Livraison, ${order.shippingMethod.label}` } } }]
         : []),
     ],
     metadata: { orderId: order.id },

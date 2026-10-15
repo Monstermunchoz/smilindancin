@@ -10,9 +10,9 @@ export default async function Settings() {
     ["Moteur commerce", process.env.COMMERCE_PROVIDER === "shopify" && shopifyConfigured ? "Shopify" : "Local (JSON, démo sans paiement)"],
     ["Shopify Storefront", shopifyConfigured ? "Configuré" : "Non configuré"],
     ["Shopify Admin API", shopifyAdminConfigured ? "Configuré" : "Non configuré"],
-    ["Paiement en ligne", stripeConfigured ? `Stripe Checkout actif${process.env.STRIPE_WEBHOOK_SECRET ? " + webhook" : " — webhook manquant (STRIPE_WEBHOOK_SECRET)"}` : "Désactivé — ajouter STRIPE_SECRET_KEY"],
+    ["Paiement en ligne", stripeConfigured ? `Stripe Checkout actif${process.env.STRIPE_WEBHOOK_SECRET ? " + webhook" : ", webhook manquant (STRIPE_WEBHOOK_SECRET)"}` : "Désactivé, ajouter STRIPE_SECRET_KEY"],
     ["URL du site", SITE.url],
-    ["Mot de passe admin", process.env.ADMIN_PASSWORD ? "Personnalisé (.env)" : "Défaut dev — à changer !"],
+    ["Mot de passe admin", process.env.ADMIN_PASSWORD ? "Personnalisé (.env)" : "Défaut dev, à changer !"],
   ];
   return (
     <div>

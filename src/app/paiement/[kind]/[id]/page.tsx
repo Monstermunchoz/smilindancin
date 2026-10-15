@@ -15,7 +15,7 @@ export default async function Paiement({ params, searchParams }: { params: Promi
     return (
       <div className="container-x pt-28 md:pt-36 pb-20">
         <h1 className="m-center t-display text-[clamp(34px,7vw,88px)] leading-[0.85] mb-8">Paiement</h1>
-        <DemoPayment kind="billets" id={o.id} accessKey={o.accessKey} amount={o.total} label={`${o.items.reduce((n, i) => n + i.quantity, 0)} billet(s) — ${o.eventTitle}`} />
+        <DemoPayment kind="billets" id={o.id} accessKey={o.accessKey} amount={o.total} label={`${o.items.reduce((n, i) => n + i.quantity, 0)} billet(s), ${o.eventTitle}`} />
       </div>
     );
   }

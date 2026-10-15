@@ -12,7 +12,7 @@ export function ContactForm() {
     const r = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(f) });
     if (r.ok) { setState("done"); push("Message envoyé."); } else { setState("idle"); push("Envoi impossible.", "error"); }
   }
-  if (state === "done") return <p className="border border-white/15 rounded-[3px] p-6">Merci — on vous répond vite 💙🩷</p>;
+  if (state === "done") return <p className="border border-white/15 rounded-[3px] p-6">Merci, on vous répond vite 💙🩷</p>;
   const cls = "w-full bg-white/5 border border-white/15 rounded-[3px] px-4 py-3 text-sm outline-none focus:border-white";
   return (
     <form onSubmit={submit} className="space-y-4 max-w-xl">

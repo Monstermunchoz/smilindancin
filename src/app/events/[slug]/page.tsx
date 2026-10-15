@@ -9,7 +9,7 @@ import { formatDate } from "@/lib/format";
 export function generateStaticParams() { return EVENTS.map((e) => ({ slug: e.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params; const e = getEvent(slug);
-  return e ? { title: `${e.title} — ${e.dateLabel}`, description: e.concept, openGraph: { images: [e.poster] } } : {};
+  return e ? { title: `${e.title} · ${e.dateLabel}`, description: e.concept, openGraph: { images: [e.poster] } } : {};
 }
 
 export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -21,11 +21,11 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   return (
     <article>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <header className="relative min-h-[80svh] flex items-end overflow-hidden">
-        <Image src={e.cover} alt={e.title} fill priority sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20" />
-        <div className="absolute inset-0 opacity-30 mix-blend-multiply" style={{ background: `linear-gradient(135deg, ${e.theme.from}, ${e.theme.to})` }} />
-        <div className="m-center container-x relative pb-12 pt-32 w-full">
+      <header className="container-x pt-24 md:pt-32">
+        <div className="relative aspect-[4/3] sm:aspect-[21/9] overflow-hidden rounded-[3px]">
+          <Image src={e.cover} alt={e.title} fill priority sizes="100vw" className="object-cover" />
+        </div>
+        <div className="m-center pt-8 w-full">
           <p className="t-condensed text-xl md:text-2xl text-blue-sky">{e.dateLabel}{e.hours ? ` · ${e.hours}` : ""} · {e.venue.name}</p>
           <h1 className="m-center t-display text-[clamp(30px,9.5vw,168px)] leading-[0.82] mt-2">{e.title}</h1>
           <p className="text-white/80 mt-4 max-w-2xl text-base md:text-lg">{e.concept}</p>
@@ -73,7 +73,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
                   <RevealMask key={p.src} delay={i * 0.05} className={i === 0 ? "col-span-2 md:col-span-2 md:row-span-2" : ""}>
                     <a href={p.sourceUrl} target="_blank" rel="noreferrer" className="group relative block aspect-[4/3] overflow-hidden rounded-[3px] h-full">
                       <Image src={p.src} alt={p.alt} fill sizes="(max-width:768px) 50vw, 33vw" className="object-cover transition-transform duration-[1.2s] group-hover:scale-[1.04]" />
-                      {p.credit && <span className="absolute bottom-2 left-2 t-label text-[10px] bg-black/60 px-2 py-1 rounded text-white/80">{p.credit}</span>}
                     </a>
                   </RevealMask>
                 ))}

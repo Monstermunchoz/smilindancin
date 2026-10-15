@@ -47,7 +47,7 @@ export default async function Compte() {
         </div>
         {pendingTickets.map((o) => (
           <Link key={o.id} href={`/paiement/billets/${o.id}?k=${o.accessKey}`} className="m-center flex flex-col sm:flex-row sm:justify-between gap-2 border border-pink/40 bg-pink/5 rounded-[2px] p-4 mb-4 text-sm">
-            <span>{o.id} · {o.eventTitle} — paiement en attente</span><span className="font-semibold">Payer {formatPrice(o.total)}</span>
+            <span>{o.id} · {o.eventTitle}, paiement en attente</span><span className="font-semibold">Payer {formatPrice(o.total)}</span>
           </Link>
         ))}
         {myTickets.length === 0 ? (

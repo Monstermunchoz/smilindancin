@@ -7,7 +7,7 @@ import { TicketPicker } from "@/components/tickets/TicketPicker";
 export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params; const e = getEvent(slug);
-  return e ? { title: `Billets — ${e.title}`, description: e.concept } : {};
+  return e ? { title: `Billets · ${e.title}`, description: e.concept } : {};
 }
 export default async function EventTickets({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -16,10 +16,11 @@ export default async function EventTickets({ params }: { params: Promise<{ slug:
   const tiers = await getTierViews(slug);
   return (
     <div className="pb-32">
-      <header className="relative min-h-[56svh] flex items-end overflow-hidden">
-        <Image src={e.cover} alt={e.title} fill priority sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
-        <div className="m-center container-x relative pb-10 pt-32 w-full">
+      <header className="container-x pt-24 md:pt-32">
+        <div className="relative aspect-[4/3] sm:aspect-[21/9] overflow-hidden rounded-[3px]">
+          <Image src={e.cover} alt={e.title} fill priority sizes="100vw" className="object-cover" />
+        </div>
+        <div className="m-center pt-8 w-full">
           <p className="t-condensed text-xl text-blue-sky">{e.dateLabel} · {e.venue.name}</p>
           <h1 className="t-display text-[clamp(40px,11vw,160px)] leading-[0.84] mt-2">{e.title}</h1>
           <p className="text-white/75 mt-4 max-w-2xl">{e.concept}</p>

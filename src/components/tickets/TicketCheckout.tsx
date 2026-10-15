@@ -42,7 +42,7 @@ export function TicketCheckout({ slug, eventTitle, lines, user }: { slug: string
         {count > 1 && (
           <section>
             <h2 className="t-display text-2xl mb-1">Noms sur les billets</h2>
-            <p className="text-sm text-white/55 mb-4">Optionnel — sinon tous les billets sont à ton nom.</p>
+            <p className="text-sm text-white/55 mb-4">Optionnel, sinon tous les billets sont à ton nom.</p>
             <div className="space-y-3">
               {lines.flatMap((l) => Array.from({ length: l.quantity }, () => { const i = k++; return (
                 <div key={i} className="flex items-center gap-3">

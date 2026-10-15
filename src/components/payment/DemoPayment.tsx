@@ -28,7 +28,7 @@ export function DemoPayment({ kind, id, accessKey, amount, label }: { kind: "bil
   }
   return (
     <div className="max-w-md mx-auto">
-      <div className="border border-pink/40 bg-pink/10 rounded-[3px] px-4 py-3 text-xs text-white/80 mb-6 text-center">Mode démonstration — aucun paiement réel, aucune donnée bancaire demandée.</div>
+      <div className="border border-pink/40 bg-pink/10 rounded-[3px] px-4 py-3 text-xs text-white/80 mb-6 text-center">Mode démonstration, aucun paiement réel, aucune donnée bancaire demandée.</div>
       <div className="relative aspect-[1.586] rounded-[14px] p-6 overflow-hidden g-brand grain shadow-[0_30px_80px_-30px_rgba(169,66,107,.8)]">
         <div className="absolute -right-16 -top-16 w-56 h-56 rounded-full border border-white/20" />
         <div className="absolute -right-4 -top-4 w-56 h-56 rounded-full border border-white/10" />

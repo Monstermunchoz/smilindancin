@@ -28,7 +28,7 @@ export function OrderActions({ order }: { order: Order }) {
       <div><label className="t-label text-white/55 block mb-1.5">Note interne</label><textarea value={note} onChange={(e) => setNote(e.target.value)} rows={3} className={sel} /></div>
       <button onClick={save} disabled={saving} className="btn btn-primary w-full">{saving ? "…" : "Enregistrer"}</button>
       <div className="flex gap-2">
-        <a href={`mailto:${order.customer.email}?subject=Votre commande ${order.id} — Smilin' Dancin'`} className="btn btn-ghost flex-1 !py-3">Écrire au client</a>
+        <a href={`mailto:${order.customer.email}?subject=Votre commande ${order.id}, Smilin' Dancin'`} className="btn btn-ghost flex-1 !py-3">Écrire au client</a>
         <button onClick={() => window.print()} className="btn btn-ghost flex-1 !py-3">Imprimer</button>
       </div>
     </div>

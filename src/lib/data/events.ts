@@ -37,7 +37,7 @@ export const EVENTS: SDEvent[] = [
   {
     slug: "mexico-show-2026",
     title: "Mexico Show",
-    edition: "Smilin' Dancin' Festival — 2ᵉ édition",
+    edition: "Smilin' Dancin' Festival, 2ᵉ édition",
     concept: "Sortez vos meilleurs outfits mexicains : de la couleur, du style et de la fiesta. 3 scènes, 21 h de musique non-stop, 14 DJs.",
     date: "2026-09-05",
     dateLabel: "Samedi 5 septembre 2026",
@@ -54,12 +54,12 @@ export const EVENTS: SDEvent[] = [
     poster: "/events/mexico-show-2026.jpg",
     cover: "/photos/memories.jpg",
     photos: [
-      { src: "/photos/smilin.jpg", alt: "S M I L I N — 05.09.26", credit: "@vg.photographe", sourceUrl: "https://www.instagram.com/p/DdRc7FqCNzv/" },
-      { src: "/photos/dancin.jpg", alt: "D A N C I N — 05.09.26", credit: "@louloulebrunlavorel", sourceUrl: "https://www.instagram.com/p/DdZe6RZCJ6p/" },
-      { src: "/photos/lovin.jpg", alt: "L O V I N — 05.09.26", credit: "@louloulebrunlavorel / @vg.photographe", sourceUrl: "https://www.instagram.com/p/Ddge5_8iPOz/" },
+      { src: "/photos/smilin.jpg", alt: "S M I L I N, 05.09.26", credit: "@vg.photographe", sourceUrl: "https://www.instagram.com/p/DdRc7FqCNzv/" },
+      { src: "/photos/dancin.jpg", alt: "D A N C I N, 05.09.26", credit: "@louloulebrunlavorel", sourceUrl: "https://www.instagram.com/p/DdZe6RZCJ6p/" },
+      { src: "/photos/lovin.jpg", alt: "L O V I N, 05.09.26", credit: "@louloulebrunlavorel / @vg.photographe", sourceUrl: "https://www.instagram.com/p/Ddge5_8iPOz/" },
       { src: "/photos/jumpin.jpg", alt: "J U M P I N", credit: "Smilin' Dancin'", sourceUrl: "https://www.instagram.com/p/Dd1BuomCKfp/" },
-      { src: "/photos/memories.jpg", alt: "M E M O R I E S — 05.09.26", credit: "@vg.photographe", sourceUrl: "https://www.instagram.com/p/DdKDmxGiDuW/" },
-      { src: "/photos/terrasse.jpg", alt: "Terrasse du Yacht — J-9", credit: "Smilin' Dancin'", sourceUrl: "https://www.instagram.com/p/DciURhOsrg2/" },
+      { src: "/photos/memories.jpg", alt: "M E M O R I E S, 05.09.26", credit: "@vg.photographe", sourceUrl: "https://www.instagram.com/p/DdKDmxGiDuW/" },
+      { src: "/photos/terrasse.jpg", alt: "Terrasse du Yacht, J-9", credit: "Smilin' Dancin'", sourceUrl: "https://www.instagram.com/p/DciURhOsrg2/" },
     ],
     genres: ["House", "Melodic", "Techno", "Progressive", "Eurodance", "Peaktime", "Psytrance"],
     lineup: [
@@ -86,7 +86,7 @@ export const EVENTS: SDEvent[] = [
     description: [
       "Deuxième édition du Smilin' Dancin' Festival : un lieu entièrement revisité aux couleurs du Mexique, avec 3 scènes qui se succèdent au fil de l'événement.",
       "21 heures de musique non-stop avec 14 DJs de styles différents, pour vous ambiancer jusqu'au petit matin.",
-      "BBQ et chili con carne offerts avec la place pour toute arrivée avant 14h, Happy Hour, Mexican Food le soir au cœur du Village Market avec exposants, créateurs et partenaires — et le stand Smilin' Dancin' Merch.",
+      "BBQ et chili con carne offerts avec la place pour toute arrivée avant 14h, Happy Hour, Mexican Food le soir au cœur du Village Market avec exposants, créateurs et partenaires, et le stand Smilin' Dancin' Merch.",
     ],
     practical: [
       "Bus TCL ligne 96, arrêt Stade J. Lacaze, au pied du site",
@@ -100,7 +100,7 @@ export const EVENTS: SDEvent[] = [
   {
     slug: "isla-electronica-2025",
     title: "Isla Electrónica",
-    edition: "Smilin' Dancin' Festival — 1ʳᵉ édition",
+    edition: "Smilin' Dancin' Festival, 1ʳᵉ édition",
     concept: "Destination Cuba : un voyage sensoriel et festif au cœur de La Havane, sans quitter la région. Dress code cubain fortement recommandé.",
     date: "2025-09-06",
     dateLabel: "Samedi 6 septembre 2025",
@@ -141,8 +141,8 @@ export const EVENTS: SDEvent[] = [
 
 EVENTS.push({
   slug: "after-ski-bathrobe-boogie-2025",
-  title: "After Ski — Bathrobe Boogie",
-  edition: "Soirée de lancement — crew & staff",
+  title: "After Ski : Bathrobe Boogie",
+  edition: "Soirée de lancement, crew & staff",
   concept: "Un after ski dans un fort médiéval tenu secret, pour célébrer la naissance de Smilin' Dancin'. Dress code : peignoirs et accessoires funky.",
   date: "2025-02-15",
   dateLabel: "Samedi 15 février 2025",
@@ -172,7 +172,7 @@ EVENTS.push({
 EVENTS.push({
   slug: "smilin-dancin-festival-2027",
   title: "Festival 2027",
-  edition: "Smilin' Dancin' Festival — 3ᵉ édition",
+  edition: "Smilin' Dancin' Festival, 3ᵉ édition",
   concept: "Nouvelle destination, nouveau thème : la 3ᵉ édition se prépare. Les premières places partent en Early Bird.",
   date: "2027-09-04",
   dateLabel: "Date à annoncer · fin d'été 2027",

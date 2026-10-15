@@ -6,12 +6,13 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/shop/CartDrawer";
 import { Toaster } from "@/components/ui/Toaster";
+import { FitHeadings } from "@/components/ui/FitHeadings";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: `${SITE.name} — Electronic Music Events & Clothing`, template: `%s · ${SITE.name}` },
+  title: { default: `${SITE.name} · Electronic Music Events & Clothing`, template: `%s · ${SITE.name}` },
   description: SITE.description,
-  openGraph: { type: "website", locale: "fr_FR", siteName: SITE.name, images: ["/merch/photos/campaign-groovers-realvip-crop.jpg"] },
+  openGraph: { type: "website", locale: "fr_FR", siteName: SITE.name, images: ["/merch/photos/campagne-2026.jpg"] },
   twitter: { card: "summary_large_image" },
   icons: { icon: "/favicon.ico" },
 };
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <CartDrawer />
         <Toaster />
+        <FitHeadings />
       </body>
     </html>
   );

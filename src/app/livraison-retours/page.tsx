@@ -6,9 +6,9 @@ export default function Shipping() {
       <h1 className="m-center t-display text-[clamp(34px,6vw,88px)] leading-[0.85]">Livraison<br />& retours</h1>
       <section><h2 className="t-display text-2xl mb-3">Livraison</h2>
         <ul className="space-y-2 text-white/75 text-sm">
-          <li>✦ Colissimo domicile (France métropolitaine) — 5,90 € · 2 à 4 jours ouvrés après fabrication</li>
-          <li>✦ Point relais — 3,90 € · 3 à 5 jours ouvrés après fabrication</li>
-          <li>✦ Retrait au stand Merch du prochain événement — offert</li>
+          <li>✦ Colissimo domicile (France métropolitaine), 5,90 € · 2 à 4 jours ouvrés après fabrication</li>
+          <li>✦ Point relais, 3,90 € · 3 à 5 jours ouvrés après fabrication</li>
+          <li>✦ Retrait au stand Merch du prochain événement, offert</li>
         </ul>
         <p className="text-xs text-white/45 mt-3">Tarifs indicatifs à confirmer par l'association. Les pièces sont imprimées / brodées à la demande : comptez un délai de fabrication communiqué à la commande.</p>
       </section>

@@ -19,7 +19,7 @@ export function NewsletterForm({ source = "site", light = false }: { source?: st
       push("Impossible de vous inscrire pour le moment.", "error");
     }
   }
-  if (state === "done") return <p className={`text-sm ${light ? "text-black" : "text-white"}`}>Merci — vous êtes sur la liste.</p>;
+  if (state === "done") return <p className={`text-sm ${light ? "text-black" : "text-white"}`}>Merci, vous êtes sur la liste.</p>;
   return (
     <form onSubmit={submit} className="flex w-full max-w-md gap-2">
       <label className="sr-only" htmlFor={`nl-${source}`}>Email</label>

@@ -30,18 +30,18 @@ export const ARTICLES: Article[] = [
     coverAlt: "Le public du Mexico Show sur la terrasse du Yacht",
     credit: "@vg.photographe",
     body: [
-      { type: "p", text: "Le 5 septembre 2026, Le Yacht — à 20 minutes au nord de Lyon, en bord de Saône — s'est transformé aux couleurs du Mexique pour la deuxième édition du festival Smilin' Dancin'." },
+      { type: "p", text: "Le 5 septembre 2026, Le Yacht, à 20 minutes au nord de Lyon, en bord de Saône, s'est transformé aux couleurs du Mexique pour la deuxième édition du festival Smilin' Dancin'." },
       { type: "h2", text: "Trois scènes qui se succèdent" },
       { type: "p", text: "Le concept : trois événements qui s'enchaînent au même endroit, pour que tout le monde vive le même moment, ensemble. Terrace Stage de 11h30 à 22h45, Club Stage de 22h45 à 5h30, puis After Stage au R+1 jusqu'à 8h30." },
-      { type: "list", items: ["House · Melodic · Techno · Progressive · Eurodance · Peaktime · Psytrance", "14 DJs : KIKO, Messina, Aohna, Clarks, Messaline, Dniz, LPO, Mr. Beard, Gäte, 12:21, Boots, Cocor, T@o, Jim Rows", "BBQ & chili con carne offerts avant 14h, Happy Hour, Mexican Food le soir", "Village Market avec exposants, créateurs, partenaires — et le stand Smilin' Dancin' Merch"] },
+      { type: "list", items: ["House · Melodic · Techno · Progressive · Eurodance · Peaktime · Psytrance", "14 DJs : KIKO, Messina, Aohna, Clarks, Messaline, Dniz, LPO, Mr. Beard, Gäte, 12:21, Boots, Cocor, T@o, Jim Rows", "BBQ & chili con carne offerts avant 14h, Happy Hour, Mexican Food le soir", "Village Market avec exposants, créateurs, partenaires, et le stand Smilin' Dancin' Merch"] },
       { type: "quote", text: "La fête s'est terminée. Les souvenirs restent. Merci 💙🩷" },
       { type: "h2", text: "Le film" },
       { type: "p", text: "Cinq minutes de bonheur montées par @pbxprod avec des images complémentaires de @logan_villy sont à voir sur le compte Instagram @smilin.dancin." },
     ],
     related: ["isla-electronica-2025-destination-cuba", "le-yacht-notre-terrain-de-jeu"],
     sources: [
-      { label: "Shotgun — Mexico Show", url: "https://shotgun.live/fr/festivals/smilin-dancin-presente-mexico-show" },
-      { label: "Instagram — LE FILM", url: "https://www.instagram.com/reel/DeFNWbVIG76/" },
+      { label: "Shotgun, Mexico Show", url: "https://shotgun.live/fr/festivals/smilin-dancin-presente-mexico-show" },
+      { label: "Instagram, LE FILM", url: "https://www.instagram.com/reel/DeFNWbVIG76/" },
     ],
   },
   {
@@ -61,7 +61,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Chemises fleuries, robes colorées, chapeaux en paille tressés : « notre concept repose sur des événements à thème, on compte sur vous pour jouer le jeu à fond ». C'est l'ADN de la marque : la fête comme un voyage." },
     ],
     related: ["mexico-show-2026-le-film"],
-    sources: [{ label: "Shotgun — Isla Electrónica", url: "https://shotgun.live/fr/events/smilin-dancin-presente-isla-electronica" }],
+    sources: [{ label: "Shotgun, Isla Electrónica", url: "https://shotgun.live/fr/events/smilin-dancin-presente-isla-electronica" }],
   },
   {
     slug: "le-yacht-notre-terrain-de-jeu",
@@ -78,7 +78,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Trois scènes, trois ambiances, un bar sur chaque zone, et un Village Market au cœur du site. De la musique, des sourires, des souvenirs." },
     ],
     related: ["mexico-show-2026-le-film"],
-    sources: [{ label: "Instagram — implantation", url: "https://www.instagram.com/p/DcLKSLnoq3V/" }],
+    sources: [{ label: "Instagram, implantation", url: "https://www.instagram.com/p/DcLKSLnoq3V/" }],
   },
   {
     slug: "de-la-musique-des-sourires-des-souvenirs",
@@ -92,13 +92,13 @@ export const ARTICLES: Article[] = [
     credit: "@vg.photographe",
     body: [
       { type: "p", text: "Smilin' Dancin' œuvre à la création d'événements culturels qui valorisent la musique électronique, le patrimoine architectural ainsi que les savoir-faire locaux." },
-      { type: "p", text: "La marque se décline en événements à thème (Isla Electrónica, Mexico Show) et en vêtements — « Electronic Music Events & Clothing » — portés par un emblème : le globe grillagé et sa devise, The World Is Groove." },
+      { type: "p", text: "La marque se décline en événements à thème (Isla Electrónica, Mexico Show) et en vêtements, « Electronic Music Events & Clothing », portés par un emblème : le globe grillagé et sa devise, The World Is Groove." },
       { type: "quote", text: "Smilin', Lovin', Dancin', Jumpin'." },
     ],
     related: ["mexico-show-2026-le-film", "isla-electronica-2025-destination-cuba"],
     sources: [
-      { label: "HelloAsso — Smilin' Dancin'", url: "https://www.helloasso.com/associations/smilin-dancin" },
-      { label: "Instagram — @smilin.dancin", url: "https://www.instagram.com/smilin.dancin/" },
+      { label: "HelloAsso, Smilin' Dancin'", url: "https://www.helloasso.com/associations/smilin-dancin" },
+      { label: "Instagram, @smilin.dancin", url: "https://www.instagram.com/smilin.dancin/" },
     ],
   },
 ];

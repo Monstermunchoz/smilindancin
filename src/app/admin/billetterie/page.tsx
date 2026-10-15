@@ -26,7 +26,7 @@ export default async function AdminBilletterie() {
         const sold = views.reduce((n, v) => n + v.sold, 0);
         const quota = views.reduce((n, v) => n + v.quota, 0);
         return (
-          <Card key={e.slug} title={`${e.title} — ${e.dateLabel}${e.ticketing?.demo ? " · démo" : ""}`} className="mb-4">
+          <Card key={e.slug} title={`${e.title}, ${e.dateLabel}${e.ticketing?.demo ? " · démo" : ""}`} className="mb-4">
             <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
               <p className="text-sm text-white/70">{sold} / {quota} places · remplissage {Math.round((sold / Math.max(1, quota)) * 100)}%</p>
               <Link href={`/billetterie/${e.slug}`} target="_blank" className="text-xs u-line">Voir la page publique</Link>

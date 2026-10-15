@@ -47,16 +47,17 @@ export function Drops({ products }: { products: Product[] }) {
           <h2 className="t-display text-[clamp(34px,8vw,120px)]">
             Nouvelle <span className="g-neon-text">co’</span> 2026
           </h2>
-          <p className="max-w-sm text-white/70 text-sm md:text-base">Deux visuels dévoilés au Mexico Show : Groovers — never miss the drop, et The Real VIP is on the dancefloor. Précommande ouverte.</p>
+          <p className="max-w-sm text-white/70 text-sm md:text-base">Deux visuels dévoilés au Mexico Show : Groovers (never miss the drop) et The Real VIP (is on the dancefloor). Précommande ouverte.</p>
         </div>
       </Reveal>
       <div className="grid md:grid-cols-12 gap-4 md:gap-6">
         <RevealMask className="md:col-span-7">
-          <Link href={`/shop/${groovers.handle}`} className="group relative block aspect-[4/5] md:aspect-[5/6] overflow-hidden rounded-[3px]">
-            <Image src="/merch/photos/campaign-groovers-realvip-crop.jpg" alt={groovers.images[0].alt} fill sizes="(max-width:768px) 100vw, 60vw" className="object-cover object-top transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            <div className="m-center absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8 flex flex-col sm:flex-row items-center sm:items-end sm:justify-between gap-3 sm:gap-4">
-              <div>
+          <Link href={`/shop/${groovers.handle}`} className="group block">
+            <div className="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden rounded-[3px]">
+              <Image src="/merch/photos/groovers-campaign-tee-black.jpg" alt={groovers.images[0].alt} fill sizes="(max-width:768px) 100vw, 60vw" className="object-cover object-center transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
+            </div>
+            <div className="m-center mt-4 flex flex-col sm:flex-row items-center sm:items-end sm:justify-between gap-3 sm:gap-4">
+              <div className="w-full sm:w-auto sm:flex-1 min-w-0">
                 <p className="t-condensed text-blue-sky text-lg">Never miss the drop</p>
                 <p className="t-display text-4xl md:text-6xl">Groovers</p>
               </div>
@@ -66,17 +67,18 @@ export function Drops({ products }: { products: Product[] }) {
         </RevealMask>
         <div className="md:col-span-5 flex flex-col gap-4 md:gap-6">
           <RevealMask delay={0.15}>
-            <Link href={`/shop/${vip.handle}`} className="group relative block aspect-[4/5] md:aspect-[5/6] overflow-hidden rounded-[3px]">
-              <Image src="/merch/photos/real-vip-campaign-back.jpg" alt={vip.images[0].alt} fill sizes="(max-width:768px) 100vw, 40vw" className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="m-center absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8">
+            <Link href={`/shop/${vip.handle}`} className="group block">
+              <div className="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden rounded-[3px]">
+                <Image src="/merch/photos/real-vip-campaign-back.jpg" alt={vip.images[0].alt} fill sizes="(max-width:768px) 100vw, 40vw" className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
+              </div>
+              <div className="m-center mt-4">
                 <p className="t-condensed text-pink text-lg">Is on the dancefloor</p>
                 <p className="t-display text-4xl md:text-5xl">The Real VIP</p>
               </div>
             </Link>
           </RevealMask>
           <Reveal delay={0.25} className="hidden md:block">
-            <p className="text-sm text-white/60 leading-relaxed">Précommande en ligne · Casquettes, bandanas, bobs — stock limité, bientôt disponibles.</p>
+            <p className="text-sm text-white/60 leading-relaxed">Précommande en ligne · Casquettes, bandanas, bobs, stock limité, bientôt disponibles.</p>
           </Reveal>
         </div>
       </div>
@@ -115,8 +117,7 @@ export function VisualPicker({ products }: { products: Product[] }) {
                 aria-pressed={active === x.id}
                 className={`relative aspect-square overflow-hidden rounded-[3px] transition-[transform,box-shadow,opacity] duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${active === x.id ? "ring-2 ring-pink scale-[1.02] z-10 shadow-[0_20px_60px_-20px_rgba(169,66,107,.8)]" : "opacity-70 hover:opacity-100 hover:scale-[1.02]"}`}
               >
-                <Image src={x.tile} alt={`Visuel ${x.n} — ${x.title}`} fill sizes="(max-width:1024px) 33vw, 20vw" className="object-cover" />
-                <span className="absolute bottom-1.5 right-2 text-[10px] font-bold text-white/80 bg-black/60 rounded px-1.5 py-0.5">{x.n}</span>
+                <Image src={x.tile} alt={`Visuel ${x.n}, ${x.title}`} fill sizes="(max-width:1024px) 33vw, 20vw" className="object-cover" />
               </button>
             ))}
           </div>
@@ -186,10 +187,10 @@ export function Featured({ products }: { products: Product[] }) {
 /* ---------- Campagne éditoriale ---------- */
 export function Campaign() {
   const shots = [
-    { src: "/merch/photos/music-is-my-power-tee-back.jpg", alt: "Music Is My Power — plage", cls: "md:col-span-5 md:row-span-2 aspect-[4/5]" },
-    { src: "/merch/photos/feet-on-the-ground-croptop-white.jpg", alt: "Feet On The Ground — crop top, lac d'Annecy", cls: "md:col-span-4 aspect-[4/5]" },
+    { src: "/merch/photos/music-is-my-power-tee-back.jpg", alt: "Music Is My Power, plage", cls: "md:col-span-5 md:row-span-2 aspect-[4/5]" },
+    { src: "/merch/photos/feet-on-the-ground-croptop-white.jpg", alt: "Feet On The Ground, crop top, lac d'Annecy", cls: "md:col-span-4 aspect-[4/5]" },
     { src: "/merch/photos/bob-black-wordmark.jpg", alt: "Bob noir brodé", cls: "md:col-span-3 aspect-[4/5]" },
-    { src: "/merch/photos/together-tee-white-cap-pink.jpg", alt: "Together — t-shirt oversize blanc", cls: "md:col-span-4 aspect-[4/5]" },
+    { src: "/merch/photos/together-tee-white-cap-pink.jpg", alt: "Together, t-shirt oversize blanc", cls: "md:col-span-4 aspect-[4/5]" },
     { src: "/merch/photos/hoodies-trio-lake.jpg", alt: "Sweats au bord du lac", cls: "md:col-span-3 aspect-[4/5]" },
   ];
   return (
@@ -214,7 +215,7 @@ export function Campaign() {
         </div>
         <Reveal delay={0.1}>
           <div className="m-center mt-8 flex flex-wrap items-center justify-between gap-4">
-            <p className="text-sm text-white/55 max-w-lg">Spirit in the clouds to dream. Photos : @smilin.dancin — highlight Merch'. Annecy, Lyon, plages et sommets.</p>
+            <p className="text-sm text-white/55 max-w-lg">Spirit in the clouds to dream. Annecy, Lyon, plages et sommets.</p>
             <Link href="/collections/smilers-dancers" className="btn btn-primary">Voir la collection</Link>
           </div>
         </Reveal>
@@ -246,13 +247,14 @@ export function EventsSection({ events }: { events: SDEvent[] }) {
         </Reveal>
         {latest && (
           <RevealMask>
-            <Link href={`/events/${latest.slug}`} className="group relative block aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-[3px]">
-              <Image src={latest.cover} alt={latest.title} fill sizes="100vw" className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.03]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-              <div className="m-center absolute inset-x-5 bottom-5 md:inset-x-10 md:bottom-10 grid md:grid-cols-[1fr_auto] items-end gap-6">
+            <Link href={`/events/${latest.slug}`} className="group block">
+              <div className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-[3px]">
+                <Image src={latest.cover} alt={latest.title} fill sizes="100vw" className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.03]" />
+              </div>
+              <div className="m-center mt-5 grid md:grid-cols-[1fr_auto] items-end gap-6">
                 <div>
                   <p className="t-condensed text-xl md:text-2xl text-blue-sky">{latest.dateLabel} · {latest.venue.name}</p>
-                  <p className="t-display text-[12vw] md:text-[7vw] leading-[0.85] mt-2">{latest.title}</p>
+                  <p className="t-display text-[12vw] md:text-[6vw] leading-[0.85] mt-2">{latest.title}</p>
                   <p className="text-white/70 mt-3 max-w-xl text-sm md:text-base">{latest.concept}</p>
                 </div>
                 <span className="btn btn-primary">Revivre l'édition</span>
@@ -322,9 +324,6 @@ export function JournalSection({ articles }: { articles: Article[] }) {
 export function BrandStatement() {
   return (
     <section className="relative mt-24 md:mt-36 py-24 md:py-36 overflow-hidden bg-sand text-black light">
-      <div className="absolute inset-0 pointer-events-none">
-        <Image src="/photos/terrasse.jpg" alt="" fill sizes="100vw" className="object-cover opacity-[0.14] mix-blend-multiply" />
-      </div>
       <div className="m-center container-x relative grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
         <Reveal>
           <h2 className="t-display text-[clamp(30px,5.6vw,92px)] leading-[0.88]">
@@ -334,7 +333,7 @@ export function BrandStatement() {
         <Reveal delay={0.15}>
           <div className="space-y-5 text-base md:text-lg leading-relaxed text-black/80">
             <p>Smilin' Dancin' est né à Lyon en janvier 2025 de deux amis, Flow et Lucho, après des années à parcourir les festivals. Bien plus qu'un concept événementiel : un état d'esprit fait de good vibes, de partage et d'amour, porté par la musique.</p>
-            <p>Des événements intimistes et à thème — La Isla Electrónica, le Mexico Show — et une ligne de vêtements Made in France pour continuer à danser une fois la fête finie. Electronic Music Events & Clothing.</p>
+            <p>Des événements intimistes et à thème (La Isla Electrónica, le Mexico Show) et une ligne de vêtements Made in France pour continuer à danser une fois la fête finie. Electronic Music Events & Clothing.</p>
             <Link href="/about" className="btn btn-dark">Notre histoire</Link>
           </div>
         </Reveal>

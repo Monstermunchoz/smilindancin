@@ -255,10 +255,6 @@ export function GarmentViewer({ visual, hex, kind, cut, print = "back", classNam
         </div>
       </div>
 
-      <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
-        <span className="t-label text-[10px] bg-black/55 text-white/85 px-2 py-1 rounded">Vue 3D · {showingBack ? "Dos" : "Devant"}</span>
-        <span className="t-label text-[10px] text-white/55 hidden sm:block">Glisser pour tourner</span>
-      </div>
       <div className="absolute bottom-3 inset-x-0 flex justify-center">
         <div className="flex gap-1 p-1 rounded-full bg-black/60 backdrop-blur border border-white/10">
           <button type="button" onClick={() => goto("front")} aria-pressed={!showingBack && !spin} className={cn("px-3.5 py-1.5 rounded-full text-[11px] font-semibold transition-colors", !showingBack && !spin ? "bg-white text-black" : "text-white/75")}>Devant</button>

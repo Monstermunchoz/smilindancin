@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = { title: "FAQ" };
 const faq = [
   ["Comment commander un vêtement ?", "Choisissez votre visuel, votre coupe (classic, oversize, débardeur, crop top ou sweat), l'impression (devant petit ou dos grand), la couleur et la taille, puis ajoutez au panier. Le paiement en ligne sera activé prochainement ; en attendant, l'équipe vous contacte par email, ou commandez en DM sur Instagram."],
-  ["Les pièces sont-elles fabriquées en France ?", "Oui — la collection Smilers & Dancers est Made in France (impression DTF et broderie)."],
+  ["Les pièces sont-elles fabriquées en France ?", "Oui, la collection Smilers & Dancers est Made in France (impression DTF et broderie)."],
   ["Quelles tailles ?", "XS, S, M, L, XL, XXL pour les t-shirts, débardeurs, crop tops et sweats."],
   ["Puis-je récupérer ma commande à un événement ?", "Oui : choisissez « Retrait à l'événement » au checkout (gratuit) et récupérez votre pièce au stand Merch."],
   ["Quand sortent les nouveaux visuels Groovers et The Real VIP ?", "Ils ont été dévoilés au Mexico Show 2026 en pré-commande sur le festival. Inscrivez-vous à la newsletter pour être prévenu·e de l'ouverture des commandes en ligne."],
   ["Où acheter des billets ?", "Sur Shotgun : shotgun.live/fr/venues/smilin-dancin. Aucune billetterie n'est gérée sur ce site."],
-  ["Retours et échanges ?", "Les pièces imprimées ou brodées à la demande sont personnalisées. Voir la page Livraison & retours — conditions à confirmer par l'association."],
+  ["Retours et échanges ?", "Les pièces imprimées ou brodées à la demande sont personnalisées. Voir la page Livraison & retours, conditions à confirmer par l'association."],
 ];
 export default function FAQ() {
   const jsonLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) };

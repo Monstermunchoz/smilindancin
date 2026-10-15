@@ -44,7 +44,7 @@ export function Header() {
         )}
       >
         <div className="container-x h-16 md:h-[72px] flex items-center justify-between gap-6">
-          <Link href="/" aria-label="Smilin' Dancin' — accueil" className="shrink-0 flex items-center">
+          <Link href="/" aria-label="Smilin' Dancin', accueil" className="shrink-0 flex items-center">
             <Image src="/brand/wordmark.png" alt="Smilin' Dancin'" width={920} height={240} priority className="h-7 md:h-8 w-auto" />
           </Link>
 

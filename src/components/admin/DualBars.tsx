@@ -10,8 +10,8 @@ export function DualBars({ data, height = 140, format }: { data: { label: string
           const ht = (d.tickets / max) * (height - 8);
           return (
             <g key={i}>
-              <rect x={i * w + w * 0.15} y={height - hs} width={w * 0.7} height={hs} fill="#37548f" rx="0.6"><title>{`${d.label} — vêtements : ${format(d.shop)}`}</title></rect>
-              <rect x={i * w + w * 0.15} y={height - hs - ht} width={w * 0.7} height={ht} fill="#a9426b" rx="0.6"><title>{`${d.label} — billets : ${format(d.tickets)}`}</title></rect>
+              <rect x={i * w + w * 0.15} y={height - hs} width={w * 0.7} height={hs} fill="#37548f" rx="0.6"><title>{`${d.label}, vêtements : ${format(d.shop)}`}</title></rect>
+              <rect x={i * w + w * 0.15} y={height - hs - ht} width={w * 0.7} height={ht} fill="#a9426b" rx="0.6"><title>{`${d.label}, billets : ${format(d.tickets)}`}</title></rect>
             </g>
           );
         })}

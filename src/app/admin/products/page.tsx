@@ -22,9 +22,9 @@ export default async function ProductsAdmin() {
                 <td className="px-4 py-2.5 text-white/70">{p.category}</td>
                 <td className="px-4 py-2.5 text-white/70">{p.collection}</td>
                 <td className="px-4 py-2.5 tabular-nums text-white/70">{p.variants.length}</td>
-                <td className="px-4 py-2.5 tabular-nums">{p.variants.length ? `${formatPrice(Math.min(...p.variants.map((v) => v.price.amount)))}${p.category === "tee" ? " – " + formatPrice(Math.max(...p.variants.map((v) => v.price.amount))) : ""}` : <span className="text-white/40">à confirmer</span>}</td>
+                <td className="px-4 py-2.5 tabular-nums">{p.variants.length ? `${formatPrice(Math.min(...p.variants.map((v) => v.price.amount)))}${p.category === "tee" ? " à " + formatPrice(Math.max(...p.variants.map((v) => v.price.amount))) : ""}` : <span className="text-white/40">à confirmer</span>}</td>
                 <td className="px-4 py-2.5"><span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${p.status === "active" ? "bg-emerald-400/15 text-emerald-300" : p.status === "coming_soon" ? "bg-blue-sky/15 text-blue-sky" : "bg-white/10 text-white/60"}`}>{STATUS_LABEL[p.status]}</span></td>
-                <td className="px-4 py-2.5">{p.featured ? "★" : <span className="text-white/25">—</span>}</td>
+                <td className="px-4 py-2.5">{p.featured ? "★" : <span className="text-white/25">·</span>}</td>
               </tr>
             ))}
           </tbody>

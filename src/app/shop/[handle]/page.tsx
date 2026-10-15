@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
   const { handle } = await params;
   const p = await commerce.getProduct(handle);
   if (!p) return {};
-  return { title: `${p.title} — ${p.category === "hoodie" ? "Sweat à capuche" : p.category === "tee" ? "T-shirt" : "Accessoire"}`, description: p.description, openGraph: { images: [p.images[0]?.src] } };
+  return { title: `${p.title} · ${p.category === "hoodie" ? "Sweat à capuche" : p.category === "tee" ? "T-shirt" : "Accessoire"}`, description: p.description, openGraph: { images: [p.images[0]?.src] } };
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ handle: string }> }) {

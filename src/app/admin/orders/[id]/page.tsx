@@ -31,7 +31,7 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
             </ul>
             <div className="mt-4 pt-4 border-t border-white/10 text-sm space-y-1">
               <div className="flex justify-between text-white/70"><span>Sous-total</span><span className="tabular-nums">{formatPrice(o.subtotal)}</span></div>
-              <div className="flex justify-between text-white/70"><span>Livraison — {o.shippingMethod.label}</span><span className="tabular-nums">{formatPrice(o.shipping)}</span></div>
+              <div className="flex justify-between text-white/70"><span>Livraison ({o.shippingMethod.label})</span><span className="tabular-nums">{formatPrice(o.shipping)}</span></div>
               <div className="flex justify-between font-semibold text-base"><span>Total</span><span className="tabular-nums">{formatPrice(o.total)}</span></div>
             </div>
           </Card>

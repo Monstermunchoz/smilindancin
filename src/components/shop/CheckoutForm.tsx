@@ -52,7 +52,7 @@ export function CheckoutForm({ methods, stripeEnabled = false }: { methods: Ship
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         customer: { email: f.email, firstName: f.firstName, lastName: f.lastName, phone: f.phone },
-        shippingAddress: { line1: f.line1 || "Retrait à l'événement", line2: f.line2, postalCode: f.postalCode || "00000", city: f.city || "—", country: f.country },
+        shippingAddress: { line1: f.line1 || "Retrait à l'événement", line2: f.line2, postalCode: f.postalCode || "00000", city: f.city || "", country: f.country },
         shippingMethodId: method,
         lines: lines.map((l) => ({ variantId: l.variantId, quantity: l.quantity })),
         note: f.note,
@@ -62,7 +62,7 @@ export function CheckoutForm({ methods, stripeEnabled = false }: { methods: Ship
     setLoading(false);
     if (!r.ok) {
       if (data.code === "OUT_OF_STOCK" && data.details?.variantId) {
-        push(`${data.error} — retirée du panier.`, "error");
+        push(`${data.error}, retirée du panier.`, "error");
         remove(data.details.variantId);
       } else push(data.error ?? "Erreur lors de la commande.", "error");
       return;
@@ -75,7 +75,7 @@ export function CheckoutForm({ methods, stripeEnabled = false }: { methods: Ship
         window.location.href = sd.url;
         return;
       }
-      push("Paiement indisponible — commande enregistrée, nous vous contactons.", "error");
+      push("Paiement indisponible, commande enregistrée, nous vous contactons.", "error");
     }
     clear();
     router.push(`/paiement/commande/${data.order.id}`);
@@ -138,7 +138,7 @@ export function CheckoutForm({ methods, stripeEnabled = false }: { methods: Ship
           </section>
         ) : (
           <section className="border border-pink/40 bg-pink/5 rounded-[3px] p-5">
-            <p className="font-semibold">Paiement en ligne — mode démonstration</p>
+            <p className="font-semibold">Paiement en ligne, mode démonstration</p>
             <p className="text-sm text-white/65 mt-1">Étape suivante : page de paiement simulée (aucun débit, aucune donnée bancaire). Le paiement réel s'active avec Stripe.</p>
           </section>
         )}
@@ -160,7 +160,7 @@ export function CheckoutForm({ methods, stripeEnabled = false }: { methods: Ship
         </ul>
         <div className="space-y-1.5 text-sm">
           <div className="flex justify-between text-white/70"><span>Sous-total</span><span className="tabular-nums">{formatPrice(subtotal)}</span></div>
-          <div className="flex justify-between text-white/70"><span>Livraison</span><span className="tabular-nums">{ship ? (ship.price.amount === 0 ? "Offert" : formatPrice(ship.price)) : "—"}</span></div>
+          <div className="flex justify-between text-white/70"><span>Livraison</span><span className="tabular-nums">{ship ? (ship.price.amount === 0 ? "Offert" : formatPrice(ship.price)) : "À choisir"}</span></div>
           <div className="flex justify-between font-semibold text-base pt-2 border-t border-white/10"><span>Total</span><span className="tabular-nums">{formatPrice(total)}</span></div>
         </div>
         <button disabled={loading} className="btn btn-brand w-full !py-4">{loading ? "Un instant…" : stripeEnabled ? "Payer avec Stripe" : "Continuer vers le paiement"}</button>

@@ -84,7 +84,7 @@ function teeVariants(pid: string): Variant[] {
             price: eur(teePrice(cut.id, print.id)),
             compareAtPrice: null,
             available: true,
-            stock: null, // à la demande (commande en DM) — la marque peut saisir un stock dans l'admin
+            stock: null, // à la demande (commande en DM), la marque peut saisir un stock dans l'admin
           });
         }
       }
@@ -156,7 +156,7 @@ export const VISUALS: Visual[] = [
     title: "Feet On The Ground",
     subtitle: "To dance · Spirit in the clouds to dream",
     description:
-      "« Feet on the ground to dance, spirit in the clouds to dream. » La fille au bob qui souffle des boules à facettes. Rose, bleu, noir — le visuel le plus porté de la collection.",
+      "« Feet on the ground to dance, spirit in the clouds to dream. » La fille au bob qui souffle des boules à facettes. Rose, bleu, noir : le visuel le plus porté de la collection.",
     hoodiePrice: 8000,
     tile: "/merch/visuels/02-feet-on-the-ground.jpg",
     photos: [
@@ -191,7 +191,7 @@ export const VISUALS: Visual[] = [
     title: "We Push The Sky",
     subtitle: "La boule à facettes au bout des bras",
     description:
-      "Une silhouette qui pousse une boule à facettes vers un ciel rayé rose et bleu. Le visuel signature des sweats — brodé cœur + manche, 90 €.",
+      "Une silhouette qui pousse une boule à facettes vers un ciel rayé rose et bleu. Le visuel signature des sweats, brodé cœur + manche, 90 €.",
     hoodiePrice: 9000,
     tile: "/merch/visuels/04-we-push-the-sky.jpg",
     photos: [
@@ -256,7 +256,7 @@ export const VISUALS: Visual[] = [
     handle: "music-is-my-power",
     title: "Music Is My Power",
     subtitle: "L'haltère-vinyle",
-    description: "Un poing qui soulève un haltère fait de vinyles, les notes qui s'envolent. Music is my power — le visuel le plus vu sur les plages.",
+    description: "Un poing qui soulève un haltère fait de vinyles, les notes qui s'envolent. Music is my power : le visuel le plus vu sur les plages.",
     hoodiePrice: 8000,
     tile: "/merch/visuels/08-music-is-my-power.jpg",
     photos: [
@@ -294,7 +294,7 @@ function orderPhotos(photos: Product["images"], kind: "tee" | "hoodie"): Product
   return [...photos].sort((a, b) => score(a) - score(b));
 }
 
-const PROVENANCE = "Instagram @smilin.dancin — post DPQrKZSiOKL (collection 2024-2025, tarifs) + highlight « Merch' »";
+const PROVENANCE = "Instagram @smilin.dancin, post DPQrKZSiOKL (collection 2024-2025, tarifs) + highlight « Merch' »";
 
 const collectionProducts: Product[] = [];
 
@@ -306,7 +306,7 @@ for (const v of VISUALS) {
     subtitle: `T-shirt · ${v.subtitle}`,
     description: v.description,
     details: [
-      "Impression DTF — visuel devant en petit, ou derrière en grand (+ petit logo devant)",
+      "Impression DTF, visuel devant en petit, ou derrière en grand (+ petit logo devant)",
       "Coupes : T-shirt classic, oversize, débardeur (Homme) · T-shirt classic, crop top, débardeur (Femme)",
       "Coloris : Noir · Blanc",
       "Tailles : XS à XXL",
@@ -333,7 +333,7 @@ for (const v of VISUALS) {
     subtitle: `Sweat à capuche · ${v.subtitle}`,
     description: v.description,
     details: [
-      v.hoodieNote ? `Broderie — ${v.hoodieNote.toLowerCase()}` : "Broderie — visuel cœur + manche",
+      v.hoodieNote ? `Broderie, ${v.hoodieNote.toLowerCase()}` : "Broderie, visuel cœur + manche",
       "Coloris : Noir · Blanc · Gris",
       "Tailles : XS à XXL",
       "Made in France",
@@ -363,13 +363,13 @@ const DROPS_2026: Product[] = [
     subtitle: "Never miss the drop · nouveau visuel 2026",
     description:
       "Le ghetto-blaster Groovers. Nouveau visuel de la collection, vu au Mexico Show en crop top noir et en débardeur blanc. T-shirts sur pré-commande sur le festival.",
-    details: ["Nouveau visuel 2026", "Vu en crop top noir et débardeur blanc", "T-shirts sur pré-commande sur le festival", "Précommande — tarif aligné sur la grille officielle de la collection, à confirmer par la marque", "Expédition ou retrait au stand dès production"],
+    details: ["Nouveau visuel 2026", "Vu en crop top noir et débardeur blanc", "T-shirts sur pré-commande sur le festival", "Précommande, tarif aligné sur la grille officielle de la collection, à confirmer par la marque", "Expédition ou retrait au stand dès production"],
     category: "tee",
     collection: "drops-2026",
     tags: ["tee", "2026", "groovers", "nouveau"],
     images: [
       { src: "/merch/photos/groovers-campaign-tee-black.jpg", alt: "T-shirt crop noir Groovers, campagne 2026", kind: "worn", view: "front" },
-      { src: "/merch/photos/campaign-groovers-realvip-crop.jpg", alt: "Campagne 2026 — Groovers & The Real VIP", kind: "worn", view: "worn" },
+      { src: "/merch/photos/campagne-2026.jpg", alt: "Campagne 2026, Groovers & The Real VIP", kind: "worn", view: "worn" },
     ],
     colors: TEE_COLORS,
     sizes: SIZES,
@@ -379,7 +379,7 @@ const DROPS_2026: Product[] = [
     preorder: true,
     featured: true,
     demo: false,
-    provenance: "Instagram @smilin.dancin — highlight « Merch' », story « Infos merch »",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' », story « Infos merch »",
     createdAt: "2026-09-01",
   },
   {
@@ -388,14 +388,14 @@ const DROPS_2026: Product[] = [
     title: "The Real VIP",
     subtitle: "Is on the dancefloor · nouveau visuel 2026",
     description:
-      "Le badge VIP au bout de son ruban bleu et rose : « The real VIP is on the dancefloor ». Grand visuel dos sur tee blanc. Nouvelle co' — pré-commande sur le festival.",
-    details: ["Nouveau visuel 2026", "Vu en t-shirt blanc, grand visuel dos", "T-shirts sur pré-commande sur le festival", "Précommande — tarif aligné sur la grille officielle de la collection, à confirmer par la marque", "Expédition ou retrait au stand dès production"],
+      "Le badge VIP au bout de son ruban bleu et rose : « The real VIP is on the dancefloor ». Grand visuel dos sur tee blanc. Nouvelle co', pré-commande sur le festival.",
+    details: ["Nouveau visuel 2026", "Vu en t-shirt blanc, grand visuel dos", "T-shirts sur pré-commande sur le festival", "Précommande, tarif aligné sur la grille officielle de la collection, à confirmer par la marque", "Expédition ou retrait au stand dès production"],
     category: "tee",
     collection: "drops-2026",
     tags: ["tee", "2026", "vip", "nouveau"],
     images: [
       { src: "/merch/photos/real-vip-campaign-back.jpg", alt: "T-shirt blanc The Real VIP, grand visuel dos", kind: "worn", view: "back" },
-      { src: "/merch/photos/campaign-groovers-realvip-crop.jpg", alt: "Campagne 2026 — Groovers & The Real VIP", kind: "worn", view: "worn" },
+      { src: "/merch/photos/campagne-2026.jpg", alt: "Campagne 2026, Groovers & The Real VIP", kind: "worn", view: "worn" },
     ],
     colors: TEE_COLORS,
     sizes: SIZES,
@@ -405,7 +405,7 @@ const DROPS_2026: Product[] = [
     preorder: true,
     featured: true,
     demo: false,
-    provenance: "Instagram @smilin.dancin — highlight « Merch' », story « Infos merch »",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' », story « Infos merch »",
     createdAt: "2026-09-01",
   },
 ];
@@ -417,7 +417,7 @@ const ACCESSORIES: Product[] = [
     handle: "bob-smilin-dancin",
     title: "Bob Smilin' Dancin'",
     subtitle: "Noir · wordmark brodé bleu & rose",
-    description: "Le bob noir, wordmark brodé bleu et framboise. Stock limité — tarif à confirmer.",
+    description: "Le bob noir, wordmark brodé bleu et framboise. Stock limité, tarif à confirmer.",
     details: ["Broderie wordmark", "Stock limité", "Tarif à confirmer par la marque"],
     category: "accessory",
     collection: "accessoires",
@@ -432,7 +432,7 @@ const ACCESSORIES: Product[] = [
     price: eur(0),
     status: "coming_soon",
     demo: false,
-    provenance: "Instagram @smilin.dancin — highlight « Merch' » (« Casquettes, bandanas, bobs — stock limité »)",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' » (« Casquettes, bandanas, bobs, stock limité »)",
     createdAt: "2026-06-01",
   },
   {
@@ -440,7 +440,7 @@ const ACCESSORIES: Product[] = [
     handle: "casquette-smilin-dancin",
     title: "Casquette Smilin' Dancin'",
     subtitle: "Wordmark brodé · navy, grise, rose délavée",
-    description: "La casquette wordmark, vue en navy, en gris et en rose délavé. Stock limité — tarif à confirmer.",
+    description: "La casquette wordmark, vue en navy, en gris et en rose délavé. Stock limité, tarif à confirmer.",
     details: ["Broderie wordmark", "Coloris vus : navy, gris, rose délavé", "Stock limité", "Tarif à confirmer par la marque"],
     category: "accessory",
     collection: "accessoires",
@@ -460,7 +460,7 @@ const ACCESSORIES: Product[] = [
     price: eur(0),
     status: "coming_soon",
     demo: false,
-    provenance: "Instagram @smilin.dancin — highlight « Merch' »",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' »",
     createdAt: "2026-06-01",
   },
   {
@@ -468,7 +468,7 @@ const ACCESSORIES: Product[] = [
     handle: "bandana-smilin-dancin",
     title: "Bandana Smilin' Dancin'",
     subtitle: "Allover wordmark · rose & bleu",
-    description: "Le bandana allover, wordmark répété en bleu sur fond framboise. Stock limité — tarif à confirmer.",
+    description: "Le bandana allover, wordmark répété en bleu sur fond framboise. Stock limité, tarif à confirmer.",
     details: ["Motif allover wordmark", "Stock limité", "Tarif à confirmer par la marque"],
     category: "accessory",
     collection: "accessoires",
@@ -484,7 +484,7 @@ const ACCESSORIES: Product[] = [
     price: eur(0),
     status: "coming_soon",
     demo: false,
-    provenance: "Instagram @smilin.dancin — highlight « Merch' »",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' »",
     createdAt: "2026-06-01",
   },
 ];
@@ -507,8 +507,8 @@ export const COLLECTIONS: Collection[] = [
     handle: "drops-2026",
     title: "Nouvelle Co' 2026",
     tagline: "Groovers · The Real VIP",
-    description: "Deux nouveaux visuels dévoilés au Mexico Show : Groovers — never miss the drop, et The Real VIP is on the dancefloor. Pré-commande sur le festival.",
-    image: "/merch/photos/campaign-groovers-realvip-crop.jpg",
+    description: "Deux nouveaux visuels dévoilés au Mexico Show : Groovers (never miss the drop) et The Real VIP (is on the dancefloor). Pré-commande sur le festival.",
+    image: "/merch/photos/campagne-2026.jpg",
     productHandles: DROPS_2026.map((p) => p.handle),
   },
   {

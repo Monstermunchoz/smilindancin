@@ -24,7 +24,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <p className="text-lg text-white/70 mt-5 max-w-2xl">{a.excerpt}</p>
       </div>
       <div className="container-x mt-10">
-        <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-[3px]"><Image src={a.cover} alt={a.coverAlt} fill priority sizes="100vw" className="object-cover" />{a.credit && <span className="absolute bottom-3 right-3 t-label text-[10px] bg-black/60 px-2 py-1 rounded text-white/80">Photo {a.credit}</span>}</div>
+        <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-[3px]"><Image src={a.cover} alt={a.coverAlt} fill priority sizes="100vw" className="object-cover" /></div>{a.credit && <p className="text-[11px] text-white/40 mt-2 text-center md:text-right">Photo {a.credit}</p>}
       </div>
       <div className="container-x max-w-3xl mt-12 space-y-6 text-base md:text-lg leading-relaxed text-white/85">
         {a.body.map((b, i) => {

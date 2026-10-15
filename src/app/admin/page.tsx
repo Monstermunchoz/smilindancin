@@ -59,7 +59,7 @@ export default async function Dashboard() {
       </div>
 
       <div className="grid lg:grid-cols-[1.4fr_1fr] gap-4 mt-4">
-        <Card title="Ventes — 14 derniers jours"><DualBars data={chart} format={(v) => formatPrice(v)} /></Card>
+        <Card title="Ventes, 14 derniers jours"><DualBars data={chart} format={(v) => formatPrice(v)} /></Card>
         <Card title="Jauges billetterie">
           {events.map(({ e, v }) => (
             <div key={e.slug} className="mb-4 last:mb-0">

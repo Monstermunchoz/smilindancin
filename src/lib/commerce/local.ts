@@ -6,8 +6,8 @@ import { CommerceError, type CommerceProvider, type CreateOrderInput } from "./p
 const eur = (amount: number): Money => ({ amount, currency: "EUR" });
 
 export const SHIPPING_METHODS: ShippingMethod[] = [
-  { id: "colissimo", label: "Colissimo domicile", description: "France métropolitaine", price: eur(590), eta: "2–4 jours ouvrés" },
-  { id: "relais", label: "Point relais", description: "Mondial Relay / Colissimo", price: eur(390), eta: "3–5 jours ouvrés" },
+  { id: "colissimo", label: "Colissimo domicile", description: "France métropolitaine", price: eur(590), eta: "2 à 4 jours ouvrés" },
+  { id: "relais", label: "Point relais", description: "Mondial Relay / Colissimo", price: eur(390), eta: "3 à 5 jours ouvrés" },
   { id: "event", label: "Retrait à l'événement", description: "Stand Merch, prochain événement Smilin' Dancin'", price: eur(0), eta: "Le jour J" },
 ];
 
@@ -107,7 +107,7 @@ export const localProvider: CommerceProvider = {
         shipping: method.price,
         total: eur(subtotal.amount + method.price.amount),
         note: input.note,
-        timeline: [{ at: now(), label: "Commande créée (mode démo — paiement non activé)", by: "client" }],
+        timeline: [{ at: now(), label: "Commande créée (mode démo, paiement non activé)", by: "client" }],
         source: "web",
         demo: true,
       };

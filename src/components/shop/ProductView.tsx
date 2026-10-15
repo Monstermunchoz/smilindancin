@@ -63,7 +63,7 @@ export function ProductView({ product, related, sibling }: { product: Product; r
     const res = add({
       id: variant.id,
       productHandle: product.handle,
-      productTitle: `${product.title}${isTee ? " — T-shirt" : " — Sweat"}${product.preorder ? " (précommande)" : ""}`,
+      productTitle: `${product.title}${isTee ? ", T-shirt" : ", Sweat"}${product.preorder ? " (précommande)" : ""}`,
       variantId: variant.id,
       variantTitle: variant.title,
       options: variant.options,
@@ -112,9 +112,6 @@ export function ProductView({ product, related, sibling }: { product: Product; r
                   <Image src={product.images[img].src} alt={product.images[img].alt} fill priority sizes="(max-width:1024px) 100vw, 55vw" className="object-cover" />
                 </motion.div>
               </AnimatePresence>
-              <span className="absolute bottom-3 left-3 t-label text-[10px] bg-black/60 text-white/80 px-2 py-1 rounded">
-                {product.images[img].kind === "worn" ? "Porté · photo @smilin.dancin" : product.images[img].kind === "mockup" ? "Mockup" : "Visuel"}
-              </span>
               </>
               )}
             </div>
@@ -218,8 +215,8 @@ export function ProductView({ product, related, sibling }: { product: Product; r
                   {showGuide && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                       <div className="mt-4 text-xs text-white/70 border border-white/15 rounded-[3px] p-4">
-                        <p className="font-semibold text-white mb-2">Tailles XS à XXL — coupe {isTee ? (cut.includes("oversize") ? "oversize : prenez votre taille habituelle, le tombé est ample" : cut.includes("croptop") ? "crop top : coupe courte, prenez votre taille habituelle" : "classique : taille normalement") : "ample : prenez votre taille habituelle"}.</p>
-                        <p>Guide détaillé (mensurations par taille) à compléter par la marque — voir <Link href="/guide-des-tailles" className="underline">le guide des tailles</Link>.</p>
+                        <p className="font-semibold text-white mb-2">Tailles XS à XXL, coupe {isTee ? (cut.includes("oversize") ? "oversize : prenez votre taille habituelle, le tombé est ample" : cut.includes("croptop") ? "crop top : coupe courte, prenez votre taille habituelle" : "classique : taille normalement") : "ample : prenez votre taille habituelle"}.</p>
+                        <p>Guide détaillé (mensurations par taille) à compléter par la marque, voir <Link href="/guide-des-tailles" className="underline">le guide des tailles</Link>.</p>
                       </div>
                     </motion.div>
                   )}
