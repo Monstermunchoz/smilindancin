@@ -59,7 +59,7 @@ export function ProductView({ product, related, sibling }: { product: Product; r
     const res = add({
       id: variant.id,
       productHandle: product.handle,
-      productTitle: `${product.title}${isTee ? " — T-shirt" : " — Sweat"}`,
+      productTitle: `${product.title}${isTee ? " — T-shirt" : " — Sweat"}${product.preorder ? " (précommande)" : ""}`,
       variantId: variant.id,
       variantTitle: variant.title,
       options: variant.options,
@@ -75,7 +75,7 @@ export function ProductView({ product, related, sibling }: { product: Product; r
 
   return (
     <div className="container-x pt-24 md:pt-32">
-      <nav className="t-label text-white/45 mb-6 flex gap-2 flex-wrap" aria-label="Fil d'Ariane">
+      <nav className="t-label text-white/45 mb-6 flex gap-2 flex-wrap justify-center md:justify-start" aria-label="Fil d'Ariane">
         <Link href="/shop" className="hover:text-white">Shop</Link><span>/</span>
         <Link href={`/collections/${product.collection}`} className="hover:text-white">{product.collection === "drops-2026" ? "Nouvelle co' 2026" : product.collection === "accessoires" ? "Accessoires" : "Smilers & Dancers"}</Link><span>/</span>
         <span className="text-white/80">{product.title}</span>
@@ -107,9 +107,10 @@ export function ProductView({ product, related, sibling }: { product: Product; r
 
         {/* Configurateur */}
         <div className="pb-24 lg:pb-0">
+          <div className="m-center">
           <p className="t-condensed text-blue-sky text-lg">{product.subtitle}</p>
-          <h1 className="t-display text-[clamp(36px,5vw,64px)] leading-[0.9] mt-1">{product.title}</h1>
-          <div className="mt-4 flex items-baseline gap-3">
+          <h1 className="t-display text-[clamp(34px,5vw,64px)] leading-[0.9] mt-1">{product.title}</h1>
+          <div className="mt-4 flex items-baseline gap-3 justify-center md:justify-start">
             {soon ? (
               <p className="t-condensed text-2xl text-white/70">Tarif à venir</p>
             ) : (
@@ -117,16 +118,16 @@ export function ProductView({ product, related, sibling }: { product: Product; r
                 {formatPrice(priceShown!)}
               </motion.p>
             )}
-            <p className="t-label text-white/40">Made in France</p>
+            {product.preorder ? <p className="t-label text-[10px] bg-pink text-white px-2.5 py-1 rounded-full">Précommande</p> : <p className="t-label text-white/40">Made in France</p>}
           </div>
           <p className="mt-5 text-white/75 leading-relaxed">{product.description}</p>
+          </div>
 
           {soon ? (
             <div className="mt-8 border border-white/15 rounded-[3px] p-5">
-              <p className="font-semibold">Pré-commande & tarif à confirmer</p>
-              <p className="text-sm text-white/60 mt-1 mb-4">Laissez votre email : vous serez prévenu·e dès l'ouverture des commandes.</p>
+              <p className="font-semibold">Bientôt disponible</p>
+              <p className="text-sm text-white/60 mt-1 mb-4">Stock limité, tarif communiqué par la marque. Laisse ton email pour être prévenu·e dès l'ouverture.</p>
               <NewsletterForm source={`notify:${product.handle}`} />
-              <a href="https://www.instagram.com/smilin.dancin/" target="_blank" rel="noreferrer" className="btn btn-ghost w-full mt-3">Commander en DM Instagram</a>
             </div>
           ) : (
             <div className="mt-8 space-y-7">
@@ -209,8 +210,8 @@ export function ProductView({ product, related, sibling }: { product: Product; r
               </fieldset>
 
               <div className="hidden lg:block">
-                <AddButton onClick={addToCart} label={`Ajouter au panier · ${formatPrice(priceShown!)}`} />
-                <p className="text-xs text-white/45 mt-3">Pièce réalisée à la demande (impression DTF / broderie). Livraison France, ou retrait au stand Merch du prochain événement.</p>
+                <AddButton onClick={addToCart} label={`${product.preorder ? "Précommander" : "Ajouter au panier"} · ${formatPrice(priceShown!)}`} />
+                <p className="text-xs text-white/45 mt-3">{product.preorder ? "Précommande : paiement aujourd'hui, expédition (ou retrait au stand Merch) dès la fin de production." : "Pièce réalisée à la demande (impression DTF / broderie). Livraison France, ou retrait au stand Merch du prochain événement."}</p>
               </div>
             </div>
           )}
@@ -235,7 +236,7 @@ export function ProductView({ product, related, sibling }: { product: Product; r
       {/* CTA mobile sticky */}
       {!soon && (
         <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-black/85 backdrop-blur-xl border-t border-white/10 px-4 py-3 safe-bottom">
-          <AddButton onClick={addToCart} label={`Ajouter · ${formatPrice(priceShown!)}`} />
+          <AddButton onClick={addToCart} label={`${product.preorder ? "Précommander" : "Ajouter"} · ${formatPrice(priceShown!)}`} />
         </div>
       )}
 

@@ -3,7 +3,7 @@ export const metadata: Metadata = { title: "Livraison & retours" };
 export default function Shipping() {
   return (
     <div className="container-x pt-28 md:pt-36 max-w-3xl space-y-10">
-      <h1 className="t-display text-[clamp(44px,8vw,112px)] leading-[0.85]">Livraison<br />& retours</h1>
+      <h1 className="m-center t-display text-[clamp(34px,8vw,112px)] leading-[0.85]">Livraison<br />& retours</h1>
       <section><h2 className="t-display text-2xl mb-3">Livraison</h2>
         <ul className="space-y-2 text-white/75 text-sm">
           <li>✦ Colissimo domicile (France métropolitaine) — 5,90 € · 2 à 4 jours ouvrés après fabrication</li>

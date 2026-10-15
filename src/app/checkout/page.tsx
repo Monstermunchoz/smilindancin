@@ -8,7 +8,7 @@ export default async function CheckoutPage() {
   const methods = await commerce.shippingMethods();
   return (
     <div className="container-x pt-28 md:pt-36">
-      <h1 className="t-display text-[clamp(40px,7vw,96px)] leading-[0.85] mb-10">Commander</h1>
+      <h1 className="m-center t-display text-[clamp(34px,7vw,96px)] leading-[0.85] mb-10">Commander</h1>
       <CheckoutForm methods={methods} stripeEnabled={stripeConfigured} />
     </div>
   );

@@ -14,7 +14,7 @@ export default function FAQ() {
   return (
     <div className="container-x pt-28 md:pt-36 max-w-3xl">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <h1 className="t-display text-[clamp(44px,8vw,112px)] leading-[0.85] mb-10">FAQ</h1>
+      <h1 className="m-center t-display text-[clamp(34px,8vw,112px)] leading-[0.85] mb-10">FAQ</h1>
       <div className="divide-y divide-white/10">
         {faq.map(([q, a]) => (
           <details key={q} className="group py-5">

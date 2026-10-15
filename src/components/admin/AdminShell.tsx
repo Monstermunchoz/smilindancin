@@ -6,7 +6,9 @@ import { cn } from "@/lib/format";
 
 const nav = [
   ["/admin", "Tableau de bord", "◧"],
-  ["/admin/orders", "Commandes", "▤"],
+  ["/admin/orders", "Commandes shop", "▤"],
+  ["/admin/billetterie", "Billetterie", "◫"],
+  ["/admin/checkin", "Contrôle d'accès", "⌖"],
   ["/admin/products", "Produits", "▣"],
   ["/admin/stock", "Stock", "▥"],
   ["/admin/customers", "Clients", "◉"],

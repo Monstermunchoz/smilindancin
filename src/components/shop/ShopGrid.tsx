@@ -39,15 +39,15 @@ export function ShopGrid({ products, title = "Shop", intro }: { products: Produc
 
   return (
     <div className="container-x pt-28 md:pt-36">
-      <div className="flex flex-wrap items-end justify-between gap-6 mb-8">
+      <div className="m-center flex flex-wrap items-end justify-between gap-6 mb-8">
         <div>
-          <h1 className="t-display text-[clamp(48px,9vw,128px)] leading-[0.85]">{title}</h1>
+          <h1 className="t-display text-[clamp(34px,9vw,128px)] leading-[0.85]">{title}</h1>
           {intro && <p className="mt-4 max-w-xl text-white/65">{intro}</p>}
         </div>
         <p className="t-label text-white/50">{list.length} pièce{list.length > 1 ? "s" : ""}</p>
       </div>
 
-      <div className="sticky top-16 md:top-[72px] z-30 -mx-[var(--gutter)] px-[var(--gutter)] py-3 bg-black/80 backdrop-blur-xl border-y border-white/8 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <div className="sticky top-16 md:top-[72px] z-30 -mx-[var(--gutter)] px-[var(--gutter)] py-3 bg-black/80 backdrop-blur-xl border-y border-white/8 flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-3">
         <div className="flex gap-1 overflow-x-auto hide-scroll">
           {CATS.map((c) => (
             <button key={c.id} onClick={() => setCat(c.id)} className={cn("px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-colors", cat === c.id ? "bg-white text-black" : "text-white/70 hover:text-white hover:bg-white/8")}>
@@ -55,7 +55,7 @@ export function ShopGrid({ products, title = "Shop", intro }: { products: Produc
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="flex items-center gap-2 md:ml-auto">
           <span className="t-label text-white/40 hidden sm:inline">Couleur</span>
           {colors.map((c) => (
             <button

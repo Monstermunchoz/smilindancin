@@ -2,6 +2,8 @@
  * ÉVÉNEMENTS — uniquement des données réelles, vérifiées sur Shotgun et Instagram (15/10/2026).
  * Sources : https://shotgun.live/fr/venues/smilin-dancin
  */
+import type { EventTicketing } from "@/lib/tickets/types";
+
 export type Artist = { name: string; from?: string; handle?: string; role?: string };
 
 export type SDEvent = {
@@ -26,6 +28,9 @@ export type SDEvent = {
   practical: string[];
   interested?: number;
   theme: { from: string; to: string; emoji: string };
+  /** Billetterie intégrée (sinon lien externe ticketUrl). */
+  ticketing?: EventTicketing;
+  demo?: boolean;
 };
 
 export const EVENTS: SDEvent[] = [
@@ -156,6 +161,47 @@ EVENTS.push({
   ],
   practical: ["Événement privé (crew & staff)", "Flashback publié le 10 mars 2025 sur Instagram"],
   theme: { from: "#67a7dc", to: "#37548f", emoji: "⛷️" },
+});
+
+/**
+ * ÉDITION 3 — BILLETTERIE DE DÉMONSTRATION
+ * Aucune date ni line-up n'est publié pour la prochaine édition : cet événement sert à présenter la
+ * billetterie intégrée (tarifs progressifs Early Bird → Regular → Last Release, QR codes, contrôle d'accès).
+ * Tarifs, quotas et textes sont des valeurs de démonstration, modifiables (admin → Billetterie, ou ce fichier).
+ */
+EVENTS.push({
+  slug: "smilin-dancin-festival-2027",
+  title: "Festival 2027",
+  edition: "Smilin' Dancin' Festival — 3ᵉ édition",
+  concept: "Nouvelle destination, nouveau thème : la 3ᵉ édition se prépare. Les premières places partent en Early Bird.",
+  date: "2027-09-04",
+  dateLabel: "Date à annoncer · fin d'été 2027",
+  venue: { name: "Lieu à annoncer", address: "Région lyonnaise", city: "Région lyonnaise", mapsUrl: "" },
+  status: "announced",
+  ticketUrl: "/billetterie/smilin-dancin-festival-2027",
+  sourceUrl: "https://www.instagram.com/smilin.dancin/",
+  poster: "/photos/memories.jpg",
+  cover: "/photos/memories.jpg",
+  photos: [],
+  genres: ["House", "Melodic", "Techno"],
+  lineup: [],
+  description: [
+    "Après La Isla Electrónica et le Mexico Show, Smilin' Dancin' prépare sa 3ᵉ édition. Thème, line-up et lieu seront dévoilés sur Instagram.",
+    "Comme à chaque édition : plusieurs scènes, un village market, un dress code à thème et le stand Smilin' Dancin' Merch.",
+  ],
+  practical: ["Billet nominatif avec QR code, à présenter à l'entrée", "Capacité limitée", "Tarifs progressifs : plus tôt = moins cher"],
+  theme: { from: "#37548f", to: "#a9426b", emoji: "🪩" },
+  demo: true,
+  ticketing: {
+    demo: true,
+    feePercent: 0,
+    tiers: [
+      { id: "early-bird", name: "Early Bird", description: "Les premières places, au meilleur prix.", price: 2500, quota: 150, perOrderMax: 4, badge: "Meilleur prix" },
+      { id: "regular", name: "Regular", description: "Ouvre quand l'Early Bird est épuisé.", price: 3200, quota: 350, perOrderMax: 6 },
+      { id: "last-release", name: "Last Release", description: "Les dernières places.", price: 3800, quota: 150, perOrderMax: 6 },
+      { id: "pack-merch", name: "Pack Billet + Tee", description: "1 billet + 1 t-shirt Smilin' Dancin' à retirer au stand Merch.", price: 5500, quota: 80, perOrderMax: 4, badge: "Exclu" },
+    ],
+  },
 });
 
 export const upcomingEvents = () => EVENTS.filter((e) => e.status !== "past").sort((a, b) => a.date.localeCompare(b.date));

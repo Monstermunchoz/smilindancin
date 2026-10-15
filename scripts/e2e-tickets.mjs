@@ -1,0 +1,50 @@
+import { chromium } from "playwright";
+const out = process.env.OUT;
+const b = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium-1194/chrome-linux/chrome" });
+const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+const p = await ctx.newPage();
+const errs = []; p.on("pageerror", (e) => errs.push(String(e)));
+const base = "http://localhost:3000";
+// account
+await p.goto(base + "/compte", { waitUntil: "networkidle" });
+await p.getByRole("button", { name: "Créer un compte" }).click();
+await p.fill("#a-fn", "Lou"); await p.fill("#a-ln", "Dancer"); await p.fill("#a-em", "lou@test.fr"); await p.fill("#a-pw", "motdepasse1");
+await p.getByRole("button", { name: "Créer mon compte" }).click(); await p.waitForTimeout(1500);
+console.log("compte:", await p.locator("h1").first().textContent());
+// tickets
+await p.goto(base + "/billetterie/smilin-dancin-festival-2027", { waitUntil: "networkidle" });
+await p.screenshot({ path: `${out}/t1.png`, fullPage: false });
+await p.getByRole("button", { name: "Ajouter un billet Early Bird" }).click();
+await p.getByRole("button", { name: "Ajouter un billet Early Bird" }).click();
+await p.waitForTimeout(500);
+await p.screenshot({ path: `${out}/t2.png` });
+await p.getByRole("button", { name: "Réserver" }).click(); await p.waitForURL(/commander/); await p.waitForTimeout(800);
+await p.locator('input[type=checkbox]').check();
+await p.getByRole("button", { name: /Payer/ }).click(); await p.waitForURL(/paiement\/billets/); await p.waitForTimeout(800);
+await p.screenshot({ path: `${out}/t3.png` });
+await p.getByRole("button", { name: /Payer/ }).click(); await p.waitForURL(/paid=1/, { timeout: 20000 }); await p.waitForTimeout(1200);
+await p.screenshot({ path: `${out}/t4.png`, fullPage: true });
+const codes = await p.locator("p.t-dot.text-center").allTextContents();
+console.log("billets:", codes);
+await p.goto(base + "/compte", { waitUntil: "networkidle" });
+console.log("billets dans compte:", await p.locator("article").count());
+// shop preorder
+await p.goto(base + "/shop/tee-groovers-never-miss-the-drop", { waitUntil: "networkidle" });
+await p.getByRole("button", { name: "M", exact: true }).click();
+await p.locator("button", { hasText: "Précommander" }).last().click(); await p.waitForTimeout(700);
+await p.getByRole("link", { name: "Commander" }).click(); await p.waitForURL(/checkout/); await p.waitForTimeout(800);
+await p.getByText("Retrait à l'événement").click();
+await p.fill("#email", "lou@test.fr"); await p.fill("#firstName", "Lou"); await p.fill("#lastName", "Dancer");
+await p.getByRole("button", { name: /Continuer vers le paiement/ }).click(); await p.waitForURL(/paiement\/commande/); await p.waitForTimeout(600);
+await p.getByRole("button", { name: /Payer/ }).click(); await p.waitForURL(/confirmation/, { timeout: 20000 }); await p.waitForTimeout(600);
+console.log("shop:", (await p.locator("p.mt-6, div.mt-6 p").first().textContent())?.slice(0, 60));
+// admin + checkin
+const a = await b.newPage({ viewport: { width: 1440, height: 900 } });
+await a.goto(base + "/admin/checkin/" + codes[0]); await a.waitForURL(/login/);
+await a.fill("#pw", "smilin-admin"); await a.getByRole("button", { name: "Se connecter" }).click(); await a.waitForURL(/checkin/); await a.waitForTimeout(1500);
+console.log("scan 1:", await a.locator("p.t-display").first().textContent());
+await a.reload(); await a.waitForTimeout(1500);
+console.log("scan 2:", await a.locator("p.t-display").first().textContent(), "-", await a.locator("p.text-sm.mt-2").first().textContent());
+await a.goto(base + "/admin"); await a.waitForTimeout(1200); await a.screenshot({ path: `${out}/admin.png`, fullPage: true });
+console.log("pageerrors:", errs);
+await b.close();

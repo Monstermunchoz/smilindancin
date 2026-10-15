@@ -25,12 +25,12 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         <Image src={e.cover} alt={e.title} fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20" />
         <div className="absolute inset-0 opacity-30 mix-blend-multiply" style={{ background: `linear-gradient(135deg, ${e.theme.from}, ${e.theme.to})` }} />
-        <div className="container-x relative pb-12 pt-32 w-full">
+        <div className="m-center container-x relative pb-12 pt-32 w-full">
           <p className="t-condensed text-xl md:text-2xl text-blue-sky">{e.dateLabel}{e.hours ? ` · ${e.hours}` : ""} · {e.venue.name}</p>
-          <h1 className="t-display text-[clamp(52px,12vw,180px)] leading-[0.82] mt-2">{e.title}</h1>
+          <h1 className="m-center t-display text-[clamp(34px,12vw,180px)] leading-[0.82] mt-2">{e.title}</h1>
           <p className="text-white/80 mt-4 max-w-2xl text-base md:text-lg">{e.concept}</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href={e.ticketUrl} target="_blank" rel="noreferrer" className="btn btn-primary">{e.status === "past" ? "Page Shotgun" : "Billets sur Shotgun"}</a>
+            {e.ticketing ? <Link href={`/billetterie/${e.slug}`} className="btn btn-brand">Prendre mes billets</Link> : <a href={e.ticketUrl} target="_blank" rel="noreferrer" className="btn btn-primary">{e.status === "past" ? "Page Shotgun" : "Billets sur Shotgun"}</a>}
             {e.venue.mapsUrl && <a href={e.venue.mapsUrl} target="_blank" rel="noreferrer" className="btn btn-ghost">Itinéraire</a>}
           </div>
         </div>
@@ -104,10 +104,10 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
       <section className="container-x mt-24">
         <h2 className="t-label text-white/50 mb-4">Autres éditions</h2>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {others.map((o) => (
-            <Link key={o.slug} href={`/events/${o.slug}`} className="group flex gap-5 items-center border border-white/10 rounded-[3px] p-4 hover:border-white/30 transition-colors">
-              <div className="relative w-32 aspect-[16/10] overflow-hidden rounded-[2px] shrink-0"><Image src={o.poster} alt="" fill sizes="128px" className="object-cover" /></div>
+            <Link key={o.slug} href={`/events/${o.slug}`} className="group flex flex-col sm:flex-row gap-4 sm:gap-5 sm:items-center text-center sm:text-left border border-white/10 rounded-[3px] p-4 hover:border-white/30 transition-colors">
+              <div className="relative w-full sm:w-32 aspect-[16/10] overflow-hidden rounded-[2px] shrink-0"><Image src={o.poster} alt="" fill sizes="128px" className="object-cover" /></div>
               <div><p className="t-label text-white/50">{formatDate(o.date)}</p><p className="t-display text-2xl mt-1">{o.title}</p></div>
             </Link>
           ))}

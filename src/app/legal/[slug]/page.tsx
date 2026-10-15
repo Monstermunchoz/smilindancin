@@ -37,7 +37,7 @@ export default async function Legal({ params }: { params: Promise<{ slug: string
   if (!p) notFound();
   return (
     <div className="container-x pt-28 md:pt-36 max-w-3xl">
-      <h1 className="t-display text-[clamp(36px,6vw,88px)] leading-[0.85] mb-8">{p.title}</h1>
+      <h1 className="m-center t-display text-[clamp(34px,6vw,88px)] leading-[0.85] mb-8">{p.title}</h1>
       <div className="space-y-4 text-sm md:text-base text-white/75 leading-relaxed">{p.body.map((b, i) => <p key={i}>{b}</p>)}</div>
       <p className="mt-10 text-xs text-white/40">Les mentions entre crochets sont à compléter par l'association avant mise en ligne.</p>
     </div>

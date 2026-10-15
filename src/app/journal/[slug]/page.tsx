@@ -18,9 +18,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <article className="pt-28 md:pt-36">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="container-x max-w-4xl">
+      <div className="m-center container-x max-w-4xl">
         <p className="t-label text-pink">{a.category} · {formatDate(a.date)} · {a.readingTime}</p>
-        <h1 className="t-display text-[clamp(36px,6vw,88px)] leading-[0.88] mt-3">{a.title}</h1>
+        <h1 className="m-center t-display text-[clamp(34px,6vw,88px)] leading-[0.88] mt-3">{a.title}</h1>
         <p className="text-lg text-white/70 mt-5 max-w-2xl">{a.excerpt}</p>
       </div>
       <div className="container-x mt-10">
@@ -41,10 +41,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {related.length > 0 && (
         <div className="container-x mt-20">
           <h2 className="t-label text-white/50 mb-4">À lire aussi</h2>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {related.map((r) => r && (
-              <Link key={r.slug} href={`/journal/${r.slug}`} className="group flex gap-5 items-center border border-white/10 rounded-[3px] p-4 hover:border-white/30 transition-colors">
-                <div className="relative w-28 aspect-[4/3] overflow-hidden rounded-[2px] shrink-0"><Image src={r.cover} alt="" fill sizes="112px" className="object-cover" /></div>
+              <Link key={r.slug} href={`/journal/${r.slug}`} className="group flex flex-col sm:flex-row gap-4 sm:gap-5 sm:items-center text-center sm:text-left border border-white/10 rounded-[3px] p-4 hover:border-white/30 transition-colors">
+                <div className="relative w-full sm:w-28 aspect-[4/3] overflow-hidden rounded-[2px] shrink-0"><Image src={r.cover} alt="" fill sizes="112px" className="object-cover" /></div>
                 <div><p className="t-label text-pink">{r.category}</p><p className="font-semibold mt-1 leading-snug">{r.title}</p></div>
               </Link>
             ))}

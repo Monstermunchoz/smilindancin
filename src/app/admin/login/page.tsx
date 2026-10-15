@@ -12,7 +12,7 @@ export default function AdminLogin() {
     setLoading(true); setErr("");
     const r = await fetch("/api/admin/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password: pw }) });
     setLoading(false);
-    if (r.ok) { router.push("/admin"); router.refresh(); } else setErr("Mot de passe incorrect.");
+    if (r.ok) { const next = new URLSearchParams(window.location.search).get("next"); router.push(next && next.startsWith("/admin") ? next : "/admin"); router.refresh(); } else setErr("Mot de passe incorrect.");
   }
   return (
     <div className="min-h-dvh grid place-items-center p-6 relative overflow-hidden">

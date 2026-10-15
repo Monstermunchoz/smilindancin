@@ -44,6 +44,8 @@ export type Product = {
   compareAtPrice?: Money | null;
   status: "active" | "draft" | "archived" | "coming_soon";
   featured?: boolean;
+  /** Précommande : produit payable, expédié après production. */
+  preorder?: boolean;
   /** Vrai = données de démonstration (prix/tailles/stock non confirmés par la marque). */
   demo: boolean;
   /** Preuve d'existence du graphisme (fichier client / post). */

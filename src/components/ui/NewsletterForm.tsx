@@ -21,7 +21,7 @@ export function NewsletterForm({ source = "site", light = false }: { source?: st
   }
   if (state === "done") return <p className={`text-sm ${light ? "text-black" : "text-white"}`}>Merci — vous êtes sur la liste.</p>;
   return (
-    <form onSubmit={submit} className="flex max-w-md gap-2">
+    <form onSubmit={submit} className="flex w-full max-w-md gap-2">
       <label className="sr-only" htmlFor={`nl-${source}`}>Email</label>
       <input
         id={`nl-${source}`}
@@ -30,9 +30,9 @@ export function NewsletterForm({ source = "site", light = false }: { source?: st
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="ton@email.com"
-        className={`flex-1 min-w-0 rounded-full px-5 py-3.5 text-sm outline-none border transition-colors ${light ? "bg-white/70 border-black/15 text-black placeholder:text-black/40 focus:border-black" : "bg-white/5 border-white/15 text-white placeholder:text-white/35 focus:border-white/60"}`}
+        className={`flex-1 w-full min-w-0 rounded-full px-5 py-3.5 text-sm outline-none border transition-colors ${light ? "bg-white/70 border-black/15 text-black placeholder:text-black/40 focus:border-black" : "bg-white/5 border-white/15 text-white placeholder:text-white/35 focus:border-white/60"}`}
       />
-      <button type="submit" disabled={state === "loading"} className={`btn ${light ? "btn-dark" : "btn-primary"} shrink-0`}>
+      <button type="submit" disabled={state === "loading"} className={`btn ${light ? "btn-dark" : "btn-primary"} shrink-0 !px-5 sm:!px-[26px]`}>
         {state === "loading" ? "…" : "S'inscrire"}
       </button>
     </form>

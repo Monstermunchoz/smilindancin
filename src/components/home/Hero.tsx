@@ -53,7 +53,7 @@ export function Hero() {
         <Globe size={420} className="md:scale-[1.25] lg:scale-[1.5] origin-top-right" id="hero" />
       </motion.div>
 
-      <motion.div style={{ y: textY }} className="relative container-x min-h-[100svh] flex flex-col justify-end pb-10 md:pb-16 pt-28">
+      <motion.div style={{ y: textY }} className="m-center relative container-x min-h-[100svh] flex flex-col justify-end pb-10 md:pb-16 pt-28">
         <motion.p
           initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -62,9 +62,9 @@ export function Hero() {
         >
           Electronic Music Events & Clothing — Lyon
         </motion.p>
-        <h1 className="t-display text-[18.5vw] sm:text-[16vw] md:text-[13.5vw] leading-[0.82] text-white">
-          <span className="block overflow-hidden pb-[0.06em] text-[#5d7fc4]">{word("Smilin’", 0.15)}</span>
-          <span className="block overflow-hidden pb-[0.06em] text-[#c45a84] pl-[0.5em] md:pl-[1.4em]">{word("Dancin’", 0.3)}</span>
+        <h1 className="t-display text-[clamp(44px,15.5vw,96px)] sm:text-[14vw] lg:text-[13vw] 2xl:text-[200px] leading-[0.84] text-white">
+          <span className="block overflow-hidden whitespace-nowrap pb-[0.06em] text-[#5d7fc4]">{word("Smilin’", 0.15)}</span>
+          <span className="block overflow-hidden whitespace-nowrap pb-[0.06em] text-[#c45a84] pl-0 sm:pl-[0.9em] lg:pl-[1.4em]">{word("Dancin’", 0.3)}</span>
         </h1>
         <div className="mt-8 md:mt-10 grid md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-end">
           <motion.p
@@ -79,7 +79,7 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1, ease }}
-            className="flex flex-wrap gap-3"
+            className="flex flex-wrap gap-3 m-full"
           >
             <Link href="/shop" className="btn btn-primary">Voir le shop</Link>
             <Link href="/events" className="btn btn-ghost">Les événements</Link>

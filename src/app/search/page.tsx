@@ -9,7 +9,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
   const results = q ? await commerce.searchProducts(q) : [];
   return (
     <div className="container-x pt-28 md:pt-36">
-      <h1 className="t-display text-[clamp(40px,7vw,96px)] leading-[0.85] mb-8">Recherche</h1>
+      <h1 className="m-center t-display text-[clamp(34px,7vw,96px)] leading-[0.85] mb-8">Recherche</h1>
       <SearchForm initial={q} />
       {q && (
         <p className="t-label text-white/50 mt-8">{results.length} résultat{results.length > 1 ? "s" : ""} pour « {q} »</p>

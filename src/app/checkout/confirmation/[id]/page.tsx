@@ -13,8 +13,8 @@ export default async function Confirmation({ params, searchParams }: { params: P
   if (!o) notFound();
   return (
     <div className="container-x pt-28 md:pt-36 max-w-3xl">
-      <p className="t-condensed text-blue-sky text-xl">Commande {o.id}</p>
-      <h1 className="t-display text-[clamp(40px,7vw,96px)] leading-[0.85] mt-2">Merci 💙🩷</h1>
+      <p className="m-center t-condensed text-blue-sky text-xl">Commande {o.id}</p>
+      <h1 className="m-center t-display text-[clamp(34px,7vw,96px)] leading-[0.85] mt-2">Merci 💙🩷</h1>
       {o.paymentStatus === "paid" || sp.paid ? (
         <p className="mt-6 text-white/75 max-w-xl">Paiement reçu — votre commande est confirmée ({formatDate(o.createdAt)}). Un email de confirmation arrive à <b>{o.customer.email}</b>. {o.shippingMethod.id === "event" ? "Rendez-vous au stand Merch du prochain événement." : "On prépare votre pièce avec amour, puis on l'expédie."}</p>
       ) : sp.cancelled ? (
@@ -23,7 +23,10 @@ export default async function Confirmation({ params, searchParams }: { params: P
           <RetryPayment orderId={o.id} />
         </div>
       ) : (
-        <p className="mt-6 text-white/75 max-w-xl">Votre commande est enregistrée ({formatDate(o.createdAt)}). <b>Le paiement n'est pas encore activé</b> sur ce site : l'équipe Smilin' Dancin' vous contactera à <b>{o.customer.email}</b> pour finaliser. Rien n'a été débité.</p>
+        <div className="mt-6 max-w-xl">
+          <p className="text-white/75">Votre commande est enregistrée ({formatDate(o.createdAt)}) — paiement en attente.</p>
+          <Link href={`/paiement/commande/${o.id}`} className="btn btn-brand mt-4">Payer maintenant</Link>
+        </div>
       )}
       <div className="mt-8 border border-white/10 rounded-[3px] divide-y divide-white/10">
         {o.lines.map((l) => (

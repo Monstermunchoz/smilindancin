@@ -18,7 +18,7 @@ export function Footer() {
     <footer className="relative mt-24 border-t border-white/8 bg-black overflow-hidden">
       <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] neon-halo opacity-50 pointer-events-none" />
       <div className="container-x relative pt-16 pb-10">
-        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-20">
+        <div className="m-center grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-20">
           <div>
             <p className="t-label text-white/50 mb-4">Newsletter</p>
             <h2 className="t-display text-[clamp(32px,6vw,72px)] text-white mb-6">
@@ -47,9 +47,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="m-center mt-16 pt-8 border-t border-white/8 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <Image src="/brand/wordmark.png" alt="Smilin' Dancin'" width={920} height={240} className="h-10 w-auto mb-3" />
+            <Image src="/brand/wordmark.png" alt="Smilin' Dancin'" width={920} height={240} className="h-10 w-auto mb-3 mx-auto md:mx-0" />
             <p className="text-xs text-white/50">{SITE.tagline} 💙🩷 — Electronic Music Events & Clothing · Lyon</p>
           </div>
           <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/40">

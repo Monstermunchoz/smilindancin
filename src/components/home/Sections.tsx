@@ -43,11 +43,11 @@ export function Drops({ products }: { products: Product[] }) {
   return (
     <section className="container-x pt-20 md:pt-28">
       <Reveal>
-        <div className="flex flex-wrap items-end justify-between gap-6 mb-8 md:mb-12">
-          <h2 className="t-display text-[clamp(44px,8vw,120px)]">
+        <div className="m-center flex flex-wrap items-end justify-between gap-6 mb-8 md:mb-12">
+          <h2 className="t-display text-[clamp(34px,8vw,120px)]">
             Nouvelle <span className="g-neon-text">co’</span> 2026
           </h2>
-          <p className="max-w-sm text-white/70 text-sm md:text-base">Deux visuels dévoilés au Mexico Show, en pré-commande sur le festival : Groovers — never miss the drop, et The Real VIP is on the dancefloor.</p>
+          <p className="max-w-sm text-white/70 text-sm md:text-base">Deux visuels dévoilés au Mexico Show : Groovers — never miss the drop, et The Real VIP is on the dancefloor. Précommande ouverte.</p>
         </div>
       </Reveal>
       <div className="grid md:grid-cols-12 gap-4 md:gap-6">
@@ -55,7 +55,7 @@ export function Drops({ products }: { products: Product[] }) {
           <Link href={`/shop/${groovers.handle}`} className="group relative block aspect-[4/5] md:aspect-[5/6] overflow-hidden rounded-[3px]">
             <Image src="/merch/photos/campaign-groovers-realvip-crop.jpg" alt={groovers.images[0].alt} fill sizes="(max-width:768px) 100vw, 60vw" className="object-cover object-top transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            <div className="absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8 flex items-end justify-between gap-4">
+            <div className="m-center absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8 flex items-end justify-between gap-4">
               <div>
                 <p className="t-condensed text-blue-sky text-lg">Never miss the drop</p>
                 <p className="t-display text-4xl md:text-6xl">Groovers</p>
@@ -69,14 +69,14 @@ export function Drops({ products }: { products: Product[] }) {
             <Link href={`/shop/${vip.handle}`} className="group relative block aspect-[4/5] md:aspect-[5/6] overflow-hidden rounded-[3px]">
               <Image src="/merch/photos/real-vip-tee-white-back.jpg" alt={vip.images[0].alt} fill sizes="(max-width:768px) 100vw, 40vw" className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8">
+              <div className="m-center absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8">
                 <p className="t-condensed text-pink text-lg">Is on the dancefloor</p>
                 <p className="t-display text-4xl md:text-5xl">The Real VIP</p>
               </div>
             </Link>
           </RevealMask>
           <Reveal delay={0.25} className="hidden md:block">
-            <p className="text-sm text-white/60 leading-relaxed">T-shirts sur pré-commande sur le festival · Casquettes, bandanas, bobs — stock limité. Tarifs communiqués par la marque.</p>
+            <p className="text-sm text-white/60 leading-relaxed">Précommande en ligne · Casquettes, bandanas, bobs — stock limité, bientôt disponibles.</p>
           </Reveal>
         </div>
       </div>
@@ -97,8 +97,8 @@ export function VisualPicker({ products }: { products: Product[] }) {
       <div className="absolute inset-0 globe-grid opacity-70 pointer-events-none" />
       <div className="container-x relative">
         <Reveal>
-          <div className="grid lg:grid-cols-2 gap-6 items-end mb-10 md:mb-14">
-            <h2 className="t-display text-[clamp(44px,8vw,120px)] leading-[0.85]">
+          <div className="m-center grid lg:grid-cols-2 gap-6 items-end mb-10 md:mb-14">
+            <h2 className="t-display text-[clamp(34px,8vw,120px)] leading-[0.85]">
               9 visuels<br /><span className="text-white/40">au choix</span>
             </h2>
             <p className="max-w-md text-white/70 lg:justify-self-end">La Smilers & Dancers Collection : chaque visuel existe en t-shirt (6 coupes, devant petit ou dos grand) et en sweat à capuche brodé. Noir, blanc, gris. Made in France, du XS au XXL.</p>
@@ -135,7 +135,7 @@ export function VisualPicker({ products }: { products: Product[] }) {
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[3px] bg-ink-2">
                   <Image src={photo.src} alt={photo.alt} fill sizes="(max-width:640px) 100vw, 30vw" className="object-cover" />
                 </div>
-                <div className="flex flex-col">
+                <div className="m-center flex flex-col">
                   <p className="t-condensed text-blue-sky text-lg">Visuel n°{v.n}</p>
                   <h3 className="t-display text-3xl md:text-4xl mt-1 leading-[0.9]">{v.title}</h3>
                   <p className="text-sm text-white/55 mt-2">{v.subtitle}</p>
@@ -169,8 +169,8 @@ export function Featured({ products }: { products: Product[] }) {
   return (
     <section className="container-x pt-20 md:pt-28">
       <Reveal>
-        <div className="flex items-end justify-between gap-6 mb-8">
-          <h2 className="t-display text-[clamp(40px,6vw,88px)]">Les pièces<br /><span className="text-white/40">du moment</span></h2>
+        <div className="m-center flex flex-col md:flex-row items-end justify-between gap-6 mb-8">
+          <h2 className="t-display text-[clamp(34px,6vw,88px)]">Les pièces<br /><span className="text-white/40">du moment</span></h2>
           <Link href="/shop" className="btn btn-ghost shrink-0">Tout le shop</Link>
         </div>
       </Reveal>
@@ -196,9 +196,9 @@ export function Campaign() {
     <section className="relative mt-24 md:mt-36">
       <div className="container-x">
         <Reveal>
-          <div className="max-w-3xl mb-10 md:mb-14">
+          <div className="m-center max-w-3xl mb-10 md:mb-14">
             <p className="t-condensed text-pink text-xl mb-3">Smilers & Dancers Collection</p>
-            <h2 className="t-display text-[clamp(44px,9vw,140px)] leading-[0.82]">
+            <h2 className="t-display text-[clamp(34px,9vw,140px)] leading-[0.82]">
               Feet on the ground<br /><span className="text-white/35">to dance</span>
             </h2>
           </div>
@@ -213,7 +213,7 @@ export function Campaign() {
           ))}
         </div>
         <Reveal delay={0.1}>
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+          <div className="m-center mt-8 flex flex-wrap items-center justify-between gap-4">
             <p className="text-sm text-white/55 max-w-lg">Spirit in the clouds to dream. Photos : @smilin.dancin — highlight Merch'. Annecy, Lyon, plages et sommets.</p>
             <Link href="/collections/smilers-dancers" className="btn btn-primary">Voir la collection</Link>
           </div>
@@ -233,8 +233,8 @@ export function EventsSection({ events }: { events: SDEvent[] }) {
       </div>
       <div className="container-x relative">
         <Reveal>
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
-            <h2 className="t-display text-[clamp(44px,8vw,120px)]">Events</h2>
+          <div className="m-center flex flex-wrap items-end justify-between gap-6 mb-10">
+            <h2 className="t-display text-[clamp(34px,8vw,120px)]">Events</h2>
             <div className="text-right">
               <p className="t-label text-white/50">Prochaine date</p>
               <p className="t-condensed text-2xl md:text-3xl">Info à venir — suivez <a href="https://www.instagram.com/smilin.dancin/" className="g-neon-text" target="_blank" rel="noreferrer">@smilin.dancin</a></p>
@@ -246,7 +246,7 @@ export function EventsSection({ events }: { events: SDEvent[] }) {
             <Link href={`/events/${latest.slug}`} className="group relative block aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-[3px]">
               <Image src={latest.cover} alt={latest.title} fill sizes="100vw" className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.03]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-              <div className="absolute inset-x-5 bottom-5 md:inset-x-10 md:bottom-10 grid md:grid-cols-[1fr_auto] items-end gap-6">
+              <div className="m-center absolute inset-x-5 bottom-5 md:inset-x-10 md:bottom-10 grid md:grid-cols-[1fr_auto] items-end gap-6">
                 <div>
                   <p className="t-condensed text-xl md:text-2xl text-blue-sky">{latest.dateLabel} · {latest.venue.name}</p>
                   <p className="t-display text-[12vw] md:text-[7vw] leading-[0.85] mt-2">{latest.title}</p>
@@ -257,11 +257,11 @@ export function EventsSection({ events }: { events: SDEvent[] }) {
             </Link>
           </RevealMask>
         )}
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           {prev && (
             <Reveal>
-              <Link href={`/events/${prev.slug}`} className="group flex gap-5 items-center border border-white/10 rounded-[3px] p-4 hover:border-white/30 transition-colors">
-                <div className="relative w-28 md:w-40 aspect-[16/10] overflow-hidden rounded-[2px] shrink-0">
+              <Link href={`/events/${prev.slug}`} className="group flex flex-col sm:flex-row gap-4 sm:gap-5 sm:items-center text-center sm:text-left border border-white/10 rounded-[3px] p-4 hover:border-white/30 transition-colors">
+                <div className="relative w-full sm:w-28 md:w-40 aspect-[16/10] overflow-hidden rounded-[2px] shrink-0">
                   <Image src={prev.poster} alt={prev.title} fill sizes="160px" className="object-cover" />
                 </div>
                 <div>
@@ -292,15 +292,15 @@ export function JournalSection({ articles }: { articles: Article[] }) {
   return (
     <section className="container-x mt-24 md:mt-36">
       <Reveal>
-        <div className="flex items-end justify-between gap-6 mb-8">
-          <h2 className="t-display text-[clamp(40px,6vw,88px)]">Journal</h2>
+        <div className="m-center flex flex-col md:flex-row items-end justify-between gap-6 mb-8">
+          <h2 className="t-display text-[clamp(34px,6vw,88px)]">Journal</h2>
           <Link href="/journal" className="btn btn-ghost shrink-0">Tous les articles</Link>
         </div>
       </Reveal>
       <div className="grid md:grid-cols-3 gap-5">
         {articles.slice(0, 3).map((a, i) => (
           <Reveal key={a.slug} delay={i * 0.08}>
-            <Link href={`/journal/${a.slug}`} className="group block">
+            <Link href={`/journal/${a.slug}`} className="m-center group block">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[3px] bg-ink-2">
                 <Image src={a.cover} alt={a.coverAlt} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]" />
               </div>
@@ -322,9 +322,9 @@ export function BrandStatement() {
       <div className="absolute inset-0 pointer-events-none">
         <Image src="/photos/terrasse.jpg" alt="" fill sizes="100vw" className="object-cover opacity-[0.14] mix-blend-multiply" />
       </div>
-      <div className="container-x relative grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
+      <div className="m-center container-x relative grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-20 items-center">
         <Reveal>
-          <h2 className="t-display text-[clamp(40px,7vw,104px)] leading-[0.85]">
+          <h2 className="t-display text-[clamp(34px,7vw,104px)] leading-[0.85]">
             De la musique,<br />des sourires,<br /><span className="text-pink">des souvenirs.</span>
           </h2>
         </Reveal>
@@ -348,8 +348,8 @@ export function NewsletterBlock() {
         <div className="absolute -right-20 -top-20 opacity-50 pointer-events-none">
           <Globe size={420} glow={false} id="nl" speed={80} />
         </div>
-        <div className="relative max-w-2xl">
-          <h2 className="t-display text-[clamp(36px,6vw,80px)] text-white leading-[0.85]">The world<br />is groove</h2>
+        <div className="m-center relative max-w-2xl">
+          <h2 className="t-display text-[clamp(34px,6vw,80px)] text-white leading-[0.85]">The world<br />is groove</h2>
           <p className="text-white/85 mt-5 mb-7 max-w-md">Soyez prévenu·e des drops, des pré-commandes et des prochaines dates avant tout le monde.</p>
           <NewsletterForm source="home" />
         </div>

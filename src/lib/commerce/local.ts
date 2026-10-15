@@ -71,7 +71,7 @@ export const localProvider: CommerceProvider = {
         const line: CartLine & { lineTotal: Money } = {
           id: variant.id,
           productHandle: product.handle,
-          productTitle: product.title,
+          productTitle: product.title + (product.preorder ? " (précommande)" : ""),
           variantId: variant.id,
           variantTitle: variant.title,
           options: variant.options,

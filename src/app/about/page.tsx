@@ -18,15 +18,15 @@ export default function AboutPage() {
     <div className="pt-28 md:pt-36">
       <section className="container-x relative overflow-hidden">
         <div className="absolute right-0 -top-24 opacity-60 pointer-events-none hidden md:block"><Globe size={520} id="ab" /></div>
-        <div className="relative max-w-4xl">
+        <div className="m-center relative max-w-4xl">
           <p className="t-condensed text-blue-sky text-xl">Lyon · depuis janvier 2025</p>
-          <h1 className="t-display text-[clamp(44px,9vw,128px)] leading-[0.82] mt-2">De la musique,<br />des sourires,<br /><span className="g-neon-text">des souvenirs.</span></h1>
+          <h1 className="m-center t-display text-[clamp(34px,9vw,128px)] leading-[0.82] mt-2">De la musique,<br />des sourires,<br /><span className="g-neon-text">des souvenirs.</span></h1>
         </div>
       </section>
       <section className="container-x mt-16 grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-20 items-start">
         <RevealMask><div className="relative aspect-[4/5] overflow-hidden rounded-[3px]"><Image src="/photos/smilin.jpg" alt="DJ devant le logo Smilin' Dancin' au Yacht" fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover" /><span className="absolute bottom-3 left-3 t-label text-[10px] bg-black/60 px-2 py-1 rounded">@vg.photographe</span></div></RevealMask>
         <Reveal delay={0.1}>
-          <div className="space-y-5 text-base md:text-lg leading-relaxed text-white/80">
+          <div className="m-center space-y-5 text-base md:text-lg leading-relaxed text-white/80">
             <p>Smilin' Dancin' œuvre à la création d'événements culturels qui valorisent la musique électronique, le patrimoine architectural ainsi que les savoir-faire locaux.</p>
             <p>Nous, c'est Flow et Lucho : deux bons vivants, fêtards et amis inséparables, toujours animés par l'euphorie de vibrer devant les enceintes. Après des années à parcourir les festivals, une idée nous trottait en tête : partager des instants mémorables en musique avec ceux qui nous entourent.</p>
             <p>Le concept repose sur des événements à thème — La Isla Electrónica, le Mexico Show — où l'on vous demande de jouer le jeu à fond. Et sur des vêtements : Electronic Music Events & Clothing. Une collection Made in France pour continuer à danser quand la fête est finie.</p>
@@ -35,7 +35,7 @@ export default function AboutPage() {
         </Reveal>
       </section>
       <section className="container-x mt-24">
-        <h2 className="t-display text-[clamp(36px,6vw,88px)] mb-10">Chronologie</h2>
+        <h2 className="m-center t-display text-[clamp(32px,6vw,88px)] mb-10">Chronologie</h2>
         <ol className="relative border-l border-white/15 ml-2 space-y-10">
           {timeline.map((t, i) => (
             <Reveal key={t.title} delay={i * 0.05}>
@@ -51,7 +51,7 @@ export default function AboutPage() {
       </section>
       <section className="container-x mt-24 grid md:grid-cols-3 gap-4">
         {[["Événements", "Festivals à thème au Yacht, 20 min au nord de Lyon. Intimistes, immersifs, 3 scènes.", "/events"], ["Vêtements", "9 visuels, 6 coupes, sweats brodés. Made in France, XS à XXL.", "/shop"], ["Association", "Smilin' Dancin' est une association loi 1901. Soutenez le projet sur HelloAsso.", "https://www.helloasso.com/associations/smilin-dancin"]].map(([t, d, h]) => (
-          <Link key={t} href={h} className="border border-white/10 rounded-[3px] p-6 hover:border-white/30 transition-colors">
+          <Link key={t} href={h} className="m-center border border-white/10 rounded-[3px] p-6 hover:border-white/30 transition-colors">
             <p className="t-display text-2xl">{t}</p><p className="text-sm text-white/65 mt-2">{d}</p>
           </Link>
         ))}
