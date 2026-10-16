@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ARTICLES } from "@/lib/data/journal";
 import { Reveal } from "@/components/ui/Reveal";
 import { formatDate } from "@/lib/format";
-export const metadata: Metadata = { title: "Journal", description: "Culture électronique, coulisses des festivals, collections : le journal Smilin' Dancin'." };
+export const metadata: Metadata = { title: "Journal", description: "Culture électronique, coulisses des festivals, collections : le journal Smilin' Dancin'." };
 export default function JournalPage() {
   const [first, ...rest] = ARTICLES;
   return (

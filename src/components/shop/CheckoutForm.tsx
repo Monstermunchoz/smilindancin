@@ -139,7 +139,7 @@ export function CheckoutForm({ methods, stripeEnabled = false }: { methods: Ship
         ) : (
           <section className="border border-pink/40 bg-pink/5 rounded-[3px] p-5">
             <p className="font-semibold">Paiement en ligne, mode démonstration</p>
-            <p className="text-sm text-white/65 mt-1">Étape suivante : page de paiement simulée (aucun débit, aucune donnée bancaire). Le paiement réel s'active avec Stripe.</p>
+            <p className="text-sm text-white/65 mt-1">Étape suivante : page de paiement simulée (aucun débit, aucune donnée bancaire). Le paiement réel s'active avec Stripe.</p>
           </section>
         )}
       </div>

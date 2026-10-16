@@ -39,7 +39,7 @@ export function ProductEditor({ product }: { product: Product }) {
         </div>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={f.featured} onChange={(e) => setF({ ...f, featured: e.target.checked })} className="accent-pink" /> Mis en avant sur l'accueil</label>
         <button onClick={save} disabled={saving} className="btn btn-primary w-full">{saving ? "…" : "Enregistrer"}</button>
-        <p className="text-[11px] text-white/40">Provenance : {product.provenance}</p>
+        <p className="text-[11px] text-white/40">Provenance : {product.provenance}</p>
       </div>
       <div className="border border-white/10 rounded-[4px] p-5">
         <p className="t-label text-white/55 mb-3">Stock par variante ({product.variants.length})</p>
@@ -52,7 +52,7 @@ export function ProductEditor({ product }: { product: Product }) {
               <input type="number" min={0} placeholder="∞" defaultValue={v.stock ?? ""} onChange={(e) => setStocks({ ...stocks, [v.id]: e.target.value })} onBlur={() => saveStock(v.id)} className="w-20 bg-white/5 border border-white/15 rounded-[3px] px-2 py-1.5 text-sm outline-none focus:border-white text-right" />
             </div>
           ))}
-          {product.variants.length === 0 && <p className="text-sm text-white/45 py-6">Aucune variante : produit « à venir » (prix et tailles à confirmer par la marque).</p>}
+          {product.variants.length === 0 && <p className="text-sm text-white/45 py-6">Aucune variante : produit « à venir » (prix et tailles à confirmer par la marque).</p>}
         </div>
       </div>
     </div>

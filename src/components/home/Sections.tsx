@@ -47,7 +47,7 @@ export function Drops({ products }: { products: Product[] }) {
           <h2 className="t-display text-[clamp(34px,8vw,120px)]">
             Nouvelle <span className="g-neon-text">co’</span> 2026
           </h2>
-          <p className="max-w-sm text-white/70 text-sm md:text-base">Deux visuels dévoilés au Mexico Show : Groovers (never miss the drop) et The Real VIP (is on the dancefloor). Précommande ouverte.</p>
+          <p className="max-w-sm text-white/70 text-sm md:text-base">Deux visuels dévoilés au Mexico Show : Groovers (never miss the drop) et The Real VIP (is on the dancefloor). Précommande ouverte.</p>
         </div>
       </Reveal>
       <div className="grid md:grid-cols-12 gap-4 md:gap-6">
@@ -103,7 +103,7 @@ export function VisualPicker({ products }: { products: Product[] }) {
             <h2 className="t-display text-[clamp(34px,7vw,104px)] leading-[0.85]">
               <span className="whitespace-nowrap">9 visuels</span><br /><span className="text-white/40 whitespace-nowrap">au choix</span>
             </h2>
-            <p className="max-w-md text-white/70 lg:justify-self-end">La Smilers & Dancers Collection : chaque visuel existe en t-shirt (6 coupes, devant petit ou dos grand) et en sweat à capuche brodé. Noir, blanc, gris. Made in France, du XS au XXL.</p>
+            <p className="max-w-md text-white/70 lg:justify-self-end">La Smilers & Dancers Collection : chaque visuel existe en t-shirt (6 coupes, devant petit ou dos grand) et en sweat à capuche brodé. Noir, blanc, gris. Made in France, du XS au XXL.</p>
           </div>
         </Reveal>
 
@@ -143,13 +143,13 @@ export function VisualPicker({ products }: { products: Product[] }) {
                   <p className="text-sm text-white/75 mt-4 leading-relaxed">{v.description}</p>
                   <div className="mt-auto pt-6 space-y-2.5">
                     {tee && (
-                      <Link href={`/shop/${tee.handle}`} className="flex items-center justify-between border border-white/15 rounded-full px-5 py-3 hover:border-white hover:bg-white/5 transition-colors">
+                      <Link href={`/shop/${tee.handle}`} className="w-full flex items-center justify-between gap-4 text-left border border-white/15 rounded-full px-5 py-3 hover:border-white hover:bg-white/5 transition-colors">
                         <span className="text-sm font-semibold">T-shirt · 6 coupes</span>
                         <span className="text-sm tabular-nums text-white/70">dès {formatPrice(2500)}</span>
                       </Link>
                     )}
                     {hoodie && (
-                      <Link href={`/shop/${hoodie.handle}`} className="flex items-center justify-between border border-white/15 rounded-full px-5 py-3 hover:border-white hover:bg-white/5 transition-colors">
+                      <Link href={`/shop/${hoodie.handle}`} className="w-full flex items-center justify-between gap-4 text-left border border-white/15 rounded-full px-5 py-3 hover:border-white hover:bg-white/5 transition-colors">
                         <span className="text-sm font-semibold">Sweat à capuche brodé</span>
                         <span className="text-sm tabular-nums text-white/70">{formatPrice(hoodie.price)}</span>
                       </Link>
@@ -332,7 +332,7 @@ export function BrandStatement() {
         </Reveal>
         <Reveal delay={0.15}>
           <div className="space-y-5 text-base md:text-lg leading-relaxed text-black/80">
-            <p>Smilin' Dancin' est né à Lyon en janvier 2025 de deux amis, Flow et Lucho, après des années à parcourir les festivals. Bien plus qu'un concept événementiel : un état d'esprit fait de good vibes, de partage et d'amour, porté par la musique.</p>
+            <p>Smilin' Dancin' est né à Lyon en janvier 2025 de deux amis, Flow et Lucho, après des années à parcourir les festivals. Bien plus qu'un concept événementiel : un état d'esprit fait de good vibes, de partage et d'amour, porté par la musique.</p>
             <p>Des événements intimistes et à thème (La Isla Electrónica, le Mexico Show) et une ligne de vêtements Made in France pour continuer à danser une fois la fête finie. Electronic Music Events & Clothing.</p>
             <Link href="/about" className="btn btn-dark">Notre histoire</Link>
           </div>
@@ -352,7 +352,7 @@ export function NewsletterBlock() {
         </div>
         <div className="m-center relative max-w-2xl">
           <h2 className="t-display text-[clamp(34px,6vw,80px)] text-white leading-[0.85]">The world<br />is groove</h2>
-          <p className="text-white/85 mt-5 mb-7 max-w-md">Soyez prévenu·e des drops, des pré-commandes et des prochaines dates avant tout le monde.</p>
+          <p className="text-white/85 mt-5 mb-7 max-w-md">Soyez prévenu·e des drops, des précommandes et des prochaines dates avant tout le monde.</p>
           <NewsletterForm source="home" />
         </div>
       </div>

@@ -26,7 +26,7 @@ export default function AdminLogin() {
           {err && <p className="text-xs text-pink mt-2">{err}</p>}
         </div>
         <button disabled={loading} className="btn btn-primary w-full">{loading ? "…" : "Se connecter"}</button>
-        <p className="text-[11px] text-white/35">Mot de passe défini par ADMIN_PASSWORD dans .env.local (défaut dev : smilin-admin).</p>
+        <p className="text-[11px] text-white/35">Mot de passe défini par ADMIN_PASSWORD dans .env.local (défaut dev : smilin-admin).</p>
       </form>
     </div>
   );

@@ -27,7 +27,7 @@ export function Hero() {
       </motion.span>
     ));
 
-  const intro = "De la musique, des sourires, des souvenirs. La collection Smilers & Dancers : 9 visuels Made in France, et deux nouveaux drops dévoilés au Mexico Show.";
+  const intro = "De la musique, des sourires, des souvenirs. La collection Smilers & Dancers : 9 visuels Made in France, et deux nouveaux drops dévoilés au Mexico Show.";
   const fade = (delay: number) => ({ initial: reduce ? false : { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, delay, ease } }) as const;
 
   return (
@@ -36,7 +36,7 @@ export function Hero() {
       <motion.div style={{ y: imgY }} className="absolute inset-0">
         <Image
           src="/merch/photos/campagne-2026.jpg"
-          alt="Campagne 2026 : t-shirts Groovers et The Real VIP is on the dancefloor"
+          alt="Campagne 2026 : t-shirts Groovers et The Real VIP is on the dancefloor"
           fill
           priority
           sizes="100vw"

@@ -216,7 +216,7 @@ img { user-select: none; }
 @media (max-width: 767px) {
   .m-center { text-align: center; }
   .m-center :where(p, h1, h2, h3, form, ul, nav) { margin-left: auto; margin-right: auto; }
-  .m-center:where(.flex:not(.flex-col)), .m-center :where(.flex:not(.flex-col)) { justify-content: center; }
+  .m-center:where(.flex:not(.flex-col):not(.justify-between)), .m-center :where(.flex:not(.flex-col):not(.justify-between)) { justify-content: center; }
   .m-center:where(.flex-col), .m-center :where(.flex-col) { align-items: center; }
   .m-center:where(.grid), .m-center :where(.grid) { justify-items: center; }
   .m-center :where(.text-right) { text-align: center; }

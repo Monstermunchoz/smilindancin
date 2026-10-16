@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Smilin' Dancin'",
   tagline: "De la Musique, des Sourires, des Souvenirs.",
-  description: "Smilin' Dancin', Electronic Music Events & Clothing. Festival à thème au bord de la Saône (Lyon) et collection de vêtements Made in France : la Smilers & Dancers Collection.",
+  description: "Smilin' Dancin', Electronic Music Events & Clothing. Festival à thème au bord de la Saône (Lyon) et collection de vêtements Made in France : la Smilers & Dancers Collection.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   instagram: "https://www.instagram.com/smilin.dancin/",
   shotgun: "https://shotgun.live/fr/venues/smilin-dancin",

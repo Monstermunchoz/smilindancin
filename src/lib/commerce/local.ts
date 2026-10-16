@@ -62,7 +62,7 @@ export const localProvider: CommerceProvider = {
       for (const l of input.lines) {
         const product = products.find((p) => p.variants.some((v) => v.id === l.variantId));
         const variant = product?.variants.find((v) => v.id === l.variantId);
-        if (!product || !variant) throw new CommerceError(`Variante introuvable : ${l.variantId}`, "NOT_FOUND");
+        if (!product || !variant) throw new CommerceError(`Variante introuvable : ${l.variantId}`, "NOT_FOUND");
         if (product.status !== "active") throw new CommerceError(`${product.title} n'est pas disponible`, "UNAVAILABLE");
         const qty = Math.max(1, Math.min(10, Math.floor(l.quantity)));
         if (variant.stock !== null && variant.stock < qty) {

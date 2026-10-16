@@ -68,7 +68,7 @@ export function DemoPayment({ kind, id, accessKey, amount, label }: { kind: "bil
           )}
         </AnimatePresence>
       </button>
-      <p className="text-[11px] text-white/40 text-center mt-4">Le paiement réel (Stripe : CB, Apple Pay, Google Pay) s'active en ajoutant les clés dans Vercel.</p>
+      <p className="text-[11px] text-white/40 text-center mt-4">Le paiement réel (Stripe : CB, Apple Pay, Google Pay) s'active en ajoutant les clés dans Vercel.</p>
     </div>
   );
 }

@@ -21,7 +21,7 @@ import type { Collection, Product, Variant, Money } from "@/lib/commerce/types";
  *   - Coloris : tees/débardeurs/crop → Noir, Blanc · Sweats → Noir, Blanc, Gris
  *
  * Ce qui n'est PAS public (donc non inventé) : stocks (commande en DM = à la demande → stock null),
- * prix des drops 2026 « Groovers » / « The Real VIP » (pré-commande au festival) et des
+ * prix des drops 2026 « Groovers » / « The Real VIP » (précommande au festival) et des
  * casquettes / bandanas / bobs (« stock limité ») → status "coming_soon", prix 0 = « tarif à confirmer ».
  * ---------------------------------------------------------------------------
  */
@@ -138,7 +138,7 @@ export const VISUALS: Visual[] = [
     title: "Disco Ball",
     subtitle: "Le globe grillagé · Feel Better With Music",
     description:
-      "L'emblème Smilin' Dancin' : le globe grillagé, l'anneau « Feel Better With Music », le wordmark en haut et en bas. Bleu et framboise, brodé sur le cœur et la manche du sweat, imprimé DTF sur les tees.",
+      "L'emblème Smilin' Dancin' : le globe grillagé, l'anneau « Feel Better With Music », le wordmark en haut et en bas. Bleu et framboise, brodé sur le cœur et la manche du sweat, imprimé DTF sur les tees.",
     hoodiePrice: 8000,
     tile: "/merch/visuels/01-disco-ball.jpg",
     photos: [
@@ -156,7 +156,7 @@ export const VISUALS: Visual[] = [
     title: "Feet On The Ground",
     subtitle: "To dance · Spirit in the clouds to dream",
     description:
-      "« Feet on the ground to dance, spirit in the clouds to dream. » La fille au bob qui souffle des boules à facettes. Rose, bleu, noir : le visuel le plus porté de la collection.",
+      "« Feet on the ground to dance, spirit in the clouds to dream. » La fille au bob qui souffle des boules à facettes. Rose, bleu, noir : le visuel le plus porté de la collection.",
     hoodiePrice: 8000,
     tile: "/merch/visuels/02-feet-on-the-ground.jpg",
     photos: [
@@ -173,7 +173,7 @@ export const VISUALS: Visual[] = [
     handle: "smilin-dancin-wordmark",
     title: "Smilin' Dancin'",
     subtitle: "Le wordmark · centré devant",
-    description: "Le logo, rien que le logo. Italique, bleu et framboise, centré devant. Sur le sweat : centré devant uniquement, 60 €.",
+    description: "Le logo, rien que le logo. Italique, bleu et framboise, centré devant. Sur le sweat : centré devant uniquement, 60 €.",
     hoodiePrice: 6000,
     hoodieNote: "Centré devant uniquement",
     tile: "/merch/visuels/03-wordmark.jpg",
@@ -191,7 +191,7 @@ export const VISUALS: Visual[] = [
     title: "We Push The Sky",
     subtitle: "La boule à facettes au bout des bras",
     description:
-      "Une silhouette qui pousse une boule à facettes vers un ciel rayé rose et bleu. Le visuel signature des sweats, brodé cœur + manche, 90 €.",
+      "Une silhouette qui pousse une boule à facettes vers un ciel rayé rose et bleu. Le visuel signature des sweats, brodé cœur + manche, 90 €.",
     hoodiePrice: 9000,
     tile: "/merch/visuels/04-we-push-the-sky.jpg",
     photos: [
@@ -208,7 +208,7 @@ export const VISUALS: Visual[] = [
     handle: "together",
     title: "Together",
     subtitle: "Dance · Danser · Bailar · Tanzen · Ballare · 跳舞",
-    description: "Deux silhouettes devant une enceinte, et le mot « danser » dans toutes les langues en fanions roses et bleus. Together.",
+    description: "Deux silhouettes devant une enceinte, et le mot « danser » dans toutes les langues en fanions roses et bleus. Together.",
     hoodiePrice: 8000,
     tile: "/merch/visuels/05-together.jpg",
     photos: [
@@ -224,7 +224,7 @@ export const VISUALS: Visual[] = [
     handle: "in",
     title: "IN",
     subtitle: "Smil · Lov · Danc · Mov · Dream · Jump",
-    description: "SMILIN, LOVIN, DANCIN, MOVIN, DREAMIN, JUMPIN. Le manifeste typographique, bleu et framboise. Sur le sweat : 70 €.",
+    description: "SMILIN, LOVIN, DANCIN, MOVIN, DREAMIN, JUMPIN. Le manifeste typographique, bleu et framboise. Sur le sweat : 70 €.",
     hoodiePrice: 7000,
     tile: "/merch/visuels/06-in.jpg",
     photos: [
@@ -239,7 +239,7 @@ export const VISUALS: Visual[] = [
     handle: "electronic-music-events-clothing",
     title: "Electronic Music Events & Clothing",
     subtitle: "Le badge circulaire autour du globe",
-    description: "Ce que fait Smilin' Dancin', en un badge : Electronic Music Events & Clothing autour du globe et du wordmark. Pervenche et prune.",
+    description: "Ce que fait Smilin' Dancin', en un badge : Electronic Music Events & Clothing autour du globe et du wordmark. Pervenche et prune.",
     hoodiePrice: 8000,
     tile: "/merch/visuels/07-electronic-music-events-clothing.jpg",
     photos: [
@@ -256,7 +256,7 @@ export const VISUALS: Visual[] = [
     handle: "music-is-my-power",
     title: "Music Is My Power",
     subtitle: "L'haltère-vinyle",
-    description: "Un poing qui soulève un haltère fait de vinyles, les notes qui s'envolent. Music is my power : le visuel le plus vu sur les plages.",
+    description: "Un poing qui soulève un haltère fait de vinyles, les notes qui s'envolent. Music is my power : le visuel le plus vu sur les plages.",
     hoodiePrice: 8000,
     tile: "/merch/visuels/08-music-is-my-power.jpg",
     photos: [
@@ -294,7 +294,7 @@ function orderPhotos(photos: Product["images"], kind: "tee" | "hoodie"): Product
   return [...photos].sort((a, b) => score(a) - score(b));
 }
 
-const PROVENANCE = "Instagram @smilin.dancin, post DPQrKZSiOKL (collection 2024-2025, tarifs) + highlight « Merch' »";
+const PROVENANCE = "Instagram @smilin.dancin, post DPQrKZSiOKL (collection 2024-2025, tarifs) + highlight « Merch' »";
 
 const collectionProducts: Product[] = [];
 
@@ -307,9 +307,9 @@ for (const v of VISUALS) {
     description: v.description,
     details: [
       "Impression DTF, visuel devant en petit, ou derrière en grand (+ petit logo devant)",
-      "Coupes : T-shirt classic, oversize, débardeur (Homme) · T-shirt classic, crop top, débardeur (Femme)",
-      "Coloris : Noir · Blanc",
-      "Tailles : XS à XXL",
+      "Coupes : T-shirt classic, oversize, débardeur (Homme) · T-shirt classic, crop top, débardeur (Femme)",
+      "Coloris : Noir · Blanc",
+      "Tailles : XS à XXL",
       "Made in France",
     ],
     category: "tee",
@@ -334,8 +334,8 @@ for (const v of VISUALS) {
     description: v.description,
     details: [
       v.hoodieNote ? `Broderie, ${v.hoodieNote.toLowerCase()}` : "Broderie, visuel cœur + manche",
-      "Coloris : Noir · Blanc · Gris",
-      "Tailles : XS à XXL",
+      "Coloris : Noir · Blanc · Gris",
+      "Tailles : XS à XXL",
       "Made in France",
     ],
     category: "hoodie",
@@ -362,8 +362,8 @@ const DROPS_2026: Product[] = [
     title: "Groovers",
     subtitle: "Never miss the drop · nouveau visuel 2026",
     description:
-      "Le ghetto-blaster Groovers. Nouveau visuel de la collection, vu au Mexico Show en crop top noir et en débardeur blanc. T-shirts sur pré-commande sur le festival.",
-    details: ["Nouveau visuel 2026", "Vu en crop top noir et débardeur blanc", "T-shirts sur pré-commande sur le festival", "Précommande, tarif aligné sur la grille officielle de la collection, à confirmer par la marque", "Expédition ou retrait au stand dès production"],
+      "Le ghetto-blaster Groovers. Nouveau visuel de la collection, vu au Mexico Show en crop top noir et en débardeur blanc. T-shirts sur précommande sur le festival.",
+    details: ["Nouveau visuel 2026", "Vu en crop top noir et débardeur blanc", "T-shirts sur précommande sur le festival", "Précommande, tarif aligné sur la grille officielle de la collection, à confirmer par la marque", "Expédition ou retrait au stand dès production"],
     category: "tee",
     collection: "drops-2026",
     tags: ["tee", "2026", "groovers", "nouveau"],
@@ -379,7 +379,7 @@ const DROPS_2026: Product[] = [
     preorder: true,
     featured: true,
     demo: false,
-    provenance: "Instagram @smilin.dancin, highlight « Merch' », story « Infos merch »",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' », story « Infos merch »",
     createdAt: "2026-09-01",
   },
   {
@@ -388,8 +388,8 @@ const DROPS_2026: Product[] = [
     title: "The Real VIP",
     subtitle: "Is on the dancefloor · nouveau visuel 2026",
     description:
-      "Le badge VIP au bout de son ruban bleu et rose : « The real VIP is on the dancefloor ». Grand visuel dos sur tee blanc. Nouvelle co', pré-commande sur le festival.",
-    details: ["Nouveau visuel 2026", "Vu en t-shirt blanc, grand visuel dos", "T-shirts sur pré-commande sur le festival", "Précommande, tarif aligné sur la grille officielle de la collection, à confirmer par la marque", "Expédition ou retrait au stand dès production"],
+      "Le badge VIP au bout de son ruban bleu et rose : « The real VIP is on the dancefloor ». Grand visuel dos sur tee blanc. Nouvelle co', précommande sur le festival.",
+    details: ["Nouveau visuel 2026", "Vu en t-shirt blanc, grand visuel dos", "T-shirts sur précommande sur le festival", "Précommande, tarif aligné sur la grille officielle de la collection, à confirmer par la marque", "Expédition ou retrait au stand dès production"],
     category: "tee",
     collection: "drops-2026",
     tags: ["tee", "2026", "vip", "nouveau"],
@@ -405,7 +405,7 @@ const DROPS_2026: Product[] = [
     preorder: true,
     featured: true,
     demo: false,
-    provenance: "Instagram @smilin.dancin, highlight « Merch' », story « Infos merch »",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' », story « Infos merch »",
     createdAt: "2026-09-01",
   },
 ];
@@ -432,7 +432,7 @@ const ACCESSORIES: Product[] = [
     price: eur(0),
     status: "coming_soon",
     demo: false,
-    provenance: "Instagram @smilin.dancin, highlight « Merch' » (« Casquettes, bandanas, bobs, stock limité »)",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' » (« Casquettes, bandanas, bobs, stock limité »)",
     createdAt: "2026-06-01",
   },
   {
@@ -441,7 +441,7 @@ const ACCESSORIES: Product[] = [
     title: "Casquette Smilin' Dancin'",
     subtitle: "Wordmark brodé · navy, grise, rose délavée",
     description: "La casquette wordmark, vue en navy, en gris et en rose délavé. Stock limité, tarif à confirmer.",
-    details: ["Broderie wordmark", "Coloris vus : navy, gris, rose délavé", "Stock limité", "Tarif à confirmer par la marque"],
+    details: ["Broderie wordmark", "Coloris vus : navy, gris, rose délavé", "Stock limité", "Tarif à confirmer par la marque"],
     category: "accessory",
     collection: "accessoires",
     tags: ["casquette", "cap", "accessoire"],
@@ -460,7 +460,7 @@ const ACCESSORIES: Product[] = [
     price: eur(0),
     status: "coming_soon",
     demo: false,
-    provenance: "Instagram @smilin.dancin, highlight « Merch' »",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' »",
     createdAt: "2026-06-01",
   },
   {
@@ -484,7 +484,7 @@ const ACCESSORIES: Product[] = [
     price: eur(0),
     status: "coming_soon",
     demo: false,
-    provenance: "Instagram @smilin.dancin, highlight « Merch' »",
+    provenance: "Instagram @smilin.dancin, highlight « Merch' »",
     createdAt: "2026-06-01",
   },
 ];
@@ -498,7 +498,7 @@ export const COLLECTIONS: Collection[] = [
     title: "Smilers & Dancers",
     tagline: "9 visuels au choix · T-shirts & sweats",
     description:
-      "La collection 2024-2025 : 9 visuels, 6 coupes de tee (classic, oversize, débardeur, crop top), sweats à capuche brodés. Made in France, XS à XXL.",
+      "La collection 2024-2025 : 9 visuels, 6 coupes de tee (classic, oversize, débardeur, crop top), sweats à capuche brodés. Made in France, XS à XXL.",
     image: "/merch/photos/we-push-the-sky-hoodie-black.jpg",
     productHandles: collectionProducts.map((p) => p.handle),
   },
@@ -507,7 +507,7 @@ export const COLLECTIONS: Collection[] = [
     handle: "drops-2026",
     title: "Nouvelle Co' 2026",
     tagline: "Groovers · The Real VIP",
-    description: "Deux nouveaux visuels dévoilés au Mexico Show : Groovers (never miss the drop) et The Real VIP (is on the dancefloor). Pré-commande sur le festival.",
+    description: "Deux nouveaux visuels dévoilés au Mexico Show : Groovers (never miss the drop) et The Real VIP (is on the dancefloor). Précommande sur le festival.",
     image: "/merch/photos/campagne-2026.jpg",
     productHandles: DROPS_2026.map((p) => p.handle),
   },

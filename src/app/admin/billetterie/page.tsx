@@ -14,7 +14,7 @@ export default async function AdminBilletterie() {
   const paid = tOrders.filter((o) => o.status === "paid");
   return (
     <div>
-      <PageTitle title="Billetterie" sub="Tarifs progressifs : chaque tarif ouvre quand le précédent est épuisé." action={<Link href="/admin/checkin" className="btn btn-primary !py-2.5">Scanner les billets</Link>} />
+      <PageTitle title="Billetterie" sub="Tarifs progressifs : chaque tarif ouvre quand le précédent est épuisé." action={<Link href="/admin/checkin" className="btn btn-primary !py-2.5">Scanner les billets</Link>} />
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
         <Stat label="CA billetterie" value={formatPrice(paid.reduce((s, o) => s + o.total, 0))} hint={`${paid.length} commande(s) payée(s)`} />
         <Stat label="Billets émis" value={String(tickets.filter((t) => t.status !== "cancelled").length)} />

@@ -5,7 +5,7 @@ import { pastEvents, upcomingEvents, NEXT_DATE_HINT } from "@/lib/data/events";
 import { RevealMask } from "@/components/ui/Reveal";
 import { Globe } from "@/components/ui/Globe";
 import { formatDate } from "@/lib/format";
-export const metadata: Metadata = { title: "Événements", description: "Les festivals Smilin' Dancin' : Isla Electrónica 2025, Mexico Show 2026, au Yacht près de Lyon. Billetterie sur Shotgun." };
+export const metadata: Metadata = { title: "Événements", description: "Les festivals Smilin' Dancin' : Isla Electrónica 2025, Mexico Show 2026, au Yacht près de Lyon. Billetterie sur Shotgun." };
 
 export default function EventsPage() {
   const up = upcomingEvents();

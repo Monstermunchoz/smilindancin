@@ -97,7 +97,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
             <div className="flex flex-wrap gap-2">{e.genres.map((g) => <span key={g} className="t-label text-[10px] border border-white/15 rounded-full px-2.5 py-1 text-white/70">{g}</span>)}</div>
           </div>
           {e.interested && <p className="t-dot text-sm text-white/50">{e.interested} intéressé·e·s sur Shotgun</p>}
-          <p className="text-xs text-white/40">Source : <a href={e.sourceUrl} className="underline" target="_blank" rel="noreferrer">{new URL(e.sourceUrl).hostname}</a></p>
+          <p className="text-xs text-white/40">Source : <a href={e.sourceUrl} className="underline" target="_blank" rel="noreferrer">{new URL(e.sourceUrl).hostname}</a></p>
         </aside>
       </div>
 

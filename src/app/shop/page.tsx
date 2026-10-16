@@ -5,5 +5,5 @@ export const metadata: Metadata = { title: "Shop", description: "T-shirts, sweat
 export const dynamic = "force-dynamic";
 export default async function ShopPage() {
   const products = await commerce.listProducts();
-  return <ShopGrid products={products} title="Shop" intro="Smilers & Dancers Collection : 9 visuels, 6 coupes, sweats brodés. Et la nouvelle co' 2026." />;
+  return <ShopGrid products={products} title="Shop" intro="Smilers & Dancers Collection : 9 visuels, 6 coupes, sweats brodés. Et la nouvelle co' 2026." />;
 }

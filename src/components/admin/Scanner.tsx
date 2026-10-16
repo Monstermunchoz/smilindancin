@@ -33,7 +33,7 @@ export function Scanner({ initialCode }: { initialCode?: string }) {
     let raf = 0;
     (async () => {
       const BD = (window as unknown as { BarcodeDetector?: new (o: { formats: string[] }) => { detect: (v: HTMLVideoElement) => Promise<{ rawValue: string }[]> } }).BarcodeDetector;
-      if (!BD) { setCamErr("Scan caméra non supporté par ce navigateur : utilisez l'appareil photo du téléphone (le QR ouvre cette page) ou saisissez le code."); setCam(false); return; }
+      if (!BD) { setCamErr("Scan caméra non supporté par ce navigateur : utilisez l'appareil photo du téléphone (le QR ouvre cette page) ou saisissez le code."); setCam(false); return; }
       try {
         stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
         if (videoRef.current) { videoRef.current.srcObject = stream; await videoRef.current.play(); }

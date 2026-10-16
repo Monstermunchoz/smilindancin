@@ -3,14 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal, RevealMask } from "@/components/ui/Reveal";
 import { Globe } from "@/components/ui/Globe";
-export const metadata: Metadata = { title: "À propos", description: "Smilin' Dancin', né à Lyon en janvier 2025 : événements électroniques à thème et vêtements Made in France. De la musique, des sourires, des souvenirs." };
+export const metadata: Metadata = { title: "À propos", description: "Smilin' Dancin', né à Lyon en janvier 2025 : événements électroniques à thème et vêtements Made in France. De la musique, des sourires, des souvenirs." };
 
 const timeline = [
-  { date: "14 janvier 2025", title: "Décollage", text: "Flow et Lucho présentent Smilin' Dancin' : « bien plus qu'un concept événementiel, un état d'esprit fait de good vibes, de partage et d'amour, le tout porté par la musique ». Inspirés par Paradise, CircoLoco ou Elrow, ils veulent des événements intimistes." },
-  { date: "15 février 2025", title: "After Ski : Bathrobe Boogie", text: "Soirée de naissance dans un fort médiéval tenu secret, avec le crew et le futur staff, ambiancée par le DJ résident Jimmy." },
-  { date: "6 septembre 2025", title: "La Isla Electrónica", text: "Première édition du festival au Yacht : destination Cuba, 12 h non-stop, 8 artistes de Lyon, Genève, Barcelone et Annecy. Stand Smilin' Dancin' Merch au Mini Mercado." },
-  { date: "1er octobre 2025", title: "Smilers & Dancers Collection", text: "La collection 2024-2025 est dévoilée : 9 visuels, t-shirts et sweats brodés, Made in France." },
-  { date: "5 septembre 2026", title: "Mexico Show, format XXL", text: "Deuxième édition : 3 scènes, 21 h de musique, 14 DJs, closing de KIKO. Deux nouveaux visuels merch : Groovers et The Real VIP." },
+  { date: "14 janvier 2025", title: "Décollage", text: "Flow et Lucho présentent Smilin' Dancin' : « bien plus qu'un concept événementiel, un état d'esprit fait de good vibes, de partage et d'amour, le tout porté par la musique ». Inspirés par Paradise, CircoLoco ou Elrow, ils veulent des événements intimistes." },
+  { date: "15 février 2025", title: "After Ski : Bathrobe Boogie", text: "Soirée de naissance dans un fort médiéval tenu secret, avec le crew et le futur staff, ambiancée par le DJ résident Jimmy." },
+  { date: "6 septembre 2025", title: "La Isla Electrónica", text: "Première édition du festival au Yacht : destination Cuba, 12 h non-stop, 8 artistes de Lyon, Genève, Barcelone et Annecy. Stand Smilin' Dancin' Merch au Mini Mercado." },
+  { date: "1er octobre 2025", title: "Smilers & Dancers Collection", text: "La collection 2024-2025 est dévoilée : 9 visuels, t-shirts et sweats brodés, Made in France." },
+  { date: "5 septembre 2026", title: "Mexico Show, format XXL", text: "Deuxième édition : 3 scènes, 21 h de musique, 14 DJs, closing de KIKO. Deux nouveaux visuels merch : Groovers et The Real VIP." },
 ];
 
 export default function AboutPage() {
@@ -28,8 +28,8 @@ export default function AboutPage() {
         <Reveal delay={0.1}>
           <div className="m-center space-y-5 text-base md:text-lg leading-relaxed text-white/80">
             <p>Smilin' Dancin' œuvre à la création d'événements culturels qui valorisent la musique électronique, le patrimoine architectural ainsi que les savoir-faire locaux.</p>
-            <p>Nous, c'est Flow et Lucho : deux bons vivants, fêtards et amis inséparables, toujours animés par l'euphorie de vibrer devant les enceintes. Après des années à parcourir les festivals, une idée nous trottait en tête : partager des instants mémorables en musique avec ceux qui nous entourent.</p>
-            <p>Le concept repose sur des événements à thème (La Isla Electrónica, le Mexico Show) où l'on vous demande de jouer le jeu à fond. Et sur des vêtements : Electronic Music Events & Clothing. Une collection Made in France pour continuer à danser quand la fête est finie.</p>
+            <p>Nous, c'est Flow et Lucho : deux bons vivants, fêtards et amis inséparables, toujours animés par l'euphorie de vibrer devant les enceintes. Après des années à parcourir les festivals, une idée nous trottait en tête : partager des instants mémorables en musique avec ceux qui nous entourent.</p>
+            <p>Le concept repose sur des événements à thème (La Isla Electrónica, le Mexico Show) où l'on vous demande de jouer le jeu à fond. Et sur des vêtements : Electronic Music Events & Clothing. Une collection Made in France pour continuer à danser quand la fête est finie.</p>
             <div className="flex flex-wrap gap-3 pt-2"><Link href="/shop" className="btn btn-primary">Le shop</Link><Link href="/events" className="btn btn-ghost">Les événements</Link></div>
           </div>
         </Reveal>
@@ -47,7 +47,7 @@ export default function AboutPage() {
             <div className="m-center">
               <p className="t-label text-pink">Les fondateurs</p>
               <h2 className="t-display text-[clamp(40px,7vw,104px)] leading-[0.85] mt-3">Flow<br /><span className="g-brand-text whitespace-nowrap">&amp; Lucho</span></h2>
-              <p className="text-white/75 mt-6 text-base md:text-lg leading-relaxed max-w-md mx-auto lg:mx-0">Deux amis inséparables, un néon chacun : SMILIN' d'un côté, DANCIN' de l'autre. C'est avec cette photo qu'ils ont présenté Smilin' Dancin' au monde, le 14 janvier 2025.</p>
+              <p className="text-white/75 mt-6 text-base md:text-lg leading-relaxed max-w-md mx-auto lg:mx-0">Deux amis inséparables, un néon chacun : SMILIN' d'un côté, DANCIN' de l'autre. C'est avec cette photo qu'ils ont présenté Smilin' Dancin' au monde, le 14 janvier 2025.</p>
             </div>
           </Reveal>
         </div>

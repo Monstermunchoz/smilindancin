@@ -11,7 +11,7 @@ export default async function ProductsAdmin() {
   const products = await commerce.listProducts({ includeDrafts: true });
   return (
     <div>
-      <PageTitle title="Produits" sub={`${products.length} produits · ${products.reduce((n, p) => n + p.variants.length, 0)} variantes · source : Instagram @smilin.dancin (post collection 2024-2025)`} />
+      <PageTitle title="Produits" sub={`${products.length} produits · ${products.reduce((n, p) => n + p.variants.length, 0)} variantes · source : Instagram @smilin.dancin (post collection 2024-2025)`} />
       <div className="overflow-x-auto border border-white/10 rounded-[4px]">
         <table className="w-full text-sm min-w-[720px]">
           <thead><tr className="t-label text-white/45 text-left border-b border-white/10"><th className="px-4 py-3">Produit</th><th className="px-4 py-3">Catégorie</th><th className="px-4 py-3">Collection</th><th className="px-4 py-3">Variantes</th><th className="px-4 py-3">Prix</th><th className="px-4 py-3">Statut</th><th className="px-4 py-3">Mis en avant</th></tr></thead>

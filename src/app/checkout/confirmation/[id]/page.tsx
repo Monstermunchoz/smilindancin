@@ -19,7 +19,7 @@ export default async function Confirmation({ params, searchParams }: { params: P
         <p className="mt-6 text-white/75 max-w-xl">Paiement reçu, votre commande est confirmée ({formatDate(o.createdAt)}). Un email de confirmation arrive à <b>{o.customer.email}</b>. {o.shippingMethod.id === "event" ? "Rendez-vous au stand Merch du prochain événement." : "On prépare votre pièce avec amour, puis on l'expédie."}</p>
       ) : sp.cancelled ? (
         <div className="mt-6 max-w-xl">
-          <p className="text-white/75">Le paiement a été annulé. Votre commande est conservée : vous pouvez réessayer.</p>
+          <p className="text-white/75">Le paiement a été annulé. Votre commande est conservée : vous pouvez réessayer.</p>
           <RetryPayment orderId={o.id} />
         </div>
       ) : (

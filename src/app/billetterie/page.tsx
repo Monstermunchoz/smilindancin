@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ticketedEvents, getTierViews } from "@/lib/tickets/service";
 import { pastEvents } from "@/lib/data/events";
 import { formatPrice } from "@/lib/format";
-export const metadata: Metadata = { title: "Billetterie", description: "Billets Smilin' Dancin' : Early Bird, Regular, Last Release. Billets nominatifs avec QR code." };
+export const metadata: Metadata = { title: "Billetterie", description: "Billets Smilin' Dancin' : Early Bird, Regular, Last Release. Billets nominatifs avec QR code." };
 export const dynamic = "force-dynamic";
 export default async function Billetterie() {
   const events = ticketedEvents();

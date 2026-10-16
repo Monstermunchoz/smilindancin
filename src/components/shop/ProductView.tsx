@@ -115,7 +115,7 @@ export function ProductView({ product, related, sibling }: { product: Product; r
               </>
               )}
             </div>
-            {img === -1 && has3d && <p className="col-start-2 text-[11px] text-white/45 text-center md:text-left">Rendu 3D indicatif : visuel officiel sur la coupe et le coloris choisis. Photos portées dans la galerie.</p>}
+            {img === -1 && has3d && <p className="col-start-2 text-[11px] text-white/45 text-center md:text-left">Rendu 3D indicatif : visuel officiel sur la coupe et le coloris choisis. Photos portées dans la galerie.</p>}
           </div>
         </div>
 
@@ -215,7 +215,7 @@ export function ProductView({ product, related, sibling }: { product: Product; r
                   {showGuide && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                       <div className="mt-4 text-xs text-white/70 border border-white/15 rounded-[3px] p-4">
-                        <p className="font-semibold text-white mb-2">Tailles XS à XXL, coupe {isTee ? (cut.includes("oversize") ? "oversize : prenez votre taille habituelle, le tombé est ample" : cut.includes("croptop") ? "crop top : coupe courte, prenez votre taille habituelle" : "classique : taille normalement") : "ample : prenez votre taille habituelle"}.</p>
+                        <p className="font-semibold text-white mb-2">Tailles XS à XXL, coupe {isTee ? (cut.includes("oversize") ? "oversize : prenez votre taille habituelle, le tombé est ample" : cut.includes("croptop") ? "crop top : coupe courte, prenez votre taille habituelle" : "classique : taille normalement") : "ample : prenez votre taille habituelle"}.</p>
                         <p>Guide détaillé (mensurations par taille) à compléter par la marque, voir <Link href="/guide-des-tailles" className="underline">le guide des tailles</Link>.</p>
                       </div>
                     </motion.div>
@@ -225,7 +225,7 @@ export function ProductView({ product, related, sibling }: { product: Product; r
 
               <div className="hidden lg:block">
                 <AddButton onClick={addToCart} label={`${product.preorder ? "Précommander" : "Ajouter au panier"} · ${formatPrice(priceShown!)}`} />
-                <p className="text-xs text-white/45 mt-3">{product.preorder ? "Précommande : paiement aujourd'hui, expédition (ou retrait au stand Merch) dès la fin de production." : "Pièce réalisée à la demande (impression DTF / broderie). Livraison France, ou retrait au stand Merch du prochain événement."}</p>
+                <p className="text-xs text-white/45 mt-3">{product.preorder ? "Précommande : paiement aujourd'hui, expédition (ou retrait au stand Merch) dès la fin de production." : "Pièce réalisée à la demande (impression DTF / broderie). Livraison France, ou retrait au stand Merch du prochain événement."}</p>
               </div>
             </div>
           )}

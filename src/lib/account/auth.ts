@@ -37,7 +37,7 @@ export async function currentUser(): Promise<PublicUser | null> {
 export async function signup(input: { email: string; password: string; firstName: string; lastName: string }): Promise<{ user?: PublicUser; error?: string }> {
   const email = input.email.trim().toLowerCase();
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return { error: "Email invalide." };
-  if (input.password.length < 8) return { error: "Mot de passe : 8 caractères minimum." };
+  if (input.password.length < 8) return { error: "Mot de passe : 8 caractères minimum." };
   if (!input.firstName.trim()) return { error: "Prénom requis." };
   return withLock(async () => {
     const users = await readTable("users");
