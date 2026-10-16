@@ -28,7 +28,7 @@ function fit(el: HTMLElement) {
 }
 
 function fitAll() {
-  document.querySelectorAll<HTMLElement>(SELECTOR).forEach(fit);
+  document.querySelectorAll<HTMLElement>(SELECTOR).forEach((el) => { if (getComputedStyle(el).textOverflow !== "ellipsis") fit(el); });
 }
 
 export function FitHeadings() {

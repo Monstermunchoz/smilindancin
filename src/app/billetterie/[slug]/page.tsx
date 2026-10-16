@@ -15,7 +15,7 @@ export default async function EventTickets({ params }: { params: Promise<{ slug:
   if (!e?.ticketing) notFound();
   const tiers = await getTierViews(slug);
   return (
-    <div className="pb-32">
+    <div className="pb-24">
       <header className="container-x pt-24 md:pt-32">
         <div className="relative aspect-[4/3] sm:aspect-[21/9] overflow-hidden rounded-[3px]">
           <Image src={e.cover} alt={e.title} fill priority sizes="100vw" className="object-cover" />
@@ -30,7 +30,7 @@ export default async function EventTickets({ params }: { params: Promise<{ slug:
         <h2 className="m-center t-display text-[clamp(28px,5vw,56px)] mb-6">Choisis tes billets</h2>
         <TicketPicker slug={slug} tiers={tiers} demo={e.ticketing.demo} />
         <ul className="m-center mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-white/70">
-          {e.practical.map((p) => <li key={p} className="border border-white/10 rounded-[2px] p-4">{p}</li>)}
+          {e.practical.map((p) => <li key={p} className="border border-white/10 rounded-[4px] px-4 py-3.5 leading-snug">{p}</li>)}
         </ul>
       </section>
     </div>

@@ -149,15 +149,17 @@ export function ProductView({ product, related, sibling }: { product: Product; r
                 <>
                   <fieldset>
                     <legend className="t-label text-white/60 mb-3">Coupe · {cutObj.label} {cutObj.gender}</legend>
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                       {genders.map((g) => (
-                        <div key={g} className="flex flex-wrap gap-2 items-center">
-                          <span className="w-14 text-xs text-white/50">{g}</span>
-                          {CUTS.filter((c) => c.gender === g).map((c) => (
-                            <button key={c.id} onClick={() => setCut(c.id)} aria-pressed={cut === c.id} className={cn("px-4 py-2 rounded-full text-xs font-semibold border transition-colors", cut === c.id ? "bg-white text-black border-white" : "border-white/20 text-white/80 hover:border-white")}>
-                              {c.label}
-                            </button>
-                          ))}
+                        <div key={g}>
+                          <p className="text-xs text-white/50 mb-2">{g}</p>
+                          <div className="grid grid-cols-3 gap-2">
+                            {CUTS.filter((c) => c.gender === g).map((c) => (
+                              <button key={c.id} onClick={() => setCut(c.id)} aria-pressed={cut === c.id} className={cn("h-11 px-2 rounded-full text-[12px] font-semibold border transition-colors whitespace-nowrap", cut === c.id ? "bg-white text-black border-white" : "border-white/20 text-white/80 hover:border-white")}>
+                                {((l) => l.charAt(0).toUpperCase() + l.slice(1))(c.label.replace("T-shirt ", ""))}
+                              </button>
+                            ))}
+                          </div>
                         </div>
                       ))}
                     </div>

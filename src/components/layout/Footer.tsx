@@ -16,16 +16,18 @@ export function Footer() {
   if (pathname?.startsWith("/admin")) return null;
   return (
     <footer className="relative mt-24 border-t border-white/8 bg-black overflow-hidden">
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[80vw] h-[60vh] neon-halo opacity-50 pointer-events-none" />
-      <div className="container-x relative pt-16 pb-10">
+      <div className="container-x relative pt-20 pb-10">
         <div className="m-center grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-20">
-          <div>
+          <div className="relative">
+            <div className="absolute left-1/2 lg:left-[30%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[150%] neon-halo opacity-50 pointer-events-none" />
+            <div className="relative">
             <p className="t-label text-white/50 mb-4">Newsletter</p>
             <h2 className="t-display text-[clamp(32px,6vw,72px)] text-white mb-6">
               Never miss <span className="g-brand-text">the drop</span>
             </h2>
             <NewsletterForm source="footer" />
             <p className="text-xs text-white/40 mt-3 max-w-md">Drops, dates, line-ups. Pas de spam. Désinscription en un clic.</p>
+            </div>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
             {cols.map((c) => (

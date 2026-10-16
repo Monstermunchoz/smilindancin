@@ -79,7 +79,7 @@ input, textarea, select { font-size: 16px; }
 button, a, [role="button"], summary, label { touch-action: manipulation; }
 button, [role="button"], .btn { user-select: none; -webkit-user-select: none; }
 img { -webkit-touch-callout: none; }
-h1, h2, h3, .t-display { overflow-wrap: normal; word-break: keep-all; hyphens: manual; text-wrap: balance; }
+h1, h2, h3, .t-display { overflow-wrap: normal; word-break: keep-all; hyphens: manual; text-wrap-style: balance; }
 body {
   background: var(--background);
   color: var(--foreground);
@@ -218,7 +218,6 @@ img { user-select: none; }
   .m-center :where(p, h1, h2, h3, form, ul, nav) { margin-left: auto; margin-right: auto; }
   .m-center:where(.flex:not(.flex-col):not(.justify-between)), .m-center :where(.flex:not(.flex-col):not(.justify-between)) { justify-content: center; }
   .m-center:where(.flex-col), .m-center :where(.flex-col) { align-items: center; }
-  .m-center:where(.grid), .m-center :where(.grid) { justify-items: center; }
   .m-center :where(.text-right) { text-align: center; }
   .m-center .m-full { width: 100%; justify-self: stretch; }
   .m-center .flex > :where(p, h1, h2, h3, form, ul, nav) { margin-left: 0; margin-right: 0; }
@@ -231,3 +230,10 @@ img, svg, video { max-width: 100%; }
 
 /* Titre de l'accueil mobile : ombre + halo néon pour détacher les lettres de la photo et de la Terre */
 .hero-glow { filter: drop-shadow(0 2px 14px rgba(0,0,0,.75)) drop-shadow(0 0 26px rgba(150,110,210,.35)); }
+
+/* Cases à cocher : taille tactile, couleur de marque, alignées sur la 1re ligne du texte */
+input[type="checkbox"] { width: 20px; height: 20px; flex-shrink: 0; accent-color: var(--sd-pink); margin-top: 2px; cursor: pointer; }
+select:focus-visible { outline: none; }
+
+/* Sur-titres condensés : lignes équilibrées, jamais un mot seul en bout de ligne */
+.t-condensed, .t-label { text-wrap-style: balance; }

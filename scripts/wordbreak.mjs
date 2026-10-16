@@ -12,7 +12,7 @@ for (const w of widths) {
     const r = await p.evaluate(() => {
       const out = [];
       for (const el of document.querySelectorAll("h1,h2,h3,.t-display")) {
-        if (el.scrollWidth > el.clientWidth + 2) out.push("DÉBORDE: " + el.textContent.trim().slice(0, 30));
+        if (getComputedStyle(el).textOverflow !== "ellipsis" && el.scrollWidth > el.clientWidth + 2) out.push("DÉBORDE: " + el.textContent.trim().slice(0, 30));
       }
       for (const el of document.querySelectorAll("h1,h2,h3,.t-display")) {
         const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);

@@ -47,37 +47,44 @@ export function ShopGrid({ products, title = "Shop", intro }: { products: Produc
         <p className="t-label text-white/50">{list.length} pièce{list.length > 1 ? "s" : ""}</p>
       </div>
 
-      <div className="sticky top-16 md:top-[72px] z-30 -mx-[var(--gutter)] px-[var(--gutter)] py-3 bg-black/80 backdrop-blur-xl border-y border-white/8 flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-3">
-        <div className="flex gap-1 overflow-x-auto hide-scroll">
-          {CATS.map((c) => (
-            <button key={c.id} onClick={() => setCat(c.id)} className={cn("px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-colors", cat === c.id ? "bg-white text-black" : "text-white/70 hover:text-white hover:bg-white/8")}>
-              {c.label}
-            </button>
-          ))}
-        </div>
-        <div className="flex items-center gap-2 md:ml-auto">
-          <span className="t-label text-white/40 hidden sm:inline">Couleur</span>
-          {colors.map((c) => (
-            <button
-              key={c}
-              onClick={() => setColor(color === c ? null : c)}
-              aria-pressed={color === c}
-              aria-label={c}
-              title={c}
-              className={cn("w-6 h-6 rounded-full border-2 transition-transform", color === c ? "border-pink scale-110" : "border-white/20 hover:scale-110")}
-              style={{ background: products.flatMap((p) => p.colors).find((x) => x.name === c)?.hex }}
-            />
-          ))}
-          <label className="sr-only" htmlFor="sort">Trier</label>
-          <select id="sort" value={sort} onChange={(e) => setSort(e.target.value)} className="bg-transparent text-xs font-semibold text-white/80 border border-white/15 rounded-full px-3 py-2 outline-none focus:border-white">
-            {SORTS.map((s) => (
-              <option key={s.id} value={s.id} className="bg-black">{s.label}</option>
+      <div className="sticky top-16 md:top-[72px] z-30 -mx-[var(--gutter)] bg-black/85 backdrop-blur-xl border-y border-white/8">
+        <div className="px-[var(--gutter)] py-3 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+          <div className="flex gap-1.5 overflow-x-auto hide-scroll -mx-[var(--gutter)] px-[var(--gutter)] md:mx-0 md:px-0">
+            {CATS.map((c) => (
+              <button key={c.id} onClick={() => setCat(c.id)} className={cn("shrink-0 px-4 h-9 rounded-full text-[13px] font-semibold whitespace-nowrap transition-colors border", cat === c.id ? "bg-white text-black border-white" : "text-white/75 border-white/12 hover:text-white")}>
+                {c.label}
+              </button>
             ))}
-          </select>
+          </div>
+          <div className="flex items-center justify-between gap-4 md:ml-auto">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="t-label text-white/40 hidden lg:inline mr-1">Couleur</span>
+              {colors.map((c) => (
+                <button
+                  key={c}
+                  onClick={() => setColor(color === c ? null : c)}
+                  aria-pressed={color === c}
+                  aria-label={c}
+                  title={c}
+                  className={cn("w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 transition-transform shrink-0", color === c ? "border-pink scale-110" : "border-white/20")}
+                  style={{ background: products.flatMap((p) => p.colors).find((x) => x.name === c)?.hex }}
+                />
+              ))}
+            </div>
+            <label className="relative shrink-0">
+              <span className="sr-only">Trier</span>
+              <select id="sort" value={sort} onChange={(e) => setSort(e.target.value)} className="appearance-none bg-white/[.04] text-[14px] font-semibold text-white/85 border border-white/15 rounded-full h-9 pl-3.5 pr-8 outline-none focus:border-white/50">
+                {SORTS.map((s) => (
+                  <option key={s.id} value={s.id} className="bg-black">{s.label}</option>
+                ))}
+              </select>
+              <svg viewBox="0 0 24 24" className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="m6 9 6 6 6-6" /></svg>
+            </label>
+          </div>
         </div>
       </div>
 
-      <motion.div layout className="grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-10 md:gap-x-5 mt-8 min-h-[50vh]">
+      <motion.div layout className="grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-9 md:gap-x-5 mt-6 md:mt-8 min-h-[50vh] items-start">
         <AnimatePresence mode="popLayout">
           {list.map((p, i) => (
             <motion.div key={p.id} layout initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.4, delay: Math.min(i, 8) * 0.03 }}>
