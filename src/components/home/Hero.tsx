@@ -27,9 +27,12 @@ export function Hero() {
       </motion.span>
     ));
 
+  const intro = "De la musique, des sourires, des souvenirs. La collection Smilers & Dancers : 9 visuels Made in France, et deux nouveaux drops dévoilés au Mexico Show.";
+  const fade = (delay: number) => ({ initial: reduce ? false : { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, delay, ease } }) as const;
+
   return (
     <section ref={ref} className="relative min-h-[100svh] overflow-hidden bg-black grain">
-      {/* Photo campagne 2026 — Groovers / The Real VIP (Instagram @smilin.dancin, highlight Merch') */}
+      {/* Photo campagne 2026 (Groovers / The Real VIP) */}
       <motion.div style={{ y: imgY }} className="absolute inset-0">
         <Image
           src="/merch/photos/campagne-2026.jpg"
@@ -40,13 +43,45 @@ export function Hero() {
           className="object-cover object-[50%_30%] md:object-[50%_35%]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
-        <div className="md:hidden absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-black via-black/85 to-transparent" />
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        {/* Mobile : voile sombre centré sur l'emblème pour faire ressortir le titre */}
+        <div className="md:hidden absolute inset-0 bg-[radial-gradient(75%_42%_at_50%_44%,rgba(0,0,0,.72),rgba(0,0,0,.25)_70%,transparent)]" />
+        <div className="md:hidden absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black via-black/90 to-transparent" />
       </motion.div>
 
-      {/* Globe néon — l'emblème */}
+      {/* ---------- MOBILE : l'emblème (Terre + titre) au centre, texte et boutons en bas ---------- */}
+      <div className="md:hidden relative min-h-[100svh] flex flex-col px-5 pt-20 pb-8 text-center">
+        <div className="relative flex-1 flex items-center justify-center">
+          <motion.div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[min(118vw,64svh)] aspect-square"
+            initial={reduce ? false : { opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.9, scale: 1 }}
+            transition={{ duration: 1.6, delay: 0.5, ease }}
+          >
+            <Globe fluid id="hero-m" />
+          </motion.div>
+          <div className="relative w-full">
+            <motion.p {...fade(0.9)} className="t-condensed text-[15px] text-blue-sky tracking-[0.14em]">
+              Electronic Music Events & Clothing · Lyon
+            </motion.p>
+            <h1 className="t-display text-[clamp(52px,18.5vw,92px)] leading-[0.86] mt-3 hero-glow">
+              <span className="block overflow-hidden whitespace-nowrap pb-[0.06em] text-[#7a9be0]">{word("Smilin’", 0.15)}</span>
+              <span className="block overflow-hidden whitespace-nowrap pb-[0.06em] text-[#e06a9f]">{word("Dancin’", 0.3)}</span>
+            </h1>
+          </div>
+        </div>
+        <div className="relative">
+          <motion.p {...fade(1)} className="text-[15px] leading-relaxed text-white max-w-[34ch] mx-auto">{intro}</motion.p>
+          <motion.div {...fade(1.1)} className="mt-6 grid grid-cols-2 gap-3">
+            <Link href="/shop" className="btn btn-primary !px-3 !py-[15px]">Voir le shop</Link>
+            <Link href="/events" className="btn btn-ghost !px-3 !py-[15px]">Événements</Link>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ---------- TABLETTE / PC ---------- */}
       <motion.div
-        className="hidden md:block absolute md:right-[4vw] md:top-[10vh] pointer-events-none"
+        className="hidden md:block absolute right-[4vw] top-[10vh] pointer-events-none"
         initial={reduce ? false : { opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.6, delay: 0.6, ease }}
@@ -54,45 +89,17 @@ export function Hero() {
         <Globe size={420} className="md:scale-[1.25] lg:scale-[1.5] origin-top-right" id="hero" />
       </motion.div>
 
-      <motion.div style={{ y: textY }} className="m-center relative container-x min-h-[100svh] flex flex-col !justify-end pb-12 md:pb-16 pt-28">
-        <div className="relative">
-        {/* Mobile : la Terre centrée sur le titre */}
-        <motion.div
-          className="md:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          initial={reduce ? false : { opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, delay: 0.6, ease }}
-        >
-          <Globe size={340} id="hero-m" />
-        </motion.div>
-        <motion.p
-          initial={reduce ? false : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9, ease }}
-          className="relative t-condensed text-[18px] md:text-[22px] text-blue-sky mb-4 tracking-[0.12em]"
-        >
+      <motion.div style={{ y: textY }} className="hidden md:flex relative container-x min-h-[100svh] flex-col justify-end pb-16 pt-28">
+        <motion.p {...fade(0.9)} className="t-condensed text-[22px] text-blue-sky mb-4 tracking-[0.12em]">
           Electronic Music Events & Clothing · Lyon
         </motion.p>
-        <h1 className="relative t-display text-[clamp(44px,15.5vw,96px)] sm:text-[14vw] lg:text-[13vw] 2xl:text-[200px] leading-[0.84] text-white">
+        <h1 className="t-display text-[14vw] lg:text-[13vw] 2xl:text-[200px] leading-[0.84] text-white">
           <span className="block overflow-hidden whitespace-nowrap pb-[0.06em] text-[#5d7fc4]">{word("Smilin’", 0.15)}</span>
-          <span className="block overflow-hidden whitespace-nowrap pb-[0.06em] text-[#c45a84] pl-0 sm:pl-[0.9em] lg:pl-[1.4em]">{word("Dancin’", 0.3)}</span>
+          <span className="block overflow-hidden whitespace-nowrap pb-[0.06em] text-[#c45a84] sm:pl-[0.9em] lg:pl-[1.4em]">{word("Dancin’", 0.3)}</span>
         </h1>
-        </div>
-        <div className="mt-24 md:mt-10 grid md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-end">
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1, ease }}
-            className="max-w-md text-base md:text-lg text-white md:text-white/80 leading-snug"
-          >
-            De la musique, des sourires, des souvenirs. La collection Smilers & Dancers : 9 visuels Made in France, et deux nouveaux drops dévoilés au Mexico Show.
-          </motion.p>
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1, ease }}
-            className="flex flex-wrap gap-3 m-full"
-          >
+        <div className="mt-10 grid grid-cols-[1fr_auto] gap-10 items-end">
+          <motion.p {...fade(1)} className="max-w-md text-lg text-white/80 leading-snug">{intro}</motion.p>
+          <motion.div {...fade(1.1)} className="flex flex-wrap gap-3">
             <Link href="/shop" className="btn btn-primary">Voir le shop</Link>
             <Link href="/events" className="btn btn-ghost">Les événements</Link>
           </motion.div>

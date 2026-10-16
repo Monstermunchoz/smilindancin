@@ -5,18 +5,19 @@ import { motion, useReducedMotion } from "motion/react";
  * Le globe grillagé — transposition vectorielle de l'emblème Smilin' Dancin' (« The World Is Groove »).
  * Lignes bleu→rose, anneau orbital, halo néon. Rotation lente (désactivée en reduced-motion).
  */
-export function Globe({ size = 520, className = "", speed = 60, glow = true, id = "g" }: { size?: number; className?: string; speed?: number; glow?: boolean; id?: string }) {
+export function Globe({ size = 520, className = "", speed = 60, glow = true, id = "g", fluid = false }: { size?: number; className?: string; speed?: number; glow?: boolean; id?: string; fluid?: boolean }) {
+  const dim = fluid ? "100%" : size;
   const reduce = useReducedMotion();
   const r = 100;
   const lats = [-60, -30, 0, 30, 60];
   const longs = [0, 30, 60, 90, 120, 150];
   return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }} aria-hidden>
+    <div className={`relative ${className}`} style={{ width: dim, height: dim }} aria-hidden>
       {glow && <div className="absolute inset-[-20%] neon-halo" />}
       <motion.svg
         viewBox="-130 -130 260 260"
-        width={size}
-        height={size}
+        width={dim}
+        height={dim}
         className="relative"
         animate={reduce ? undefined : { rotate: 360 }}
         transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
@@ -56,7 +57,7 @@ export function Globe({ size = 520, className = "", speed = 60, glow = true, id 
         </g>
       </motion.svg>
       {/* anneau orbital fixe, comme sur l'emblème */}
-      <svg viewBox="-130 -130 260 260" width={size} height={size} className="absolute inset-0" aria-hidden>
+      <svg viewBox="-130 -130 260 260" width={dim} height={dim} className="absolute inset-0" aria-hidden>
         <ellipse rx="124" ry="22" fill="none" stroke="#67a7dc" strokeWidth="1.2" opacity="0.9" transform="rotate(-8)" />
         <ellipse rx="124" ry="22" fill="none" stroke="#67a7dc" strokeWidth="4" opacity="0.25" transform="rotate(-8)" style={{ filter: "blur(3px)" }} />
       </svg>

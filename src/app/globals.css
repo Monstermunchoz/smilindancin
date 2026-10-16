@@ -228,3 +228,6 @@ img { user-select: none; }
 .grid > *, .flex > * { min-width: 0; }
 input, select, textarea { max-width: 100%; }
 img, svg, video { max-width: 100%; }
+
+/* Titre de l'accueil mobile : ombre + halo néon pour détacher les lettres de la photo et de la Terre */
+.hero-glow { filter: drop-shadow(0 2px 14px rgba(0,0,0,.75)) drop-shadow(0 0 26px rgba(150,110,210,.35)); }
