@@ -41,11 +41,12 @@ export function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        <div className="md:hidden absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-black via-black/85 to-transparent" />
       </motion.div>
 
       {/* Globe néon — l'emblème */}
       <motion.div
-        className="absolute -right-[12vw] md:right-[4vw] top-[14vh] md:top-[10vh] pointer-events-none"
+        className="hidden md:block absolute md:right-[4vw] md:top-[10vh] pointer-events-none"
         initial={reduce ? false : { opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.6, delay: 0.6, ease }}
@@ -53,25 +54,36 @@ export function Hero() {
         <Globe size={420} className="md:scale-[1.25] lg:scale-[1.5] origin-top-right" id="hero" />
       </motion.div>
 
-      <motion.div style={{ y: textY }} className="m-center relative container-x min-h-[100svh] flex flex-col justify-end pb-10 md:pb-16 pt-28">
+      <motion.div style={{ y: textY }} className="m-center relative container-x min-h-[100svh] flex flex-col !justify-end pb-12 md:pb-16 pt-28">
+        <div className="relative">
+        {/* Mobile : la Terre centrée sur le titre */}
+        <motion.div
+          className="md:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          initial={reduce ? false : { opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.6, delay: 0.6, ease }}
+        >
+          <Globe size={340} id="hero-m" />
+        </motion.div>
         <motion.p
           initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9, ease }}
-          className="t-condensed text-[18px] md:text-[22px] text-blue-sky mb-4 tracking-[0.12em]"
+          className="relative t-condensed text-[18px] md:text-[22px] text-blue-sky mb-4 tracking-[0.12em]"
         >
           Electronic Music Events & Clothing · Lyon
         </motion.p>
-        <h1 className="t-display text-[clamp(44px,15.5vw,96px)] sm:text-[14vw] lg:text-[13vw] 2xl:text-[200px] leading-[0.84] text-white">
+        <h1 className="relative t-display text-[clamp(44px,15.5vw,96px)] sm:text-[14vw] lg:text-[13vw] 2xl:text-[200px] leading-[0.84] text-white">
           <span className="block overflow-hidden whitespace-nowrap pb-[0.06em] text-[#5d7fc4]">{word("Smilin’", 0.15)}</span>
           <span className="block overflow-hidden whitespace-nowrap pb-[0.06em] text-[#c45a84] pl-0 sm:pl-[0.9em] lg:pl-[1.4em]">{word("Dancin’", 0.3)}</span>
         </h1>
-        <div className="mt-8 md:mt-10 grid md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-end">
+        </div>
+        <div className="mt-24 md:mt-10 grid md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-end">
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1, ease }}
-            className="max-w-md text-base md:text-lg text-white/80 leading-snug"
+            className="max-w-md text-base md:text-lg text-white md:text-white/80 leading-snug"
           >
             De la musique, des sourires, des souvenirs. La collection Smilers & Dancers : 9 visuels Made in France, et deux nouveaux drops dévoilés au Mexico Show.
           </motion.p>
@@ -89,7 +101,7 @@ export function Hero() {
 
       <motion.div
         aria-hidden
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40"
+        className="hidden md:block absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8 }}
