@@ -11,7 +11,7 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
   const { status, q } = await searchParams;
   let orders = await commerce.listOrders();
   if (status && status in STATUS) orders = orders.filter((o) => o.status === status);
-  if (q) orders = orders.filter((o) => [o.id, o.customer.email, o.customer.firstName, o.customer.lastName].join(" ").toLowerCase().includes(q.toLowerCase()));
+  if (q) orders = orders.filter((o) => [o.id, o.customer.email, o.customer.firstName, o.customer.lastName, ...o.lines.map((l) => `${l.productHandle} ${l.productTitle}`)].join(" ").toLowerCase().includes(q.toLowerCase()));
   return (
     <div>
       <PageTitle title="Commandes" sub={`${orders.length} commande${orders.length > 1 ? "s" : ""}`} />
@@ -20,7 +20,7 @@ export default async function OrdersPage({ searchParams }: { searchParams: Promi
         {(Object.keys(STATUS) as OrderStatus[]).map((s) => (
           <Link key={s} href={`/admin/orders?status=${s}`} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${status === s ? "bg-white text-black" : "bg-white/8 text-white/70 hover:bg-white/15"}`}>{STATUS[s].label}</Link>
         ))}
-        <form className="ml-auto"><input name="q" defaultValue={q} placeholder="Rechercher (n°, email, nom)" className="bg-white/5 border border-white/15 rounded-full px-4 py-2 text-xs outline-none focus:border-white w-64" /></form>
+        <form className="w-full sm:w-auto sm:ml-auto"><input name="q" defaultValue={q} placeholder="Rechercher (n°, client, produit)" className="bg-white/5 border border-white/15 rounded-full px-4 py-2.5 text-sm outline-none focus:border-white w-full sm:w-72" /></form>
       </div>
       {orders.length === 0 ? <Empty text="Aucune commande." /> : (
         <div className="overflow-x-auto border border-white/10 rounded-[4px]">

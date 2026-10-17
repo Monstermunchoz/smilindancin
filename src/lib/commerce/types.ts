@@ -46,6 +46,8 @@ export type Product = {
   featured?: boolean;
   /** Précommande : produit payable, expédié après production. */
   preorder?: boolean;
+  /** Produit créé depuis l'admin : variantes = couleurs × tailles, prix unique. */
+  custom?: boolean;
   /** Vrai = données de démonstration (prix/tailles/stock non confirmés par la marque). */
   demo: boolean;
   /** Preuve d'existence du graphisme (fichier client / post). */

@@ -7,11 +7,13 @@ import { formatPrice, formatDate } from "@/lib/format";
 import { PageTitle, Stat, Card, Empty } from "@/components/admin/ui";
 import { TierEditor } from "@/components/admin/TierEditor";
 
-export default async function AdminBilletterie() {
+export default async function AdminBilletterie({ searchParams }: { searchParams: Promise<{ event?: string; tier?: string; order?: string }> }) {
+  const { event: fEvent, tier: fTier, order: fOrder } = await searchParams;
   if (!(await isAdmin())) redirect("/admin/login");
   const [sales, tOrders, tickets] = await Promise.all([readTable("tierSales"), readTable("ticketOrders"), readTable("tickets")]);
   const events = ticketedEvents();
   const paid = tOrders.filter((o) => o.status === "paid");
+  const filtered = tOrders.filter((o) => (!fEvent || o.eventSlug === fEvent) && (!fTier || o.items.some((i) => i.tierId === fTier)) && (!fOrder || o.id === fOrder));
   return (
     <div>
       <PageTitle title="Billetterie" sub="Tarifs progressifs : chaque tarif ouvre quand le précédent est épuisé." action={<Link href="/admin/checkin" className="btn btn-primary !py-2.5">Scanner les billets</Link>} />
@@ -26,7 +28,7 @@ export default async function AdminBilletterie() {
         const sold = views.reduce((n, v) => n + v.sold, 0);
         const quota = views.reduce((n, v) => n + v.quota, 0);
         return (
-          <Card key={e.slug} title={`${e.title}, ${e.dateLabel}${e.ticketing?.demo ? " · démo" : ""}`} className="mb-4">
+          <Card key={e.slug} id={e.slug} className={`mb-4 scroll-mt-24 ${fEvent === e.slug ? "!border-pink/60" : ""}`} title={`${e.title}, ${e.dateLabel}${e.ticketing?.demo ? " · démo" : ""}`}>
             <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
               <p className="text-sm text-white/70">{sold} / {quota} places · remplissage {Math.round((sold / Math.max(1, quota)) * 100)}%</p>
               <Link href={`/billetterie/${e.slug}`} target="_blank" className="text-xs u-line">Voir la page publique</Link>
@@ -38,10 +40,11 @@ export default async function AdminBilletterie() {
           </Card>
         );
       })}
-      <Card title="Dernières commandes de billets">
-        {tOrders.length === 0 ? <Empty text="Aucune commande de billets." /> : (
+      <Card title={fTier || fEvent || fOrder ? `Commandes${fTier ? ` · tarif « ${events.flatMap((e) => e.ticketing?.tiers ?? []).find((t) => t.id === fTier)?.name ?? fTier} »` : ""}${fEvent ? ` · ${events.find((e) => e.slug === fEvent)?.title ?? ""}` : ""}${fOrder ? ` · ${fOrder}` : ""}` : "Dernières commandes de billets"}>
+        {(fTier || fEvent || fOrder) && <Link href="/admin/billetterie" className="inline-block text-xs text-white/60 u-line mb-3">Voir toutes les commandes</Link>}
+        {filtered.length === 0 ? <Empty text="Aucune commande de billets." /> : (
           <div className="overflow-x-auto -mx-5"><table className="w-full text-sm min-w-[640px]">
-            <tbody className="divide-y divide-white/10">{tOrders.slice(0, 25).map((o) => (
+            <tbody className="divide-y divide-white/10">{filtered.slice(0, 50).map((o) => (
               <tr key={o.id}>
                 <td className="px-4 py-2.5 t-dot">{o.id}</td>
                 <td className="px-4 py-2.5 text-white/60">{formatDate(o.createdAt, { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" })}</td>

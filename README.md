@@ -49,3 +49,11 @@ Les photos (`public/merch/photos`) sont des captures web (≤ 1440 px) des publi
 
 ## Docs
 `BRAND_AUDIT.md` (recherche, sources, palette, typo, merch), `DESIGN_SYSTEM.md` (tokens, composants, motion), `research/INVENTAIRE_PRODUITS.md`, `research/instagram-merch/` (captures sources).
+
+## Espace admin : gestion
+
+- **Tableau de bord** : chiffre d'affaires, résultat après dépenses, « À faire », places vendues par tarif (cliquable vers la billetterie filtrée), merch vendu par produit (cliquable vers les commandes du produit).
+- **Shop** (`/admin/products`) : ajouter, modifier, supprimer un produit ; upload de photos (redimensionnées dans le navigateur, WebP), tailles, couleurs, prix, prix barré, précommande, visibilité, stock par variante.
+- **Merch vendu** (`/admin/ventes`) : détail par produit, variante, couleur et taille.
+- **Factures** (`/admin/factures`) : dépenses par poste (Comm, Déco, Son & lumière, Artistes, Lieu, Merch, Bar, Sécurité, Transport), pièce jointe PDF/photo privée, fournisseurs, envois avec suivi transporteur, recherche.
+- Les fichiers uploadés sont stockés dans la base (Supabase en production), 4 Mo max par fichier ; les factures ne sont lisibles que connecté en admin.

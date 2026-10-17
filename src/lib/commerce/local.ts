@@ -33,7 +33,7 @@ export const localProvider: CommerceProvider = {
   async getCollection(handle) {
     const c = COLLECTIONS.find((c) => c.handle === handle);
     if (!c) return null;
-    const products = (await this.listProducts()).filter((p) => c.productHandles.includes(p.handle));
+    const products = (await this.listProducts()).filter((p) => c.productHandles.includes(p.handle) || p.collection === c.handle);
     return { ...c, products };
   },
 

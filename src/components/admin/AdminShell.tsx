@@ -23,6 +23,8 @@ const P: Record<string, React.ReactNode> = {
   settings: <><circle cx="12" cy="12" r="3" /><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1M18.7 18.7l-2.1-2.1M7.4 7.4 5.3 5.3" /></>,
   site: <><path d="M14 4h6v6M20 4l-9 9" /><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" /></>,
   logout: <><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 17l5-5-5-5M15 12H3" /></>,
+  invoices: <><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" /><path d="M9 8h6M9 12h6M9 16h3" /></>,
+  sales: <><path d="M4 19V5M4 19h16" /><path d="m7 15 4-4 3 3 5-6" /></>,
 };
 function Icon({ name, className }: { name: string; className?: string }) {
   return (
@@ -37,8 +39,10 @@ const NAV: Item[] = [
   { href: "/admin", label: "Tableau de bord", short: "Accueil", icon: "home" },
   { href: "/admin/orders", label: "Commandes shop", short: "Commandes", icon: "orders", badge: "orders" },
   { href: "/admin/billetterie", label: "Billetterie", short: "Billets", icon: "tickets" },
-  { href: "/admin/checkin", label: "Contrôle d'accès", short: "Scanner", icon: "scan" },
-  { href: "/admin/products", label: "Produits", short: "Produits", icon: "products" },
+  { href: "/admin/checkin", label: "Scanner", short: "Scanner", icon: "scan" },
+  { href: "/admin/products", label: "Shop", short: "Shop", icon: "products" },
+  { href: "/admin/ventes", label: "Merch vendu", short: "Ventes", icon: "sales" },
+  { href: "/admin/factures", label: "Factures", short: "Factures", icon: "invoices" },
   { href: "/admin/stock", label: "Stock", short: "Stock", icon: "stock" },
   { href: "/admin/customers", label: "Clients", short: "Clients", icon: "customers" },
   { href: "/admin/newsletter", label: "Newsletter", short: "Newsletter", icon: "newsletter" },

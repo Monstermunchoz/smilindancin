@@ -15,8 +15,8 @@ import { GarmentViewer } from "./GarmentViewer";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function ProductView({ product, related, sibling }: { product: Product; related: Product[]; sibling: Product | null }) {
-  const isTee = product.category === "tee" && product.variants.length > 0;
-  const isHoodie = product.category === "hoodie";
+  const isTee = product.category === "tee" && product.variants.length > 0 && !product.custom;
+  const isHoodie = product.category === "hoodie" && !product.custom;
   const soon = product.status === "coming_soon";
   const reduce = useReducedMotion();
 
@@ -63,7 +63,7 @@ export function ProductView({ product, related, sibling }: { product: Product; r
     const res = add({
       id: variant.id,
       productHandle: product.handle,
-      productTitle: `${product.title}${isTee ? ", T-shirt" : ", Sweat"}${product.preorder ? " (précommande)" : ""}`,
+      productTitle: `${product.title}${product.custom ? "" : isTee ? ", T-shirt" : ", Sweat"}${product.preorder ? " (précommande)" : ""}`,
       variantId: variant.id,
       variantTitle: variant.title,
       options: variant.options,
@@ -201,8 +201,8 @@ export function ProductView({ product, related, sibling }: { product: Product; r
                   <legend className="t-label text-white/60">Taille {size ? `· ${size}` : ""}</legend>
                   <button onClick={() => setShowGuide((s) => !s)} className="text-xs text-white/60 hover:text-white u-line">Guide des tailles</button>
                 </div>
-                <div className="grid grid-cols-6 gap-2">
-                  {SIZES.map((s) => {
+                <div className="grid grid-cols-[repeat(auto-fill,minmax(52px,1fr))] gap-2">
+                  {(product.custom ? product.sizes : SIZES).map((s) => {
                     const vid = isTee ? `${product.id}--${cut}--${print}--${slug(color)}--${slug(s)}` : `${product.id}--hoodie--${slug(color)}--${slug(s)}`;
                     const v = product.variants.find((x) => x.id === vid);
                     const off = !v || !v.available;

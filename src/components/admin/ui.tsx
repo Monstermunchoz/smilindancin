@@ -37,9 +37,9 @@ export function Stat({ label, value, hint, href }: { label: string; value: strin
   return href ? <Link href={href}>{inner}</Link> : inner;
 }
 
-export function Card({ title, children, className }: { title?: string; children: React.ReactNode; className?: string }) {
+export function Card({ title, children, className, id }: { title?: string; children: React.ReactNode; className?: string; id?: string }) {
   return (
-    <section className={cn("border border-white/10 rounded-[4px] bg-white/[0.02]", className)}>
+    <section id={id} className={cn("border border-white/10 rounded-[16px] bg-white/[0.02]", className)}>
       {title && <h2 className="t-label text-white/55 px-5 pt-4">{title}</h2>}
       <div className="p-5">{children}</div>
     </section>

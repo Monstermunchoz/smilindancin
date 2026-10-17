@@ -13,6 +13,7 @@ import os from "node:os";
 import type { Order, Product } from "@/lib/commerce/types";
 import type { Ticket, TicketOrder, TierSales } from "@/lib/tickets/types";
 import type { User } from "@/lib/account/types";
+import type { Invoice, Supplier, Shipment } from "@/lib/admin/finance";
 import { PRODUCTS } from "@/lib/data/products";
 import { AsyncLocalStorage } from "node:async_hooks";
 import postgres from "postgres";
@@ -26,9 +27,12 @@ type Tables = {
   tickets: Ticket[];
   ticketOrders: TicketOrder[];
   tierSales: TierSales;
+  invoices: Invoice[];
+  suppliers: Supplier[];
+  shipments: Shipment[];
 };
 
-const defaults: Tables = { orders: [], products: PRODUCTS, newsletter: [], contact: [], users: [], tickets: [], ticketOrders: [], tierSales: {} };
+const defaults: Tables = { orders: [], products: PRODUCTS, newsletter: [], contact: [], users: [], tickets: [], ticketOrders: [], tierSales: {}, invoices: [], suppliers: [], shipments: [] };
 
 const REDIS_URL = process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
 const REDIS_TOKEN = process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN;
@@ -175,4 +179,53 @@ export async function resetRuntime(): Promise<void> {
       } catch {}
     }
   }
+}
+
+/* ---------- Fichiers uploadés (photos produits, factures) ----------
+ * Stockés dans la même base (une clé par fichier), servis par /api/files/[id].
+ * Taille limitée côté API (4 Mo) ; les photos sont redimensionnées dans le navigateur avant envoi. */
+export type StoredFile = { id: string; name: string; type: string; size: number; private: boolean; data: string; createdAt: string };
+
+export async function putFile(f: StoredFile): Promise<void> {
+  const key = PREFIX + "file:" + f.id;
+  if (dbMode === "postgres") {
+    await pgReady();
+    const json = pg().json(f as unknown as postgres.JSONValue);
+    await retry(() => pg()`insert into sd_kv (key, value, updated_at) values (${key}, ${json}, now()) on conflict (key) do update set value = excluded.value, updated_at = now()`);
+    return;
+  }
+  if (dbMode === "redis") {
+    await redis(["SET", key, JSON.stringify(f)]);
+    return;
+  }
+  const dir = path.join(RUNTIME_DIR, "files");
+  await fs.mkdir(dir, { recursive: true });
+  await fs.writeFile(path.join(dir, `${f.id}.json`), JSON.stringify(f), "utf8");
+}
+
+export async function getFile(id: string): Promise<StoredFile | null> {
+  if (!/^[a-z0-9-]{8,64}$/i.test(id)) return null;
+  const key = PREFIX + "file:" + id;
+  if (dbMode === "postgres") {
+    await pgReady();
+    const rows = await retry(() => pg()`select value from sd_kv where key = ${key}`);
+    return rows.length ? (rows[0].value as StoredFile) : null;
+  }
+  if (dbMode === "redis") {
+    const raw = await redis<string | null>(["GET", key]);
+    return raw ? (JSON.parse(raw) as StoredFile) : null;
+  }
+  try {
+    return JSON.parse(await fs.readFile(path.join(RUNTIME_DIR, "files", `${id}.json`), "utf8")) as StoredFile;
+  } catch {
+    return null;
+  }
+}
+
+export async function deleteFile(id: string): Promise<void> {
+  if (!/^[a-z0-9-]{8,64}$/i.test(id)) return;
+  const key = PREFIX + "file:" + id;
+  if (dbMode === "postgres") { await pgReady(); await retry(() => pg()`delete from sd_kv where key = ${key}`); return; }
+  if (dbMode === "redis") { await redis(["DEL", key]); return; }
+  try { await fs.unlink(path.join(RUNTIME_DIR, "files", `${id}.json`)); } catch {}
 }
