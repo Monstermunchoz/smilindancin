@@ -45,18 +45,18 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/30" />
         <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
         {/* Mobile : voile sombre centré sur l'emblème pour faire ressortir le titre */}
-        <div className="md:hidden absolute inset-0 bg-[radial-gradient(80%_50%_at_50%_55%,rgba(0,0,0,.7),rgba(0,0,0,.3)_70%,transparent)]" />
+        <div className="md:hidden absolute inset-0 bg-[radial-gradient(75%_42%_at_50%_44%,rgba(0,0,0,.72),rgba(0,0,0,.25)_70%,transparent)]" />
         <div className="md:hidden absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black via-black/90 to-transparent" />
       </motion.div>
 
       {/* ---------- MOBILE : l'emblème (Terre + titre) au centre, texte et boutons en bas ---------- */}
-      <div className="md:hidden relative min-h-[100svh] flex flex-col px-5 pt-[72px] pb-[92px] text-center">
-        <div className="relative flex-1 flex flex-col items-center justify-center gap-6">
+      <div className="md:hidden relative min-h-[100svh] flex flex-col px-5 pt-20 pb-8 text-center">
+        <div className="relative flex-1 flex items-center justify-center">
           <motion.div
-            className="w-[min(58vw,30svh)] aspect-square"
-            initial={reduce ? false : { opacity: 0, y: -24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 0.4, ease }}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[min(118vw,64svh)] aspect-square"
+            initial={reduce ? false : { opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.9, scale: 1 }}
+            transition={{ duration: 1.6, delay: 0.5, ease }}
           >
             <DiscoBall fluid id="hero-m" />
           </motion.div>
@@ -81,12 +81,12 @@ export function Hero() {
 
       {/* ---------- TABLETTE / PC ---------- */}
       <motion.div
-        className="hidden md:block absolute right-[6vw] top-[6vh] pointer-events-none"
+        className="hidden md:block absolute right-[4vw] top-[10vh] pointer-events-none"
         initial={reduce ? false : { opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.6, delay: 0.6, ease }}
       >
-        <DiscoBall size={400} className="md:scale-[1.05] lg:scale-[1.2] origin-top-right" id="hero" />
+        <DiscoBall size={420} className="md:scale-[1.25] lg:scale-[1.5] origin-top-right" id="hero" />
       </motion.div>
 
       <motion.div style={{ y: textY }} className="hidden md:flex relative container-x min-h-[100svh] flex-col justify-end pb-16 pt-28">

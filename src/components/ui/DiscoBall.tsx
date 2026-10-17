@@ -1,103 +1,164 @@
 "use client";
-import { useMemo } from "react";
+import { useEffect, useRef } from "react";
+import { useReducedMotion } from "motion/react";
 
 /**
- * Boule à facettes épurée, aux couleurs de la marque (bleu → framboise, éclats argent).
- * Facettes en SVG, rotation continue par rangée (CSS), ombrage sphérique, éclats qui scintillent.
- * Désactivée en reduced-motion (reste affichée, immobile).
+ * Boule à facettes au trait fin, dans le style exact de l'ancien globe néon :
+ * mêmes dégradés (#67a7dc → #37548f → #d04080), même double couche (halo flouté + trait net), sans anneau.
+ * Vraie projection 3D : parallèles inclinés + méridiens qui tournent, quelques facettes qui s'allument,
+ * étoiles fines qui scintillent autour. Immobile si le visiteur a demandé moins d'animations.
  */
-/* Miroirs : gris-bleu argentés en majorité, reflets bleu et framboise de la marque */
-const SILVER = ["#1c2033", "#262c45", "#343b5a", "#454d70", "#5a6388", "#7b85a8", "#9ea7c4", "#c9cfe0", "#eceef5"];
-const BLUE = ["#37548f", "#4a6bb0", "#5d7fc4", "#67a7dc"];
-const PINK = ["#a9426b", "#c45a84", "#d04080", "#8a4a7a"];
-function rnd(seed: number) {
-  let s = seed;
-  return () => {
-    s = (s * 1664525 + 1013904223) % 4294967296;
-    return s / 4294967296;
-  };
+const R = 100;
+const TILT = (14 * Math.PI) / 180; // inclinaison vers le spectateur
+const LATS = [-72, -54, -36, -18, 0, 18, 36, 54, 72];
+const MERIDIANS = 16; // un méridien tous les 22,5°
+const LIT: [number, number][] = [ // facettes allumées : [bande de latitude, colonne]
+  [3, 1], [5, 4], [2, 7], [6, 10], [4, 13], [1, 3], [7, 6], [5, 12], [3, 9],
+];
+const deg = Math.PI / 180;
+
+function project(lat: number, lon: number) {
+  const cl = Math.cos(lat), sl = Math.sin(lat);
+  const x = R * cl * Math.sin(lon);
+  const zf = R * cl * Math.cos(lon); // profondeur avant inclinaison
+  const y = -(R * sl * Math.cos(TILT) - zf * Math.sin(TILT));
+  const z = zf * Math.cos(TILT) + R * sl * Math.sin(TILT);
+  return { x, y, z };
 }
 
-export function DiscoBall({ size = 420, className = "", fluid = false, id = "db", speed = 28 }: { size?: number; className?: string; fluid?: boolean; id?: string; speed?: number }) {
-  const R = 100;
-  const rows = useMemo(() => {
-    const r = rnd(7);
-    const N = 18; // rangées
-    const out: { y: number; h: number; tiles: { w: number; c: string }[]; period: number }[] = [];
-    for (let i = 0; i < N; i++) {
-      const a0 = -Math.PI / 2 + (Math.PI * i) / N;
-      const a1 = -Math.PI / 2 + (Math.PI * (i + 1)) / N;
-      const y = R * Math.sin(a0);
-      const h = R * (Math.sin(a1) - Math.sin(a0));
-      const mid = Math.cos((a0 + a1) / 2);
-      const count = Math.max(10, Math.round(30 * mid));
-      const w = (2 * R * 1.6) / count; // une période = 1,6 × le diamètre
-      const tiles = Array.from({ length: count }, () => {
-        const p = r();
-        const c = p < 0.6 ? SILVER[Math.floor(r() * SILVER.length)] : p < 0.82 ? BLUE[Math.floor(r() * 4)] : PINK[Math.floor(r() * 4)];
-        return { w, c };
+function meridianPaths(lon: number) {
+  let front = "", back = "";
+  let prevFront: boolean | null = null;
+  for (let i = 0; i <= 36; i++) {
+    const lat = -90 * deg + (i * 180 * deg) / 36;
+    const p = project(lat, lon);
+    const isFront = p.z >= 0;
+    const pt = `${p.x.toFixed(2)} ${p.y.toFixed(2)}`;
+    if (isFront) front += (prevFront === true ? " L" : " M") + pt;
+    else back += (prevFront === false ? " L" : " M") + pt;
+    prevFront = isFront;
+  }
+  return { front, back };
+}
+
+const BAND = [-90, ...LATS, 90];
+function facet(band: number, col: number, rot: number) {
+  const la0 = BAND[band] * deg, la1 = BAND[band + 1] * deg;
+  const step = (360 / MERIDIANS) * deg;
+  const lo0 = col * step + rot, lo1 = lo0 + step;
+  const pts = [project(la0, lo0), project(la0, lo1), project(la1, lo1), project(la1, lo0)];
+  const z = (pts[0].z + pts[1].z + pts[2].z + pts[3].z) / 4;
+  const d = "M" + pts.map((p) => `${p.x.toFixed(2)} ${p.y.toFixed(2)}`).join(" L") + " Z";
+  return { d, z };
+}
+
+const STARS: [number, number, number, number][] = [ // x, y, taille, délai
+  [-118, -70, 1, 0], [112, -96, 0.75, 1.2], [124, 48, 0.9, 2.1], [-112, 86, 0.7, 0.7], [-28, -122, 0.6, 2.8], [62, 116, 0.65, 1.6],
+];
+
+export function DiscoBall({ size = 420, className = "", fluid = false, id = "db", speed = 26 }: { size?: number; className?: string; fluid?: boolean; id?: string; speed?: number }) {
+  const reduce = useReducedMotion();
+  const mFront = useRef<(SVGPathElement | null)[]>([]);
+  const mBack = useRef<(SVGPathElement | null)[]>([]);
+  const mGlow = useRef<(SVGPathElement | null)[]>([]);
+  const lit = useRef<(SVGPathElement | null)[]>([]);
+
+  useEffect(() => {
+    let raf = 0;
+    const t0 = performance.now();
+    const draw = (t: number) => {
+      const rot = reduce ? 0.35 : (((t - t0) / 1000) * (2 * Math.PI)) / speed;
+      for (let k = 0; k < MERIDIANS; k++) {
+        const { front, back } = meridianPaths(rot + (k * 2 * Math.PI) / MERIDIANS);
+        mFront.current[k]?.setAttribute("d", front || "M0 0");
+        mGlow.current[k]?.setAttribute("d", front || "M0 0");
+        mBack.current[k]?.setAttribute("d", back || "M0 0");
+      }
+      LIT.forEach(([b, c], i) => {
+        const el = lit.current[i];
+        if (!el) return;
+        const f = facet(b, c, rot);
+        el.setAttribute("d", f.d);
+        const pulse = reduce ? 0.6 : 0.45 + 0.55 * Math.abs(Math.sin(t / 900 + i * 1.7));
+        el.setAttribute("opacity", f.z > 0 ? String(Math.min(1, (f.z / R) * 1.4) * pulse) : "0");
       });
-      out.push({ y, h, tiles, period: w * count });
-    }
-    return out;
-  }, []);
+      if (!reduce) raf = requestAnimationFrame(draw);
+    };
+    raf = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(raf);
+  }, [reduce, speed]);
 
   const dim = fluid ? "100%" : size;
+  const grad = `url(#${id}-grad)`;
+  const lat = LATS.map((la) => {
+    const a = la * deg;
+    return { cy: -R * Math.sin(a) * Math.cos(TILT), rx: R * Math.cos(a), ry: R * Math.cos(a) * Math.sin(TILT) };
+  });
+
   return (
-    <div className={`relative disco ${className}`} style={{ width: dim, height: dim }} aria-hidden>
-      <div className="absolute inset-[-18%] neon-halo opacity-70" />
-      <svg viewBox="-130 -130 260 260" width={dim} height={dim} className="relative">
+    <div className={`relative ${className}`} style={{ width: dim, height: dim }} aria-hidden>
+      <div className="absolute inset-[-20%] neon-halo" />
+      <svg viewBox="-130 -130 260 260" width={dim} height={dim} className="relative overflow-visible">
         <defs>
-          <clipPath id={`${id}-c`}>
-            <circle r={R} />
-          </clipPath>
-          <radialGradient id={`${id}-shade`} cx="0.36" cy="0.3" r="0.8">
-            <stop offset="0" stopColor="#fff" stopOpacity="0.3" />
-            <stop offset="0.45" stopColor="#fff" stopOpacity="0" />
-            <stop offset="0.72" stopColor="#000" stopOpacity="0.45" />
-            <stop offset="1" stopColor="#000" stopOpacity="0.9" />
-          </radialGradient>
-          <radialGradient id={`${id}-spec`} cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0" stopColor="#fff" stopOpacity="0.9" />
-            <stop offset="1" stopColor="#fff" stopOpacity="0" />
-          </radialGradient>
+          <linearGradient id={`${id}-grad`} gradientUnits="userSpaceOnUse" x1="-100" y1="-100" x2="100" y2="100">
+            <stop offset="0%" stopColor="#67a7dc" />
+            <stop offset="45%" stopColor="#37548f" />
+            <stop offset="100%" stopColor="#d04080" />
+          </linearGradient>
+          <linearGradient id={`${id}-fill`} gradientUnits="userSpaceOnUse" x1="-100" y1="-100" x2="100" y2="100">
+            <stop offset="0%" stopColor="#67a7dc" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#d04080" stopOpacity="0.55" />
+          </linearGradient>
+          <linearGradient id={`${id}-star`} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#67a7dc" />
+            <stop offset="55%" stopColor="#8a6fc0" />
+            <stop offset="100%" stopColor="#d04080" />
+          </linearGradient>
+          <filter id={`${id}-blur`} x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.2" />
+          </filter>
         </defs>
-        {/* attache */}
-        <line x1="0" y1="-128" x2="0" y2={-R - 4} stroke="#bfc3d6" strokeWidth="1.4" opacity="0.8" />
-        <rect x="-6" y={-R - 9} width="12" height="7" rx="1.5" fill="#bfc3d6" opacity="0.9" />
-        <g clipPath={`url(#${id}-c)`}>
-          <circle r={R} fill="#1a1d2e" />
-          {rows.map((row, i) => {
-            let x = -row.period;
-            const rects: React.ReactNode[] = [];
-            for (let k = 0; k < 2; k++) {
-              for (let t = 0; t < row.tiles.length; t++) {
-                const tile = row.tiles[t];
-                rects.push(<rect key={`${k}-${t}`} x={x + 0.35} y={row.y + 0.35} width={tile.w - 0.7} height={row.h - 0.7} fill={tile.c} rx="0.6" />);
-                x += tile.w;
-              }
-            }
-            return (
-              <g key={i} className="disco-row" style={{ ["--d" as string]: `${row.period}px`, animationDuration: `${speed}s`, animationDelay: `${-(i * 1.7) % speed}s` }}>
-                {rects}
-              </g>
-            );
-          })}
-          <circle r={R} fill={`url(#${id}-shade)`} />
-          <ellipse cx="-34" cy="-46" rx="26" ry="16" fill={`url(#${id}-spec)`} transform="rotate(-28 -34 -46)" opacity="0.55" />
+
+        {/* fil de suspension */}
+        <line x1="0" y1="-130" x2="0" y2={-R} stroke={grad} strokeWidth="1" opacity="0.8" />
+        <rect x="-4.5" y={-R - 5} width="9" height="5" rx="1.2" fill="none" stroke={grad} strokeWidth="1" />
+
+        {/* facettes allumées */}
+        {LIT.map((_, i) => (
+          <path key={i} ref={(el) => { lit.current[i] = el; }} fill={`url(#${id}-fill)`} stroke="none" />
+        ))}
+
+        {/* face arrière, très discrète */}
+        <g stroke={grad} fill="none" strokeWidth="0.7" opacity="0.18">
+          {Array.from({ length: MERIDIANS }, (_, k) => (
+            <path key={k} ref={(el) => { mBack.current[k] = el; }} />
+          ))}
         </g>
-        <circle r={R} fill="none" stroke="#fff" strokeOpacity="0.14" strokeWidth="0.8" />
-        {/* éclats */}
-        {[
-          [62, -58, 1.9, 0],
-          [-78, 24, 1.4, 1.1],
-          [30, 82, 1.6, 2.3],
-          [-40, -84, 1.2, 0.6],
-          [90, 30, 1.3, 1.8],
-          [-6, -4, 2.2, 2.9],
-        ].map(([x, y, s, d], i) => (
-          <g key={i} className="disco-spark" style={{ animationDelay: `${d}s` }} transform={`translate(${x} ${y}) scale(${s})`}>
-            <path d="M0 -6 L1.2 -1.2 L6 0 L1.2 1.2 L0 6 L-1.2 1.2 L-6 0 L-1.2 -1.2 Z" fill="#fff" />
+
+        {/* halo néon flouté (comme le globe) */}
+        <g stroke={grad} fill="none" strokeWidth="1.4" opacity="0.5" filter={`url(#${id}-blur)`}>
+          <circle r={R} />
+          {lat.map((l, i) => <ellipse key={i} cx="0" cy={l.cy} rx={l.rx} ry={l.ry} />)}
+          {Array.from({ length: MERIDIANS }, (_, k) => (
+            <path key={k} ref={(el) => { mGlow.current[k] = el; }} />
+          ))}
+        </g>
+
+        {/* trait net */}
+        <g stroke={grad} fill="none" strokeWidth="1.1" strokeLinecap="round">
+          <circle r={R} />
+          {lat.map((l, i) => <ellipse key={i} cx="0" cy={l.cy} rx={l.rx} ry={l.ry} />)}
+          {Array.from({ length: MERIDIANS }, (_, k) => (
+            <path key={k} ref={(el) => { mFront.current[k] = el; }} />
+          ))}
+        </g>
+
+        {/* étoiles au trait fin */}
+        {STARS.map(([x, y, s, d], i) => (
+          <g key={i} transform={`translate(${x} ${y}) scale(${s})`}>
+            <g className="ds-star" style={{ animationDelay: `${d}s` }}>
+              <path d="M0 -11 C0.8 -3 3 -0.8 11 0 C3 0.8 0.8 3 0 11 C-0.8 3 -3 0.8 -11 0 C-3 -0.8 -0.8 -3 0 -11 Z" fill="none" stroke={`url(#${id}-star)`} strokeWidth="0.9" strokeLinejoin="round" />
+            </g>
           </g>
         ))}
       </svg>

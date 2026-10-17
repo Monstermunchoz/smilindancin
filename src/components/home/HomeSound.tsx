@@ -139,7 +139,7 @@ export function HomeSound() {
 
   if (!ready) return null;
   return (
-    <div className="fixed z-40 left-4 bottom-[calc(16px+env(safe-area-inset-bottom))] flex items-center gap-2">
+    <div className="fixed z-40 right-4 top-[80px] md:right-auto md:top-auto md:left-6 md:bottom-[calc(24px+env(safe-area-inset-bottom))] flex items-center gap-2">
       <button
         type="button"
         onClick={toggle}
