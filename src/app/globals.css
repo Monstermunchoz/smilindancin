@@ -237,3 +237,14 @@ select:focus-visible { outline: none; }
 
 /* Sur-titres condensés : lignes équilibrées, jamais un mot seul en bout de ligne */
 .t-condensed, .t-label { text-wrap-style: balance; }
+
+/* Boule à facettes : rotation continue par rangée ; éclats qui scintillent */
+@keyframes disco-spin { to { transform: translateX(var(--d)); } }
+.disco-row { animation: disco-spin linear infinite; will-change: transform; }
+@keyframes disco-spark { 0%, 100% { opacity: 0; transform-box: fill-box; } 50% { opacity: 1; } }
+.disco-spark { opacity: 0; animation: disco-spark 3.4s ease-in-out infinite; transform-origin: center; }
+@media (prefers-reduced-motion: reduce) { .disco-row, .disco-spark { animation: none !important; } .disco-spark { opacity: .7; } }
+
+/* Bouton musique : petit égaliseur */
+@keyframes eq { 0%, 100% { height: 4px; } 50% { height: 16px; } }
+.eq-bar { height: 4px; animation: eq ease-in-out infinite; }

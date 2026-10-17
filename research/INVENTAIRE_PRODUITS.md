@@ -36,3 +36,9 @@ Autres images de marque : `public/photos/*` (festival, posts publics sept.–oct
 - Stories du highlight Merch' recadrées : plus aucun pseudo, sticker, compte à rebours, légende ni bandeau noir. Photos impossibles à nettoyer sans couper le produit retirées du site (crop Groovers débardeur, Más Música tee noir, Feet On The Ground sweat noir, Real VIP story).
 - Visuels 1 à 9 : tuiles HD sans numéros + fichiers d'impression détourés (`public/merch/prints/`) utilisés par la vue 3D devant/dos.
 - Photo des fondateurs (post DEz5etPiLzg) : texte « IS BORN » retiré, fond nettoyé, utilisée dans À propos.
+
+## Musique d'accueil (17/10/2026)
+
+- Fichier : `public/audio/marea.mp3` (Marea (We've Lost Dancing), Fred again.. feat. The Blessed Madonna), fourni par le client, réencodé en 112 kb/s (4 Mo).
+- Droits : titre commercial. Avant mise en ligne publique, obtenir une licence de synchronisation / diffusion web (ayants droit, SACEM) ou remplacer par un titre libre de droits ou produit par Smilin' Dancin'.
+- Comportement : volume 25 %, fondu, bouton couper toujours visible, préférence mémorisée, pause en arrière-plan, pas de son si « réduire les animations ».

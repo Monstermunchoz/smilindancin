@@ -2,6 +2,7 @@ import { commerce } from "@/lib/commerce";
 import { pastEvents } from "@/lib/data/events";
 import { ARTICLES } from "@/lib/data/journal";
 import { Hero } from "@/components/home/Hero";
+import { HomeSound } from "@/components/home/HomeSound";
 import { BrandMarquee, Drops, VisualPicker, Featured, Campaign, EventsSection, JournalSection, BrandStatement, NewsletterBlock } from "@/components/home/Sections";
 
 export const dynamic = "force-dynamic";
@@ -13,6 +14,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
+      <HomeSound />
       <BrandMarquee />
       <Drops products={drops} />
       <VisualPicker products={products} />
